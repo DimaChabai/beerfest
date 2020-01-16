@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="jdbc:mysql://localhost/beerfest?serverTimezone=Europe/Moscow&amp;useSSL=false" uuid="e725e48c-46ce-4b60-9370-8c2e58dd1fad">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/beerfest?serverTimezone=Europe/Moscow&amp;useSSL=false</jdbc-url>
+    </data-source>
+  </component>
+</project>
