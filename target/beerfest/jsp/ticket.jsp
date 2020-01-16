@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,27 +8,32 @@
 </head>
 <body>
 <jsp:include page="main_header.jsp"/>
-<div class="container">
-    <form method="post">
-        <input type="text"  name="command" value="ticket" hidden>
-        <div class="form-group">
-            <label for="defaultTicketNumber"><fmt:message key="default_ticket_label"/></label>
-            <span class="badge badge-primary badge-pill">${defaultTicketNumber}</span>
-            <input class="form-control" type="number" max="${defaultTicketNumber}" id="defaultTicketNumber" name="defaultTicketNumber">
-        </div>
-        <div class="form-group">
-            <label for="mediumTicketNumber"><fmt:message key="medium_ticket_label"/></label>
-            <span class="badge badge-primary badge-pill">${mediumTicketNumber}</span>
-            <input class="form-control" type="number" max="${mediumTicketNumber}" id="mediumTicketNumber" name="mediumTicketNumber">
-        </div>
-        <div class="form-group">
-            <label for="largeTicketNumber"><fmt:message key="large_ticket_label"/></label>
-            <span class="badge badge-primary badge-pill">${largeTicketNumber}</span>
-            <input class="form-control" type="number" max="${largeTicketNumber}" id="largeTicketNumber" name="largeTicketNumber">
-        </div>
-        <button type="submit" class="btn btn-primary"><fmt:message key="book_button"/></button>
-    </form>
-</div>
+<fmt:bundle basename="pagecontent">
+    <div class="container">
+        <form method="post">
+            <input type="text" name="command" value="ticket" hidden>
+            <div class="form-group">
+                <label for="defaultTicketNumber"><fmt:message key="default_ticket_label"/></label>
+                <span class="badge badge-primary badge-pill">${defaultTicketNumber}</span>
+                <input class="form-control" type="number" max="${defaultTicketNumber}" id="defaultTicketNumber"
+                       name="defaultTicketNumber">
+            </div>
+            <div class="form-group">
+                <label for="mediumTicketNumber"><fmt:message key="medium_ticket_label"/></label>
+                <span class="badge badge-primary badge-pill">${mediumTicketNumber}</span>
+                <input class="form-control" type="number" max="${mediumTicketNumber}" id="mediumTicketNumber"
+                       name="mediumTicketNumber">
+            </div>
+            <div class="form-group">
+                <label for="largeTicketNumber"><fmt:message key="large_ticket_label"/></label>
+                <span class="badge badge-primary badge-pill">${largeTicketNumber}</span>
+                <input class="form-control" type="number" max="${largeTicketNumber}" id="largeTicketNumber"
+                       name="largeTicketNumber">
+            </div>
+            <button type="submit" class="btn btn-primary"><fmt:message key="book_button"/></button>
+        </form>
+    </div>
+</fmt:bundle>
 <jsp:include page="footer.jsp"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: dima
@@ -16,31 +17,35 @@
 </head>
 <body>
 <jsp:include page="main_header.jsp"/>
-<div class="container justify-content-center">
-    <div class="container">
-        <form method="post" class="needs-validation" enctype="multipart/form-data" action="${pageContext.request.contextPath}/profile" novalidate>
-            <div class="form-group">
-                <label for="file"><fmt:message key="avatar_button"/></label>
-                <input class="form-control-file" id="file" type="file" name="file">
-            </div>
-            <div class="form-group">
-                <label for="phone_number"><fmt:message key="phone_number_input"/></label>
-                <input class="form-control" id="phone_number" name="phone_number" required pattern="\+375\d{2} \d{7}" value="${phone_number}">
-                <div class="invalid-feedback">
-                    <fmt:message key="invalid_phone_text"/>
+<fmt:bundle basename="pagecontent">
+    <div class="container justify-content-center">
+        <div class="container">
+            <form method="post" class="needs-validation" enctype="multipart/form-data"
+                  action="${pageContext.request.contextPath}/profile" novalidate>
+                <div class="form-group">
+                    <label for="file"><fmt:message key="avatar_button"/></label>
+                    <input class="form-control-file" id="file" type="file" name="file">
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="password"><fmt:message key="password_label"/></label>
-                <input type="password" class="form-control" id="password" name="password" required>
-                <div class="invalid-feedback">
-                    <fmt:message key="invalid_password_text"/>
+                <div class="form-group">
+                    <label for="phone_number"><fmt:message key="phone_number_input"/></label>
+                    <input class="form-control" id="phone_number" name="phone_number" required
+                           pattern="\+375\d{2} \d{7}" value="${phone_number}">
+                    <div class="invalid-feedback">
+                        <fmt:message key="invalid_phone_text"/>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block"><fmt:message key="change_button"/></button>
-        </form>
+                <div class="form-group">
+                    <label for="password"><fmt:message key="password_label"/></label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="invalid-feedback">
+                        <fmt:message key="invalid_password_text"/>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block"><fmt:message key="change_button"/></button>
+            </form>
+        </div>
     </div>
-</div>
+</fmt:bundle>
 <jsp:include page="footer.jsp"/>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -62,9 +67,15 @@
         }, false);
     })();
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

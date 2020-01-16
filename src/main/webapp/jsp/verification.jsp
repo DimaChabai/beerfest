@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,38 +9,42 @@
 </head>
 <body>
 <jsp:include page="main_header.jsp"/>
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <c:if test="${not empty participants}">
-                <c:forEach var="participant" items="${participants}">
-                    <div class="col-md-auto">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">${participant.name}</h5>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">${participant.place}</li>
-                                </ul>
-                                <div class="card-footer">
-                                    <form class="form" method="post">
-                                        <input type="text" value="${participant.id}" name="id" hidden>
-                                        <input type="text" value="acceptVerification" name="command" hidden>
-                                        <button type="submit" class="btn btn-primary"><fmt:message key="accept_button"/></button>
-                                    </form>
-                                    <form class="form" method="post">
-                                        <input type="text" value="${participant.id}" name="id" hidden>
-                                        <input type="text" value="declineVerification" name="command" hidden>
-                                        <button type="submit" class="btn btn-danger"><fmt:message key="decline_button"/></button>
-                                    </form>
+<fmt:bundle basename="pagecontent">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <c:if test="${not empty participants}">
+                    <c:forEach var="participant" items="${participants}">
+                        <div class="col-md-auto">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">${participant.name}</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">${participant.place}</li>
+                                    </ul>
+                                    <div class="card-footer">
+                                        <form class="form" method="post">
+                                            <input type="text" value="${participant.id}" name="id" hidden>
+                                            <input type="text" value="acceptVerification" name="command" hidden>
+                                            <button type="submit" class="btn btn-primary"><fmt:message
+                                                    key="accept_button"/></button>
+                                        </form>
+                                        <form class="form" method="post">
+                                            <input type="text" value="${participant.id}" name="id" hidden>
+                                            <input type="text" value="declineVerification" name="command" hidden>
+                                            <button type="submit" class="btn btn-danger"><fmt:message
+                                                    key="decline_button"/></button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
-            </c:if>
+                    </c:forEach>
+                </c:if>
+            </div>
         </div>
     </div>
-</div>
+</fmt:bundle>
 <jsp:include page="footer.jsp"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

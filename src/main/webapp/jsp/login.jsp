@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,6 +15,7 @@
             ${errorMessage}
     </div>
 </c:if>
+<fmt:bundle basename="pagecontent">
 <div class="container">
     <form method="post" class="needs-validation" novalidate>
         <input type="text" value="login"  name="command" hidden>
@@ -35,6 +37,7 @@
         <button type="submit" class="btn btn-primary btn-block"> <fmt:message key="accept_button"/></button>
     </form>
 </div>
+</fmt:bundle>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>
