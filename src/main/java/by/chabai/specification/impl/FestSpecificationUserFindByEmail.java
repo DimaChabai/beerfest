@@ -12,13 +12,12 @@ public class FestSpecificationUserFindByEmail extends FestSpecification {
 
     private String email;
 
-    public FestSpecificationUserFindByEmail(Connection connection, String email) {
-        super(connection);
+    public FestSpecificationUserFindByEmail( String email) {
         this.email = email;
     }
-//@TODO
+    //@todo Правильно ли исправил спецификацию
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(FIND_USER_BY_EMAIL);
         statement.setString(1,email);
         return statement;

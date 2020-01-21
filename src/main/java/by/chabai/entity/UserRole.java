@@ -1,5 +1,5 @@
 package by.chabai.entity;
 
 public enum UserRole {
-    ADMIN,GUEST,PARTICIPANT,USER;
+    ADMIN,GUEST,PARTICIPANT,USER
 }

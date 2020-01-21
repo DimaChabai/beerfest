@@ -2,7 +2,10 @@ package by.chabai.repository;
 
 import by.chabai.entity.User;
 import by.chabai.entity.UserRole;
+import by.chabai.service.StatementService;
 import by.chabai.specification.FestSpecification;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,10 +14,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.chabai.constant.Query.*;
+import static by.chabai.constant.ColumnName.*;
+import static by.chabai.constant.Query.USER_INSERT;
+import static by.chabai.constant.Query.USER_UPDATE;
 
 public class UserRepository extends Repository {
 
+    private static Logger logger = LogManager.getLogger();
     private static UserRepository instance = new UserRepository();
 
     public static UserRepository getInstance() {
@@ -26,27 +32,25 @@ public class UserRepository extends Repository {
 
 
     public void add(User user) {
-        Connection conn = connectionPool.getConnection();
-        try {
-            PreparedStatement statement = conn.prepareStatement(USER_INSERT);
-            //@TODO правильно ли вынес запрос
+
+        try (Connection conn = connectionPool.getConnection();
+             PreparedStatement statement = conn.prepareStatement(USER_INSERT)) {
+
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getPhoneNumber());
             statement.setString(4, user.getAvatar());
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            connectionPool.releaseConnection(conn);
+            logger.warn(e.getMessage());
         }
     }
 
     public void update(User user) {
-        Connection conn = connectionPool.getConnection();
-        try {
-            PreparedStatement statement = conn.prepareStatement(USER_UPDATE);
-            //@TODO Как вынести
+
+        try (Connection conn = connectionPool.getConnection();
+             PreparedStatement statement = conn.prepareStatement(USER_UPDATE)) {
+            //@TODO Надо ли это в сервис
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getPhoneNumber());
@@ -55,17 +59,15 @@ public class UserRepository extends Repository {
             statement.setLong(6, user.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectionPool.releaseConnection(conn);
+           logger.warn(e.getMessage());
         }
     }
 
     public List<User> query(FestSpecification specification) {
         ResultSet resultSet = null;
         List<User> resultList = new ArrayList<>();
-        try {
-            resultSet = specification.specified().executeQuery();
+        try (Connection connection = connectionPool.getConnection()) {
+            resultSet = specification.specified(connection).executeQuery();
             User user;
             while (resultSet.next()) {
                 user = new User();
@@ -78,7 +80,7 @@ public class UserRepository extends Repository {
                 resultList.add(user);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+           logger.warn(e.getMessage());
         }
         return resultList;
     }

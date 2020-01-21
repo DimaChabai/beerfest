@@ -12,13 +12,11 @@ public class FestSpecificationUserFindById extends FestSpecification {
 
     private long id;
 
-    public FestSpecificationUserFindById(Connection connection, long id) {
-        super(connection);
+    public FestSpecificationUserFindById( long id) {
         this.id = id;
     }
-//@TODO вынос в константы
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(FIND_USER_BY_ID);
         statement.setLong(1,id);
         return statement;

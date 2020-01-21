@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.UUID;
 
-import static by.chabai.constant.HelperSymbols.DOT;
-import static by.chabai.constant.HelperSymbols.EMPTY_STRING;
 import static by.chabai.constant.PageParameter.*;
 import static by.chabai.constant.PagePath.BEERFEST_PROFILE;
 import static by.chabai.constant.PagePath.JSP_PROFILE_JSP;
@@ -27,6 +25,8 @@ import static by.chabai.constant.PagePath.JSP_PROFILE_JSP;
         , maxRequestSize = 1024 * 1024 * 5 * 5)
 public class UserMenuController extends HttpServlet {
 
+    public static final String EMPTY_STRING = "";
+    public static final String DOT = ".";
     private static final String UPLOAD_DIR = "avatars";
     private static final UserRepository repository = UserRepository.getInstance();
     private static final ConnectionPool connectionPool = ConnectionPool.INSTANCE;
@@ -42,10 +42,8 @@ public class UserMenuController extends HttpServlet {
         }
         Part part = request.getPart(FILE);
         String path = part.getSubmittedFileName();
-        Connection connection = connectionPool.getConnection();
-        FestSpecification specification = new FestSpecificationUserFindByEmail(connection, (String) session.getAttribute(EMAIL));
-        User user = repository.query(specification).get(0);        // @TODO Нужно ли здесь обрабатывать результат запрос, если я знаю, что он будет валидным всегда.
-        connectionPool.releaseConnection(connection);
+        FestSpecification specification = new FestSpecificationUserFindByEmail((String) session.getAttribute(EMAIL));
+        User user = repository.query(specification).get(0);
         if (!path.isBlank()) {
             String randFilename;
             String fileName;

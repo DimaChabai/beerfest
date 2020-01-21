@@ -1,37 +1,20 @@
 package by.chabai.command.impl;
 
 import by.chabai.command.Command;
-import by.chabai.entity.Participant;
-import by.chabai.entity.User;
-import by.chabai.pool.ConnectionPool;
+import by.chabai.content.SessionRequestContent;
 import by.chabai.repository.ParticipantRepository;
-import by.chabai.repository.UserRepository;
-import by.chabai.specification.FestSpecification;
-import by.chabai.specification.impl.FestSpecificationParticipantFindById;
-import by.chabai.specification.impl.FestSpecificationUserFindById;
+import by.chabai.service.VerificationService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 
-import static by.chabai.constant.PageParameter.ID;
-import static by.chabai.constant.PageParameter.PARTICIPANTS;
 import static by.chabai.constant.PagePath.JSP_VERIFICATION_JSP;
 
 public class DeclineVerificationCommand implements Command {
 
-    private static ConnectionPool connectionPool = ConnectionPool.INSTANCE;
-    private static ParticipantRepository participantRepository = ParticipantRepository.getInstance();
-
     @Override
-    public String execute(HttpServletRequest request) {
-        long id = Long.parseLong(request.getParameter(ID));
-        Connection connection = connectionPool.getConnection();
-        FestSpecification specification = new FestSpecificationParticipantFindById(connection,id);
-        Participant participant = participantRepository.query(specification).get(0);//@TODO
-        participantRepository.delete(participant);
-        connectionPool.releaseConnection(connection);
+    public String execute(SessionRequestContent content) {
+        VerificationService service = new VerificationService();
+        service.decline(content);
         return JSP_VERIFICATION_JSP;
     }
 }

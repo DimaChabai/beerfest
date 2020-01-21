@@ -12,13 +12,12 @@ public class FestSpecificationParticipantFindById extends FestSpecification {
 
     private long id;
 
-    public FestSpecificationParticipantFindById(Connection connection, long id) {
-        super(connection);
+    public FestSpecificationParticipantFindById( long id) {
         this.id = id;
     }
 
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(FIND_PARTICIPANT_BY_ID);
         statement.setLong(1, id);
         return statement;

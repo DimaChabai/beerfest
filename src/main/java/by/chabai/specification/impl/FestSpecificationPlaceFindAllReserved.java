@@ -9,12 +9,12 @@ import java.sql.SQLException;
 import static by.chabai.constant.Query.FIND_RESERVED_PLACE;
 
 public class FestSpecificationPlaceFindAllReserved extends FestSpecification {
-    public FestSpecificationPlaceFindAllReserved(Connection connection) {
-        super(connection);
+    public FestSpecificationPlaceFindAllReserved() {
+
     }
 
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         return connection.prepareStatement(FIND_RESERVED_PLACE);
     }
 }

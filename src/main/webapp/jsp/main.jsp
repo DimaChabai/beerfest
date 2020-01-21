@@ -1,7 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${language}" scope="session" />
+<fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
-    <title>Title</title>
+    <title><fmt:message key="title" /></title>
     <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css'>
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
 </head>

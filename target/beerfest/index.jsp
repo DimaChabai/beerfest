@@ -11,7 +11,6 @@
     </head>
     <body class="d-flex flex-column h-100">
     <jsp:include page="jsp/index_header.jsp"/>
-    <fmt:message key="email_help_text"/>
     <jsp:include page="jsp/footer.jsp"/>
     </body>
     </html>

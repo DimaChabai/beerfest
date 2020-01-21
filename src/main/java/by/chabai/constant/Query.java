@@ -45,6 +45,8 @@ public class Query {
             " on participant.id_place = place.id_place " +
             " join placetype " +
             " on place.id_type = placetype.id_type" +
+            " join role" +
+            " on user.id_role = role.id_role" +
             " WHERE participant.id_user = ? ";
     public static final String PARTICIPANT_INSERT = "INSERT INTO PARTICIPANT(id_user,name,id_place,confirmed) VALUES(?, ?, ?, ?);";
     public static final String USER_TO_PARTICIPANT_UPDATE = "UPDATE user SET id_role = (SELECT id_role FROM role where role_name = 'PARTICIPANT') WHERE id_user = ?;";
@@ -54,28 +56,14 @@ public class Query {
     public static final String FIND_RESERVED_PLACE = "SELECT id_place,type,seats  FROM place" +
             " join placetype " +
             "on placetype.id_type = place.id_type " +
-            "WHERE place.id_place IN (SELECT participant.id_place FROM participant)";
-    public static final String GUEST_INSERT = "INSERT INTO GUEST(id_user,ticket_number) VALUES(?,0);";
+            "WHERE place.id_place IN (SELECT participant.id_place FROM participant WHERE confirmed = true)";
+    public static final String GUEST_INSERT = "INSERT INTO GUEST(id_user,default_ticket_number, medium_ticket_number, large_ticket_number) VALUES(?,?,?,?);";
     public static final String USER_TO_GUEST_UPDATE = "UPDATE user SET id_role = (SELECT id_role FROM role where role_name = 'GUEST')  WHERE id_user = ?;";
     public static final String ADD_TICKET = "INSERT INTO guest_ticket(id_user,ticket_number,ticket_type) VALUES(?,?,?);";
     public static final String FIND_TICKET_GROUP_BY_TYPE = "SELECT SUM(ticket_number) as sum,ticket_type from guest_ticket " +
             "GROUP BY ticket_type";
 
 
-    public static final String COL_PASSWORD = "password";
-    public static final String COL_PHONE_NUMBER = "phone_number";
-    public static final String COL_EMAIL = "email";
-    public static final String COL_ID_USER = "id_user";
-    public static final String COL_ID_ROLE = "id_role";
-    public static final String COL_ROLE_NAME = "role_name";
-    public static final String COL_AVATAR = "avatar";
-    public static final String COL_SEATS = "seats";
-    public static final String COL_TYPE = "type";
-    public static final String COL_ID_PLACE = "id_place";
-    public static final String COL_NAME = "name";
-    public static final String COL_CONFIRMED = "confirmed";
-    public static final String COL_SUM = "sum";
-    public static final String COL_TICKET_TYPE = "ticket_type";
 
     private Query() {
     }

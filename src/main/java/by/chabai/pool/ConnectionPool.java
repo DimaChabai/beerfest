@@ -1,69 +1,77 @@
 package by.chabai.pool;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public enum ConnectionPool {
     INSTANCE;
-    private static final String URL = "jdbc:mysql://localhost/beerfest?serverTimezone=Europe/Moscow&useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "12345";
-    public static final String COM_MYSQL_JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private BlockingQueue<Connection> connectionPool;
-    private List<Connection> usedConnections = new ArrayList<>();
-    private int INITIAL_POOL_SIZE = 10;
+
+    private static Logger logger = LogManager.getLogger();
+    private BlockingQueue<ProxyConnection> connectionPool;
+    private Queue<ProxyConnection> usedConnections;
+    private final int INITIAL_POOL_SIZE = 10;
+    private Driver driver;
 
     ConnectionPool() {
         try {
-            Class.forName(COM_MYSQL_JDBC_DRIVER);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            driver = new com.mysql.jdbc.Driver();
+            DriverManager.registerDriver(driver);
+        } catch (SQLException e) {
+            //logger.warn(e.getMessage()); @TODO не писать тут лог т.к. надо прокинуть  исключение дальше?
         }
-        connectionPool = new LinkedBlockingQueue<>(INITIAL_POOL_SIZE);
-        for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
-            try {
-                connectionPool.offer(createConnection(URL, USERNAME, PASSWORD));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-
+        usedConnections = new ArrayDeque<>();
+        connectionPool = ConnectionCreater.initializePool(INITIAL_POOL_SIZE);
     }
 
     public Connection getConnection() {
-        Connection connection = null;
+        ProxyConnection connection = null;
         try {
             connection = connectionPool.take();
+            usedConnections.offer(connection);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.warn(e.getMessage());
         }
-        usedConnections.add(connection);
         return connection;
     }
 
-    public boolean releaseConnection(Connection connection) {
-        connectionPool.offer(connection);
-        return usedConnections.remove(connection);
-    }
-
-    private static Connection createConnection(
-            String url, String user, String password)
-            throws SQLException {
-        return DriverManager.getConnection(url, user, password);
-    }
-
-    public void shutdown() throws SQLException {
-        usedConnections.forEach(this::releaseConnection);
-        for (Connection c : connectionPool) {
-            c.close();
+    public void releaseConnection(Connection connection) {
+        if (connection instanceof ProxyConnection) {
+            connectionPool.offer((ProxyConnection) connection);
+            usedConnections.remove(connection);
+        } else {
+            throw new IllegalArgumentException("Освобождение не ProxyConnection");//@TODO правильно ли
         }
-        connectionPool.clear();
+    }
+
+    public void shutdown() {
+        usedConnections.forEach(this::releaseConnection);//@TODO Правильно?
+        for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
+            try {
+                connectionPool.take().reallyClose();
+            } catch (InterruptedException e) {
+                logger.warn(e.getMessage());
+            }
+        }
+        connectionPool.clear();//@TODO Правильно?
+        deregisterDrivers();
+    }
+
+    private void deregisterDrivers() {
+        DriverManager.getDrivers().asIterator().forEachRemaining(driver1 -> {
+            try {
+                DriverManager.deregisterDriver(driver1);
+            } catch (SQLException e) {
+                logger.warn(e.getMessage());
+            }
+        });//@TODO зачем объект драйвера?
     }
 
     public int getSize() {

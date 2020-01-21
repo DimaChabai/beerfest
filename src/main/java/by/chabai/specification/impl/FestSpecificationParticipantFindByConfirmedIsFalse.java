@@ -9,12 +9,12 @@ import java.sql.SQLException;
 import static by.chabai.constant.Query.FIND_UNCONFIRMED_PARTICIPANT;
 
 public class FestSpecificationParticipantFindByConfirmedIsFalse extends FestSpecification {
-    public FestSpecificationParticipantFindByConfirmedIsFalse(Connection connection) {
-        super(connection);
+    public FestSpecificationParticipantFindByConfirmedIsFalse() {
+
     }
 
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         return connection.prepareStatement(FIND_UNCONFIRMED_PARTICIPANT);
     }
 }

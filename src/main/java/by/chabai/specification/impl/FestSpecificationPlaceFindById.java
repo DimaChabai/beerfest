@@ -11,13 +11,12 @@ import static by.chabai.constant.Query.FIND_PLACE_BY_ID;
 public class FestSpecificationPlaceFindById extends FestSpecification {
     private long id;
 
-    public FestSpecificationPlaceFindById(Connection connection,long id) {
-        super(connection);
+    public FestSpecificationPlaceFindById(long id) {
         this.id = id;
     }
 
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(FIND_PLACE_BY_ID);
         statement.setLong(1,id);
         return statement;

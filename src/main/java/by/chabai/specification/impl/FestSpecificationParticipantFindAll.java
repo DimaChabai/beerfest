@@ -10,13 +10,8 @@ import static by.chabai.constant.Query.FIND_ALL_PARTICIPANT;
 
 public class FestSpecificationParticipantFindAll extends FestSpecification {
 
-
-    public FestSpecificationParticipantFindAll(Connection connection) {
-        super(connection);
-    }
-
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         return connection.prepareStatement(FIND_ALL_PARTICIPANT);
     }
 }

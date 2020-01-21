@@ -1,7 +1,9 @@
 package by.chabai.command;
 
+import by.chabai.content.SessionRequestContent;
+
 import javax.servlet.http.HttpServletRequest;
 
 public interface Command {
-    public String execute(HttpServletRequest request);
+    String execute(SessionRequestContent content);
 }

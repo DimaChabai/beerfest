@@ -1,7 +1,9 @@
 package by.chabai.servlet;
 
 import by.chabai.command.Command;
-import by.chabai.factory.ActionFactory;
+import by.chabai.command.ActionFactory;
+import by.chabai.content.SessionRequestContent;
+import by.chabai.pool.ConnectionPool;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,19 +28,17 @@ public class IndexController extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page = null;
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        ActionFactory client = new ActionFactory();
-        Command command = client.defineCommand(request);
+        SessionRequestContent content = new SessionRequestContent();
+        content.extractValues(request);
+        Command command = ActionFactory.defineCommand(content);
 
-        page = command.execute(request);
+        page = command.execute(content);
 
+        content.insertAttributes(request);
         if (page != null) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-
             dispatcher.forward(request, response);
         } else {
-
             page = ROOT_PAGE;
             response.sendRedirect(request.getContextPath() + page);
         }

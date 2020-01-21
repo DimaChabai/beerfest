@@ -8,11 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class FestSpecification {
-    protected Connection connection;
 
-    public FestSpecification(Connection connection) {
-        this.connection = connection;
+    public FestSpecification() {
+
     }
 
-    public abstract PreparedStatement specified() throws SQLException;
+    public abstract PreparedStatement specified(Connection connection) throws SQLException;
 }

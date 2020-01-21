@@ -10,12 +10,12 @@ import static by.chabai.constant.Query.FIND_FREE_PLACE;
 
 public class FestSpecificationPlaceFindAllFree extends FestSpecification {
 
-    public FestSpecificationPlaceFindAllFree(Connection connection) {
-        super(connection);
+    public FestSpecificationPlaceFindAllFree() {
+
     }
 
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         return connection.prepareStatement(FIND_FREE_PLACE);
     }
 }

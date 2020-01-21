@@ -1,15 +1,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"  %>
 <jsp:include page="index_header_start.jsp"/>
 <fmt:bundle basename="pagecontent">
 <div class="row">
         <form class="form-inline col" method="post" action="${pageContext.request.contextPath}/index">
-            <input type="text" name="command" value="toRegistration" hidden>
+            <input type="text" name="command" value="to_Registration" hidden>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><fmt:message key="registration_button" /></button>
         </form>
 
         <form class="form-inline col" method="post" action="${pageContext.request.contextPath}/index">
-            <input type="text" name="command" value="toLogin" hidden>
+            <input type="text" name="command" value="to_Login" hidden>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><fmt:message key="login_button" /></button>
         </form>
 </div>

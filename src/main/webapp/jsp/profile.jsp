@@ -1,15 +1,10 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: dima
-  Date: 02.01.2020
-  Time: 6:30
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${language}" scope="session" />
+<fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
-    <title>Title</title>
+    <title><fmt:message key="title" /></title>
     <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css'>
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
     <script type="text/javascript"
@@ -17,7 +12,6 @@
 </head>
 <body>
 <jsp:include page="main_header.jsp"/>
-<fmt:bundle basename="pagecontent">
     <div class="container justify-content-center">
         <div class="container">
             <form method="post" class="needs-validation" enctype="multipart/form-data"
@@ -45,7 +39,6 @@
             </form>
         </div>
     </div>
-</fmt:bundle>
 <jsp:include page="footer.jsp"/>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

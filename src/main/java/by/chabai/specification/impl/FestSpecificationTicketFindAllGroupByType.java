@@ -10,12 +10,12 @@ import static by.chabai.constant.Query.FIND_TICKET_GROUP_BY_TYPE;
 
 public class FestSpecificationTicketFindAllGroupByType extends FestSpecification {
 
-    public FestSpecificationTicketFindAllGroupByType(Connection connection) {
-        super(connection);
+    public FestSpecificationTicketFindAllGroupByType() {
+
     }
 
     @Override
-    public PreparedStatement specified() throws SQLException {
+    public PreparedStatement specified(Connection connection) throws SQLException {
         return connection.prepareStatement(FIND_TICKET_GROUP_BY_TYPE);
     }
 }

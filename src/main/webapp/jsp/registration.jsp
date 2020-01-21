@@ -1,9 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${language}" scope="session" />
+<fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
-    <title>Title</title>
+    <title><fmt:message key="title" /></title>
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
     <script type="text/javascript"
             src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -20,7 +22,6 @@
             ${errorMessage}
     </div>
 </c:if>
-<fmt:bundle basename="pagecontent">
     <div class="container">
         <form method="post" class="needs-validation" novalidate>
             <input type="text" name="command" value="registration" hidden>
@@ -46,10 +47,9 @@
                     <fmt:message key="invalid_password_text"/>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block"><fmt:message key="invalid_password_text"/></button>
+            <button type="submit" class="btn btn-primary btn-block"><fmt:message key="registration_button"/></button>
         </form>
     </div>
-</fmt:bundle>
 <jsp:include page="footer.jsp"/>
 </body>
 <script>

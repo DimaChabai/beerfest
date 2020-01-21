@@ -1,7 +1,5 @@
 package by.chabai.entity;
 
-import java.util.Objects;
-
 public class User {
     private long id;
     private String email;

@@ -1,15 +1,17 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${language}" scope="session" />
+<fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
-    <title>Title</title>
+    <title><fmt:message key="title" /></title>
     <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css'>
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
 </head>
 <body>
 <jsp:include page="main_header.jsp"/>
-<fmt:bundle basename="pagecontent">
+
     <div class="container">
         <form method="post">
             <input type="text" name="command" value="participant" hidden>
@@ -30,7 +32,6 @@
             <button type="submit" class="btn btn-primary"><fmt:message key="book_button"/></button>
         </form>
     </div>
-</fmt:bundle>
 <jsp:include page="footer.jsp"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
