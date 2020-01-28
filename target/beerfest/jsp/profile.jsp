@@ -12,6 +12,7 @@
 </head>
 <body>
 <jsp:include page="../part/main_header.jsp"/>
+<jsp:include page="../part/error_message.jsp"/>
     <div class="container justify-content-center">
         <div class="container">
             <form method="post" class="needs-validation" enctype="multipart/form-data"

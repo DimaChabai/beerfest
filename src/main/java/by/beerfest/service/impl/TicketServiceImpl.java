@@ -82,17 +82,22 @@ public class TicketServiceImpl implements TicketService {
             logger.error(e);
             throw new ServiceException(e);
         }
-        int defaultTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.SMALL)).reduce(0,
-                (v, p) -> v + p.getSeats(),
-                Integer::sum) - bookedTicket.get(BOOKED_DEFAULT_TICKET);
-        int mediumTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.MEDIUM)).reduce(0,
-                (v, p) -> v + p.getSeats(),
-                Integer::sum) - bookedTicket.get(BOOKED_MEDIUM_TICKET);
-        ;
-        int largeTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.LARGE)).reduce(0,
-                (v, p) -> v + p.getSeats(),
-                Integer::sum) - bookedTicket.get(BOOKED_LARGE_TICKET);
-        ;
+        int defaultTicketCount = 0;
+        int mediumTicketCount = 0;
+        int largeTicketCount = 0;
+
+        if(!bookedTicket.isEmpty()){
+            defaultTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.SMALL)).reduce(0,
+                    (v, p) -> v + p.getSeats(),
+                    Integer::sum) - bookedTicket.get(BOOKED_DEFAULT_TICKET);
+            mediumTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.MEDIUM)).reduce(0,
+                    (v, p) -> v + p.getSeats(),
+                    Integer::sum) - bookedTicket.get(BOOKED_MEDIUM_TICKET);
+
+            largeTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.LARGE)).reduce(0,
+                    (v, p) -> v + p.getSeats(),
+                    Integer::sum) - bookedTicket.get(BOOKED_LARGE_TICKET);
+        }
         Map<String, Integer> result = new HashMap<>();//@TODO вовращаю мапу
         result.put(DEFAULT_TICKET_NUMBER, defaultTicketCount);
         result.put(MEDIUM_TICKET_NUMBER, mediumTicketCount);

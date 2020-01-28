@@ -24,7 +24,7 @@ public class LoginCommand implements Command {
         try {
             user = service.login(content.getRequestParameter(EMAIL), content.getRequestParameter(PageParameter.PASSWORD));
         } catch (ServiceException e) {
-            logger.error(e);//@TODO Тут ошибка отправляется юзеру не в кетче
+            logger.error(e);//@TODO Тут ошибка отправляется юзеру не в кетче и метод может вернуть налл
         }
         if (user != null) {
             content.setSessionAttribute(ID, user.getId());

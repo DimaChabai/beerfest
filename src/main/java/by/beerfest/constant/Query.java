@@ -16,7 +16,7 @@ public class Query {
     public static final String USER_INSERT = "INSERT INTO user(" + COL_EMAIL + "," + COL_PASSWORD + ",id_role," + COL_PHONE_NUMBER + "," + COL_AVATAR + ") VALUES(?, ?, (SELECT id_role from role WHERE " + COL_ROLE_NAME + " = 'USER'), ?,?)";
     public static final String USER_UPDATE = "UPDATE user SET " + COL_EMAIL + " = ?, " + COL_PASSWORD + " = ?, " + COL_PHONE_NUMBER + " = ?, id_role = (SELECT id_role FROM role WHERE " + COL_ROLE_NAME + " = ?), " + COL_AVATAR + " = ? " +
             "WHERE " + COL_ID_USER + " = ?";
-    public static final String PLACE_INSERT = "INSERT INTO place(id_type," + COL_SEATS + ") VALUES((SELECT id_type FROM placetype where" + COL_TYPE + "=?),?)";
+    public static final String PLACE_INSERT = "INSERT INTO place(id_type," + COL_SEATS + ") VALUES((SELECT id_type FROM placetype where " + COL_TYPE + "=?),?)";
     public static final String FIND_FREE_PLACE = "SELECT placetype.type as "+ COL_TYPE +", " + COL_ID_PLACE + ", " + COL_SEATS + " FROM place\n" +
             "join placetype\n" +
             "on place.id_type = placetype.id_type\n" +

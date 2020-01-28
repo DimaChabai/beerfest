@@ -7,6 +7,7 @@ import by.beerfest.service.LoginService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.specification.FestSpecification;
 import by.beerfest.specification.impl.FestSpecificationUserFindByEmail;
+import by.beerfest.validator.UserDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,6 +19,10 @@ public class LoginServiceImpl implements LoginService {
     private static Logger logger = LogManager.getLogger();
 
     public User login(String email, String password) throws ServiceException {
+        UserDataValidator validator = new UserDataValidator();
+        if(!validator.emailValidate(email) || !validator.passwordValidate(password)){
+            return null;
+        }
         FestSpecification specification = new FestSpecificationUserFindByEmail(email);
         List<User> result;
         try {

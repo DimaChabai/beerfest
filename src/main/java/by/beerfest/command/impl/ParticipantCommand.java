@@ -19,14 +19,18 @@ public class ParticipantCommand implements Command {
     @Override
     public String execute(SessionRequestContent content) {
         ParticipantServiceImpl service = new ParticipantServiceImpl();
+        boolean result = false;
         try {
-            service.addParticipant(content.getRequestParameter(PageParameter.NAME), content.getRequestParameter(PageParameter.PLACE), (Long) content.getSessionAttribute(PageParameter.ID));
-            content.setSessionAttribute(PageParameter.ROLE_NAME, UserRole.PARTICIPANT);
+            result = service.addParticipant(content.getRequestParameter(PageParameter.NAME), content.getRequestParameter(PageParameter.PLACE), (Long) content.getSessionAttribute(PageParameter.ID));
         } catch (ServiceException e) {
             logger.error(e);
             content.setRequestAttribute(ERROR_MESSAGE, "page.message.participant_error_message");
         }
-
+        if(result){
+            content.setSessionAttribute(PageParameter.ROLE_NAME, UserRole.PARTICIPANT);
+        } else {
+            content.setRequestAttribute(ERROR_MESSAGE,"page.message.invalid_participant_data");
+        }
         return JSP_MAIN_JSP;
     }
 }

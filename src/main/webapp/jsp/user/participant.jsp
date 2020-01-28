@@ -1,37 +1,43 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<fmt:setLocale value="${language}" scope="session" />
+<fmt:setLocale value="${language}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
-    <title><fmt:message key="page.content.title" /></title>
-    <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css'>
+    <title><fmt:message key="page.content.title"/></title>
+
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script type="text/javascript"
+            src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <jsp:include page="../../part/main_header.jsp"/>
 <jsp:include page="/part/error_message.jsp"/>
-    <div class="container">
-        <form method="post">
-            <input type="text" name="command" value="participant" hidden>
-            <div class="form-group">
-                <label for="name"><fmt:message key="page.content.name_label"/></label>
-                <input class="form-control" type="text" id="name" name="name">
+<div class="container">
+    <form method="post" class="was-validated" novalidate>
+        <input type="text" name="command" value="participant" hidden>
+        <div class="form-group">
+            <label for="name"><fmt:message key="page.content.name_label"/></label>
+            <input class="form-control" type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="place"><fmt:message key="page.content.place_label"/></label>
+            <select class="custom-select" name="place" id="place" required>
+                <option value="">Выебри</option>
+                <c:if test="${not empty places}">
+                    <c:forEach var="place" items="${places}">
+                        <option>${place}</option>
+                    </c:forEach>
+                </c:if>
+            </select>
+            <div class="invalid-feedback">
+                <fmt:message key="page.content.invalid_place"/>
             </div>
-            <div class="form-group">
-                <label for="place"><fmt:message key="page.content.place_label"/></label>
-                <select class="form-control " name="place" id="place">
-                    <c:if test="${not empty places}">
-                        <c:forEach var="place" items="${places}">
-                            <option>${place}</option>
-                        </c:forEach>
-                    </c:if>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary"><fmt:message key="page.content.book_button"/></button>
-        </form>
-    </div>
+        </div>
+        <button type="submit" class="btn btn-primary"><fmt:message key="page.content.book_button"/></button>
+    </form>
+</div>
 <jsp:include page="../../part/footer.jsp"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

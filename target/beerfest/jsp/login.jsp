@@ -12,11 +12,7 @@
 </head>
 <body>
 <jsp:include page="../part/index_header.jsp"/>
-<c:if test="${not empty errorMessage}">
-    <div class="alert alert-danger" role="alert">
-        <fmt:message key="${errorMessage}"/>
-    </div>
-</c:if>
+<jsp:include page="../part/error_message.jsp"/>
 
 <div class="container">
     <form method="post" class="needs-validation" novalidate>
@@ -31,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="password"><fmt:message key="page.content.password_label"/></label>
-            <input type="password" class="form-control" id="password" name="password" value="" required>
+            <input type="password" class="form-control" id="password" name="password" required>
             <div class="invalid-feedback">
                 <fmt:message key="page.content.invalid_password_text"/>
             </div>

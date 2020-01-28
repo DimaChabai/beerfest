@@ -10,6 +10,7 @@ import by.beerfest.service.ServiceException;
 import by.beerfest.specification.FestSpecification;
 import by.beerfest.specification.impl.FestSpecificationPlaceFindAllFree;
 import by.beerfest.specification.impl.FestSpecificationPlaceFindById;
+import by.beerfest.validator.ParticipantDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +26,13 @@ public class ParticipantServiceImpl implements ParticipantService {
     private static final String ID_PLACE_REGEX = "№\\d*";
     private static Logger logger = LogManager.getLogger();
 
-    public void addParticipant(String name, String placeName, Long id) throws ServiceException {
+    public boolean addParticipant(String name, String placeName, Long id) throws ServiceException {
+
+        ParticipantDataValidator validator = new ParticipantDataValidator();
+
+        if(!validator.nameValidate(name)){
+            return false;
+        }
 
         Participant participant = new Participant();
         Pattern pattern = Pattern.compile(ID_PLACE_REGEX);
@@ -55,6 +62,7 @@ public class ParticipantServiceImpl implements ParticipantService {
             logger.error(e);
             throw new ServiceException(e);
         }
+        return true;
     }
 
     public List<Place> getPlaces() throws ServiceException {

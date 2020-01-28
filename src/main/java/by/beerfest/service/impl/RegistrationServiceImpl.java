@@ -7,6 +7,7 @@ import by.beerfest.service.RegistrationService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.specification.FestSpecification;
 import by.beerfest.specification.impl.FestSpecificationUserFindByEmail;
+import by.beerfest.validator.UserDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,14 +19,21 @@ public class RegistrationServiceImpl implements RegistrationService {
     public static final String DEFAULT_AVATAR = "undefined_user_avatar.png";
     private static UserRepository repository = UserRepository.getInstance();
 
-    public boolean addUser(String email, String phoneNumber, String password) throws ServiceException {
+    public boolean createAndAddUser(String email, String phoneNumber, String password) throws ServiceException {
+
+        UserDataValidator validator = new UserDataValidator();
+
+        if(!validator.emailValidate(email) || !validator.passwordValidate(password) || !validator.phoneNumberValidate(phoneNumber)){
+            return false;
+        }
+        //@TODO валидация и создание в одном методе
         User user = new User();
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
         user.setAvatar(DEFAULT_AVATAR);
         FestSpecification specification = new FestSpecificationUserFindByEmail(user.getEmail());
-        List<User> result = null;
+        List<User> result;
         try {
             result = repository.query(specification);
         } catch (RepositoryException e) {
