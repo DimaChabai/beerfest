@@ -1,0 +1,28 @@
+10:08:15.610 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.642 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.657 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.673 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.673 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.689 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.689 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.704 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.704 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:08:15.720 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.408 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.438 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.446 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.446 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.456 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.456 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.456 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.472 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.472 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+10:25:05.488 [RMI TCP Connection(3)-127.0.0.1] WARN  ConnectionCreater - Public Key Retrieval is not allowed
+23:29:16.479 [http-nio-8089-exec-10] ERROR by.beerfest.service.impl.ParticipantServiceImpl - Impossible state
+23:30:02.925 [http-nio-8089-exec-1] ERROR by.beerfest.service.impl.ParticipantServiceImpl - Impossible state
+00:32:18.563 [http-nio-8089-exec-2] DEBUG by.beerfest.filter.RouteFilter - RouteFilter has worked. urlQuery: /beerfest/
+00:32:23.967 [http-nio-8089-exec-1] DEBUG by.beerfest.filter.RouteFilter - RouteFilter has worked. urlQuery: /beerfest/
+00:32:41.358 [http-nio-8089-exec-4] DEBUG by.beerfest.filter.RouteFilter - RouteFilter has worked. urlQuery: /beerfest/
+00:33:47.225 [http-nio-8089-exec-7] DEBUG by.beerfest.filter.RouteFilter - RouteFilter has worked. urlQuery: /beerfest/index
+01:02:22.491 [http-nio-8089-exec-1] DEBUG by.beerfest.filter.RouteFilter - RouteFilter has worked. urlQuery: /beerfest/
+01:02:25.929 [http-nio-8089-exec-3] DEBUG by.beerfest.filter.RouteFilter - RouteFilter has worked. urlQuery: /beerfest/

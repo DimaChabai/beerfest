@@ -10,8 +10,8 @@
                 src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </head>
     <body class="d-flex flex-column h-100">
-    <jsp:include page="jsp/index_header.jsp"/>
-    <jsp:include page="jsp/footer.jsp"/>
+    <jsp:include page="part/index_header.jsp"/>
+    <jsp:include page="part/footer.jsp"/>
     </body>
     </html>
 </fmt:bundle>

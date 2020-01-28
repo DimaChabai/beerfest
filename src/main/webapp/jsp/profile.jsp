@@ -4,42 +4,42 @@
 <fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
-    <title><fmt:message key="title" /></title>
+    <title><fmt:message key="page.content.title" /></title>
     <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css'>
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
     <script type="text/javascript"
             src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<jsp:include page="main_header.jsp"/>
+<jsp:include page="../part/main_header.jsp"/>
     <div class="container justify-content-center">
         <div class="container">
             <form method="post" class="needs-validation" enctype="multipart/form-data"
                   action="${pageContext.request.contextPath}/profile" novalidate>
                 <div class="form-group">
-                    <label for="file"><fmt:message key="avatar_button"/></label>
+                    <label for="file"><fmt:message key="page.content.avatar_button"/></label>
                     <input class="form-control-file" id="file" type="file" name="file">
                 </div>
                 <div class="form-group">
-                    <label for="phone_number"><fmt:message key="phone_number_input"/></label>
+                    <label for="phone_number"><fmt:message key="page.content.phone_number_input"/></label>
                     <input class="form-control" id="phone_number" name="phone_number" required
                            pattern="\+375\d{2} \d{7}" value="${phone_number}">
                     <div class="invalid-feedback">
-                        <fmt:message key="invalid_phone_text"/>
+                        <fmt:message key="page.content.invalid_phone_text"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password"><fmt:message key="password_label"/></label>
+                    <label for="password"><fmt:message key="page.content.password_label"/></label>
                     <input type="password" class="form-control" id="password" name="password" required>
                     <div class="invalid-feedback">
-                        <fmt:message key="invalid_password_text"/>
+                        <fmt:message key="page.content.invalid_password_text"/>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block"><fmt:message key="change_button"/></button>
+                <button type="submit" class="btn btn-primary btn-block"><fmt:message key="page.content.change_button"/></button>
             </form>
         </div>
     </div>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../part/footer.jsp"/>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
