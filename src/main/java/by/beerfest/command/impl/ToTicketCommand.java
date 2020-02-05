@@ -22,7 +22,7 @@ public class ToTicketCommand implements Command {
         TicketServiceImpl service = new TicketServiceImpl();
         try {
             Map<String, Integer> ticketNumber = service.calculateTicketNumber();
-            ticketNumber.forEach(content::setRequestAttribute);//@TODO
+            ticketNumber.forEach(content::setRequestAttribute);
         } catch (ServiceException e) {
             logger.error(e);
             content.setRequestAttribute(ERROR_MESSAGE,"page.message.ticket_load_error_message");

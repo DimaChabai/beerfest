@@ -21,10 +21,14 @@ public class LoginCommand implements Command {
     public String execute(SessionRequestContent content) {
         LoginServiceImpl service = new LoginServiceImpl();
         User user = null;
+        boolean isCatch = false;
         try {
-            user = service.login(content.getRequestParameter(EMAIL), content.getRequestParameter(PageParameter.PASSWORD));
+            String email = content.getRequestParameter(EMAIL)[0];
+            String password = content.getRequestParameter(PASSWORD)[0];
+            user = service.login(email, password);
         } catch (ServiceException e) {
-            logger.error(e);//@TODO Тут ошибка отправляется юзеру не в кетче и метод может вернуть налл
+            logger.error(e);
+            isCatch = true;
         }
         if (user != null) {
             content.setSessionAttribute(ID, user.getId());
@@ -32,10 +36,11 @@ public class LoginCommand implements Command {
             content.setSessionAttribute(ROLE_NAME, user.getRole());
             content.setSessionAttribute(PHONE_NUMBER, user.getPhoneNumber());
             content.setSessionAttribute(AVATAR, user.getAvatar());
-            logger.info("User(" + user + ") logged in");
+            logger.info(user + " logged in");
             return JSP_MAIN_JSP;
         } else {
-            content.setRequestAttribute(PageParameter.ERROR_MESSAGE, "page.message.incorrect_login_or_password");
+            String message = isCatch ? "page.message.database_error" : "page.message.incorrect_login_or_password";
+            content.setRequestAttribute(ERROR_MESSAGE, message);
             return JSP_LOGIN_JSP;
         }
     }

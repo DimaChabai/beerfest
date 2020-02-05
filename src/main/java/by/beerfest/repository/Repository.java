@@ -12,18 +12,17 @@ public abstract class Repository {
     protected static final ConnectionPool connectionPool = ConnectionPool.INSTANCE;
     private static Logger logger = LogManager.getLogger();
 
-    public  void closeStatement(Statement statement)  {
+    public void closeStatement(Statement statement)  {
         if (statement != null) {
             try {
                 statement.close();
             } catch (SQLException e) {
                 logger.error(e);
-
             }
         }
     }
 
-    public  void commit(Connection connection)  {
+    public void commit(Connection connection)  {
         try {
             connection.commit();
         } catch (SQLException e) {

@@ -9,10 +9,9 @@ import by.beerfest.service.impl.VerificationServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
+import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
 
 public class AcceptVerificationCommand implements Command {
@@ -21,21 +20,22 @@ public class AcceptVerificationCommand implements Command {
 
     @Override
     public String execute(SessionRequestContent content) {
-
         VerificationServiceImpl service = new VerificationServiceImpl();
         try {
-
-            service.accept(Long.parseLong(content.getRequestParameter(PageParameter.ID)));
-//@TODO повторение кода
-            service = new VerificationServiceImpl();
-            List<Participant> result = service.fillVerificationPage();
-            content.setRequestAttribute(PageParameter.PARTICIPANTS, result);
+            long id = Long.parseLong(content.getRequestParameter(ID)[0]);
+            service.accept(id);
+            fillPage(content);
+            content.setRequestAttribute(MESSAGE,"page.message.accept_verification_message");
         } catch (ServiceException e) {
             logger.error(e);
-            content.setRequestAttribute(ERROR_MESSAGE,"page.message.accept_verification_error_message");
+            content.setRequestAttribute(ERROR_MESSAGE, "page.message.accept_verification_error_message");
         }
-
-
         return JSP_VERIFICATION_JSP;
+    }
+
+    private void fillPage(SessionRequestContent content) throws ServiceException {
+        VerificationServiceImpl service = new VerificationServiceImpl();
+        List<Participant> result = service.fillVerificationPage();
+        content.setRequestAttribute(PARTICIPANTS, result);
     }
 }

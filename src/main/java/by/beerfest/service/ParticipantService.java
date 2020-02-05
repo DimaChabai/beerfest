@@ -7,6 +7,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ParticipantService {
-    boolean addParticipant(String name, String placeName, Long id) throws SQLException, ServiceException;
+    boolean addParticipant(String name, String placeName, Long id,String beerType) throws SQLException, ServiceException;
     List<Place> getPlaces() throws ServiceException;
 }

@@ -3,10 +3,10 @@ package by.beerfest.service.impl;
 import by.beerfest.entity.Guest;
 import by.beerfest.entity.Place;
 import by.beerfest.entity.PlaceType;
-import by.beerfest.repository.GuestRepository;
-import by.beerfest.repository.PlaceRepository;
+import by.beerfest.repository.impl.GuestRepository;
+import by.beerfest.repository.impl.PlaceRepository;
 import by.beerfest.repository.RepositoryException;
-import by.beerfest.repository.TicketRepository;
+import by.beerfest.repository.impl.TicketRepository;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.TicketService;
 import by.beerfest.specification.FestSpecification;
@@ -56,12 +56,11 @@ public class TicketServiceImpl implements TicketService {
         try {
             guestRepository.add(guest);
         } catch (RepositoryException | SQLException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
-        logger.info("User(id: " + id + ") booked tickets: default ticket: " + defaultTicketCount
+        logger.info("User with id( " + id + ") booked tickets: default ticket: " + defaultTicketCount
                 + ", medium ticket: " + mediumTicketCount
-                + ", large ticket: " + largeTicketCount);//@TODO форматирование
+                + ", large ticket: " + largeTicketCount);
         return true;
     }
 
@@ -71,7 +70,6 @@ public class TicketServiceImpl implements TicketService {
         try {
             reservedPlace = placeRepository.query(specification);
         } catch (RepositoryException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
         specification = new FestSpecificationTicketFindAllGroupByType();
@@ -79,26 +77,24 @@ public class TicketServiceImpl implements TicketService {
         try {
             bookedTicket = ticketRepository.query(specification);
         } catch (RepositoryException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
-        int defaultTicketCount = 0;
-        int mediumTicketCount = 0;
-        int largeTicketCount = 0;
+        int defaultTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.SMALL)).reduce(0,
+                (v, p) -> v + p.getSeats(),
+                Integer::sum);
+        int mediumTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.MEDIUM)).reduce(0,
+                (v, p) -> v + p.getSeats(),
+                Integer::sum);
+        int largeTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.LARGE)).reduce(0,
+                (v, p) -> v + p.getSeats(),
+                Integer::sum);
 
-        if(!bookedTicket.isEmpty()){
-            defaultTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.SMALL)).reduce(0,
-                    (v, p) -> v + p.getSeats(),
-                    Integer::sum) - bookedTicket.get(BOOKED_DEFAULT_TICKET);
-            mediumTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.MEDIUM)).reduce(0,
-                    (v, p) -> v + p.getSeats(),
-                    Integer::sum) - bookedTicket.get(BOOKED_MEDIUM_TICKET);
-
-            largeTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.LARGE)).reduce(0,
-                    (v, p) -> v + p.getSeats(),
-                    Integer::sum) - bookedTicket.get(BOOKED_LARGE_TICKET);
+        if (!bookedTicket.isEmpty()) {
+            defaultTicketCount -= bookedTicket.get(BOOKED_DEFAULT_TICKET);
+            mediumTicketCount -= bookedTicket.get(BOOKED_MEDIUM_TICKET);
+            largeTicketCount -= bookedTicket.get(BOOKED_LARGE_TICKET);
         }
-        Map<String, Integer> result = new HashMap<>();//@TODO вовращаю мапу
+        Map<String, Integer> result = new HashMap<>();
         result.put(DEFAULT_TICKET_NUMBER, defaultTicketCount);
         result.put(MEDIUM_TICKET_NUMBER, mediumTicketCount);
         result.put(LARGE_TICKET_NUMBER, largeTicketCount);

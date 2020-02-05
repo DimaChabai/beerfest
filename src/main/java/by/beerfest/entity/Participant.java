@@ -1,11 +1,20 @@
 package by.beerfest.entity;
 
 public class Participant extends User {
+    private String beerType;
     private String name;
     private Place place;
     private boolean confirmed;
 
     public Participant() {
+    }
+
+    public String getBeerType() {
+        return beerType;
+    }
+
+    public void setBeerType(String beerType) {
+        this.beerType = beerType;
     }
 
     public boolean isConfirmed() {

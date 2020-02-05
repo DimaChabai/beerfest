@@ -2,7 +2,7 @@ package by.beerfest.service.impl;
 
 import by.beerfest.entity.User;
 import by.beerfest.repository.RepositoryException;
-import by.beerfest.repository.UserRepository;
+import by.beerfest.repository.impl.UserRepository;
 import by.beerfest.service.RegistrationService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.specification.FestSpecification;
@@ -16,17 +16,18 @@ import java.util.List;
 public class RegistrationServiceImpl implements RegistrationService {
 
     private static Logger logger = LogManager.getLogger();
-    public static final String DEFAULT_AVATAR = "undefined_user_avatar.png";
+    private static final String DEFAULT_AVATAR = "undefined_user_avatar.png";
     private static UserRepository repository = UserRepository.getInstance();
 
     public boolean createAndAddUser(String email, String phoneNumber, String password) throws ServiceException {
 
         UserDataValidator validator = new UserDataValidator();
 
-        if(!validator.emailValidate(email) || !validator.passwordValidate(password) || !validator.phoneNumberValidate(phoneNumber)){
+        if(!validator.emailValidate(email)
+                || !validator.passwordValidate(password)
+                || !validator.phoneNumberValidate(phoneNumber)){
             return false;
         }
-        //@TODO валидация и создание в одном методе
         User user = new User();
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
@@ -37,14 +38,13 @@ public class RegistrationServiceImpl implements RegistrationService {
         try {
             result = repository.query(specification);
         } catch (RepositoryException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
         if (result.isEmpty()) {
             try {
-                repository.add(user);
+                int id = repository.add(user);
+                user.setId(id);
             } catch (RepositoryException e) {
-                logger.error(e);
                 throw new ServiceException(e);
             }
             logger.info("Account created: " + user);

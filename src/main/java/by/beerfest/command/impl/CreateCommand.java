@@ -8,7 +8,7 @@ import by.beerfest.service.impl.CreateServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
+import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_CREATE_JSP;
 
 public class CreateCommand implements Command {
@@ -19,7 +19,9 @@ public class CreateCommand implements Command {
     public String execute(SessionRequestContent content) {
         CreateServiceImpl service = new CreateServiceImpl();
         try {
-            service.createPlace(content.getRequestParameter(PageParameter.PLACE_TYPE), content.getRequestParameter(PageParameter.SEATS));
+            String placeType = content.getRequestParameter(PLACE_TYPE)[0];
+            String seats = content.getRequestParameter(SEATS)[0];
+            service.createPlace(placeType, seats);
         } catch (ServiceException e) {
             logger.error(e);
             content.setSessionAttribute(ERROR_MESSAGE,"page.message.create_place_error_message");

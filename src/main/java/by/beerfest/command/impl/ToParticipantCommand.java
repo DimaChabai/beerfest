@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
+import static by.beerfest.constant.PageParameter.*;
 
 public class ToParticipantCommand implements Command {
 
@@ -22,9 +22,12 @@ public class ToParticipantCommand implements Command {
     public String execute(SessionRequestContent content) {
         ParticipantServiceImpl service = new ParticipantServiceImpl();
         List<Place> resultList = null;
+        List<String> beers = null;
         try {
+            beers = service.getBeers();
+            content.setRequestAttribute(BEERTYPE, beers);
             resultList = service.getPlaces();
-            content.setRequestAttribute(PageParameter.PLACES, resultList);
+            content.setRequestAttribute(PLACES, resultList);
         } catch (ServiceException e) {
             logger.error(e);
             content.setRequestAttribute(ERROR_MESSAGE,"page.message.places_load_error_message");

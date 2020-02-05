@@ -1,8 +1,10 @@
-package by.beerfest.repository;
+package by.beerfest.repository.impl;
 
 import by.beerfest.constant.Query;
 import by.beerfest.entity.Guest;
 import by.beerfest.entity.TicketType;
+import by.beerfest.repository.Repository;
+import by.beerfest.repository.RepositoryException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,12 +58,11 @@ public class GuestRepository extends Repository {
             statement.setString(3, TicketType.MEDIUM.toString());
             statement.execute();
         } catch (SQLException e) {
-            logger.error(e);
             conn.rollback();
             throw new RepositoryException(e);
         } finally {
             this.commit(conn);
-            conn.setAutoCommit(true);//@TODO Добавлять трай кетч или прокинуть дальше?
+            conn.setAutoCommit(true);
             this.closeStatement(statement);
         }
     }

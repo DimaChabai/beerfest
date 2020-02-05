@@ -14,6 +14,8 @@ public class ColumnName {
     public static final String COL_CONFIRMED = "confirmed";
     public static final String TICKET_SUM = "ticket_sum";
     public static final String COL_TICKET_TYPE = "ticket_type";
+    public static final String COL_BEERTYPE = "beer_type";
+    public static final String COL_ID_BEER = "id_beer";
 
     private ColumnName() {
     }

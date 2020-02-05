@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.content.SessionRequestContent;
+import by.beerfest.service.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

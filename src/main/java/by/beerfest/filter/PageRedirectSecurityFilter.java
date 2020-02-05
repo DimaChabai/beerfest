@@ -8,15 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter( urlPatterns = { "/jsp/*" },
-        initParams = { @WebInitParam(name = "INDEX_PATH", value = "/index.jsp") })
+        initParams = { @WebInitParam(name = "MAIN_PATH", value = "/jsp/main.jsp") })
 public class PageRedirectSecurityFilter implements Filter {
 
     private String indexPath;
 
-    public void init(FilterConfig fConfig) throws ServletException {
-        indexPath = fConfig.getInitParameter("INDEX_PATH");
+    public void init(FilterConfig filterConfig) throws ServletException {
+        indexPath = filterConfig.getInitParameter("MAIN_PATH");
     }
-
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;

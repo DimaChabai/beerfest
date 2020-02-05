@@ -4,10 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class SessionRequestContent {
     private HashMap<String, Object> requestAttributes;
-    private HashMap<String, String> requestParameters;
+    private HashMap<String, String[]> requestParameters;
     private HashMap<String, Object> sessionAttributes;
     private boolean invalidateSession = false;
 
@@ -27,11 +28,11 @@ public class SessionRequestContent {
             requestAttributes.put(key, value);
         }
 
-        String paramValue;
+        String[] paramValue;
         enumeration = request.getParameterNames();
         while (enumeration.hasMoreElements()) {
             key = enumeration.nextElement();
-            paramValue = request.getParameter(key);
+            paramValue = request.getParameterValues(key);
             requestParameters.put(key, paramValue);
         }
 
@@ -53,7 +54,7 @@ public class SessionRequestContent {
         }
     }
 
-    public String getRequestParameter(String key) {
+    public String[] getRequestParameter(String key) {
         return requestParameters.get(key);
     }
 
@@ -63,10 +64,6 @@ public class SessionRequestContent {
 
     public Object getSessionAttribute(String key) {
         return sessionAttributes.get(key);
-    }
-
-    public void setRequestParameter(String key, String value) {
-        requestParameters.put(key, value);
     }
 
     public void setRequestAttribute(String key, Object value) {

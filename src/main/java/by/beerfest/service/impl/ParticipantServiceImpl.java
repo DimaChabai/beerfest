@@ -2,12 +2,15 @@ package by.beerfest.service.impl;
 
 import by.beerfest.entity.Participant;
 import by.beerfest.entity.Place;
-import by.beerfest.repository.ParticipantRepository;
-import by.beerfest.repository.PlaceRepository;
+import by.beerfest.repository.impl.BeerRepository;
+import by.beerfest.repository.impl.ParticipantRepository;
+import by.beerfest.repository.impl.PlaceRepository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
+import by.beerfest.service.UserService;
 import by.beerfest.specification.FestSpecification;
+import by.beerfest.specification.impl.FestSpecificationBeerFindAll;
 import by.beerfest.specification.impl.FestSpecificationPlaceFindAllFree;
 import by.beerfest.specification.impl.FestSpecificationPlaceFindById;
 import by.beerfest.validator.ParticipantDataValidator;
@@ -15,18 +18,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParticipantServiceImpl implements ParticipantService {
 
+    private static final BeerRepository beerRepository = BeerRepository.getInstance();
     private static final ParticipantRepository participantRepository = ParticipantRepository.getInstance();
     private static final PlaceRepository placeRepository = PlaceRepository.getInstance();
     private static final String ID_PLACE_REGEX = "№\\d*";
     private static Logger logger = LogManager.getLogger();
 
-    public boolean addParticipant(String name, String placeName, Long id) throws ServiceException {
+    public boolean addParticipant(String name, String placeName, Long id,String beerType) throws ServiceException {
 
         ParticipantDataValidator validator = new ParticipantDataValidator();
 
@@ -48,31 +53,39 @@ public class ParticipantServiceImpl implements ParticipantService {
         try {
             place = placeRepository.query(specification).get(0);
         } catch (RepositoryException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
         participant.setPlace(place);
         participant.setConfirmed(false);
         participant.setName(name);
         participant.setId(id);
+        participant.setBeerType(beerType);
         try {
             participantRepository.add(participant);
             logger.info("Participant registered: " + participant);
         } catch (RepositoryException | SQLException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
         return true;
     }
 
+    public List<String> getBeers() throws ServiceException {
+        FestSpecification specification = new FestSpecificationBeerFindAll();
+        List<String> beers = new ArrayList<>();
+        try {
+            beers = beerRepository.query(specification);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
+        return beers;
+    }
+
     public List<Place> getPlaces() throws ServiceException {
-        //@TODO тут тоже нужен контент
         FestSpecification specification = new FestSpecificationPlaceFindAllFree();
-        List<Place> resultList = null;
+        List<Place> resultList = new ArrayList<>();
         try {
             resultList = placeRepository.query(specification);
         } catch (RepositoryException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
         return resultList;

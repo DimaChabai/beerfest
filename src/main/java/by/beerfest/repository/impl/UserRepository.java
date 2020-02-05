@@ -1,22 +1,18 @@
-package by.beerfest.repository;
+package by.beerfest.repository.impl;
 
 import by.beerfest.constant.Query;
 import by.beerfest.entity.User;
+import by.beerfest.repository.Repository;
+import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.impl.UserServiceImpl;
 import by.beerfest.specification.FestSpecification;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository extends Repository {
 
-    private static Logger logger = LogManager.getLogger();
     private static UserRepository instance = new UserRepository();
 
     public static UserRepository getInstance() {
@@ -26,17 +22,18 @@ public class UserRepository extends Repository {
     private UserRepository() {
     }
 
-    public void add(User user) throws RepositoryException {
+    public int add(User user) throws RepositoryException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement statement = conn.prepareStatement(Query.USER_INSERT)) {
-
+             PreparedStatement statement = conn.prepareStatement(Query.USER_INSERT, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getPhoneNumber());
             statement.setString(4, user.getAvatar());
             statement.executeUpdate();
+            ResultSet resultSet = statement.getGeneratedKeys();
+            resultSet.next();
+            return resultSet.getInt(1);
         } catch (SQLException e) {
-            logger.error(e);
             throw new RepositoryException(e);
         }
     }
@@ -52,8 +49,7 @@ public class UserRepository extends Repository {
             statement.setLong(6, user.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-           logger.error(e);
-           throw new RepositoryException(e);
+            throw new RepositoryException(e);
         }
     }
 
@@ -66,12 +62,11 @@ public class UserRepository extends Repository {
             while (resultSet.next()) {
                 user = new User();
                 UserServiceImpl service = new UserServiceImpl();
-                service.buildUser(resultSet,user);//@TODO сервис
+                service.buildUser(resultSet, user);
                 resultList.add(user);
             }
         } catch (SQLException e) {
-           logger.error(e);
-           throw new RepositoryException(e);
+            throw new RepositoryException(e);
         }
         return resultList;
     }

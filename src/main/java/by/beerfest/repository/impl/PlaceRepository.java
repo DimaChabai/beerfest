@@ -1,8 +1,10 @@
-package by.beerfest.repository;
+package by.beerfest.repository.impl;
 
 import by.beerfest.constant.Query;
 import by.beerfest.entity.Place;
 import by.beerfest.entity.PlaceType;
+import by.beerfest.repository.Repository;
+import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,7 +37,6 @@ public class PlaceRepository extends Repository {
             statement.setLong(2, place.getSeats());
             statement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e);
             throw new RepositoryException(e);
         }
     }
@@ -54,7 +55,6 @@ public class PlaceRepository extends Repository {
                 resultList.add(place);
             }
         } catch (SQLException e) {
-            logger.error(e);
             throw new RepositoryException(e);
         }
         resultList.sort((v, p) -> (int) (v.getIdPlace() - p.getIdPlace()));

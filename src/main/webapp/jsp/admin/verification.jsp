@@ -1,17 +1,18 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/custom.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <fmt:setLocale value="${language}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
     <title><fmt:message key="page.content.title"/></title>
-    <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css'>
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
 </head>
-<body>
-<jsp:include page="../../part/main_header.jsp"/>
-<jsp:include page="/part/error_message.jsp"/>
+<body class="d-flex flex-column h-100">
+<jsp:include page="../part/main_header.jsp"/>
+<jsp:include page="../part/message.jsp"/>
+<jsp:include page="../part/error_message.jsp"/>
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
@@ -20,9 +21,12 @@
                     <div class="col-md-auto">
                         <div class="card mb-4 shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title"><c:out value=" ${participant.name}"/></h5>
+                                <h5 class="card-title"><c:out value="${participant.name}"/></h5>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">${participant.place}</li>
+                                </ul>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">${participant.beerType}</li>
                                 </ul>
                                 <div class="card-footer">
                                     <form class="form" method="post">
@@ -46,7 +50,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="../../part/footer.jsp"/>
+<jsp:include page="../part/footer.jsp"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

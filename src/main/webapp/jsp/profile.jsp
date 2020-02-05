@@ -1,54 +1,50 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<fmt:setLocale value="${language}" scope="session" />
+<fmt:setLocale value="${language}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
-    <title><fmt:message key="page.content.title" /></title>
-    <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css'>
+    <title><fmt:message key="page.content.title"/></title>
     <link rel='stylesheet' href='webjars/bootstrap/4.3.1/css/bootstrap.min.css'>
     <script type="text/javascript"
             src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-<jsp:include page="../part/main_header.jsp"/>
-<jsp:include page="../part/error_message.jsp"/>
-    <div class="container justify-content-center">
-        <div class="container">
-            <form method="post" class="needs-validation" enctype="multipart/form-data"
-                  action="${pageContext.request.contextPath}/profile" novalidate>
-                <div class="form-group">
-                    <label for="file"><fmt:message key="page.content.avatar_button"/></label>
-                    <input class="form-control-file" id="file" type="file" name="file">
-                </div>
-                <div class="form-group">
-                    <label for="phone_number"><fmt:message key="page.content.phone_number_input"/></label>
-                    <input class="form-control" id="phone_number" name="phone_number" required
-                           pattern="\+375\d{2} \d{7}" value="${phone_number}">
-                    <div class="invalid-feedback">
-                        <fmt:message key="page.content.invalid_phone_text"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password"><fmt:message key="page.content.password_label"/></label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                    <div class="invalid-feedback">
-                        <fmt:message key="page.content.invalid_password_text"/>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block"><fmt:message key="page.content.change_button"/></button>
-            </form>
+<body class="d-flex flex-column h-100">
+<jsp:include page="part/main_header.jsp"/>
+<jsp:include page="part/message.jsp"/>
+<jsp:include page="part/error_message.jsp"/>
+<div class="container justify-content-center">
+    <form method="post" class="was-validated" enctype="multipart/form-data"
+          action="${pageContext.request.contextPath}/profile">
+        <div class="form-group">
+            <label for="file"><fmt:message key="page.content.avatar_button"/></label>
+            <input class="form-control-file" id="file" type="file" name="file">
         </div>
-    </div>
-<jsp:include page="../part/footer.jsp"/>
+        <div class="form-group">
+            <label for="phone_number"><fmt:message key="page.content.phone_number_input"/></label>
+            <input class="form-control" id="phone_number" name="phone_number"  pattern="\+375\d{2} \d{7}" value="${phone_number}">
+            <div class="invalid-feedback">
+                <fmt:message key="page.content.invalid_phone_text"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password"><fmt:message key="page.content.password_label"/></label>
+            <input type="password" class="form-control" id="password" name="password">
+            <div class="invalid-feedback">
+                <fmt:message key="page.content.invalid_password_text"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><fmt:message
+                key="page.content.change_button"/></button>
+    </form>
+</div>
+<jsp:include page="part/footer.jsp"/>
 <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict';
         window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
             var validation = Array.prototype.filter.call(forms, function (form) {
                 form.addEventListener('submit', function (event) {
                     if (form.checkValidity() === false) {

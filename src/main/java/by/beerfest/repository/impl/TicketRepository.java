@@ -1,7 +1,9 @@
-package by.beerfest.repository;
+package by.beerfest.repository.impl;
 
 import by.beerfest.entity.TicketType;
 import by.beerfest.pool.ConnectionPool;
+import by.beerfest.repository.Repository;
+import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,7 +49,6 @@ public class TicketRepository extends Repository {
                 }
             }
         } catch (SQLException e) {
-            logger.error(e);
             throw new RepositoryException(e);
         }
         return resultMap;

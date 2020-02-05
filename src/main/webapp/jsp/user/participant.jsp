@@ -11,9 +11,9 @@
     <script type="text/javascript"
             src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-<jsp:include page="../../part/main_header.jsp"/>
-<jsp:include page="/part/error_message.jsp"/>
+<body class="d-flex flex-column h-100">
+<jsp:include page="../part/main_header.jsp"/>
+<jsp:include page="../part/error_message.jsp"/>
 <div class="container">
     <form method="post" class="was-validated" novalidate>
         <input type="text" name="command" value="participant" hidden>
@@ -22,9 +22,21 @@
             <input class="form-control" type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
+            <label for="beer_type"><fmt:message key="page.content.beer_label"/></label>
+            <select class="custom-select" name="beer_type" id="beer_type" required>
+                <c:if test="${not empty beer_type}">
+                    <c:forEach var="beer" items="${beer_type}">
+                        <option>${beer}</option>
+                    </c:forEach>
+                </c:if>
+            </select>
+            <div class="invalid-feedback">
+                <fmt:message key="page.content.invalid_place"/>
+            </div>
+        </div>
+        <div class="form-group">
             <label for="place"><fmt:message key="page.content.place_label"/></label>
             <select class="custom-select" name="place" id="place" required>
-                <option value="">Выебри</option>
                 <c:if test="${not empty places}">
                     <c:forEach var="place" items="${places}">
                         <option>${place}</option>
@@ -38,7 +50,7 @@
         <button type="submit" class="btn btn-primary"><fmt:message key="page.content.book_button"/></button>
     </form>
 </div>
-<jsp:include page="../../part/footer.jsp"/>
+<jsp:include page="../part/footer.jsp"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

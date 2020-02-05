@@ -10,9 +10,9 @@
     <script type="text/javascript"
             src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-<jsp:include page="../part/index_header.jsp"/>
-<jsp:include page="../part/error_message.jsp"/>
+<body class="d-flex flex-column h-100">
+<jsp:include page="part/index_header.jsp"/>
+<jsp:include page="part/error_message.jsp"/>
 
 <div class="container">
     <form method="post" class="needs-validation" novalidate>
@@ -35,6 +35,6 @@
         <button type="submit" class="btn btn-primary btn-block"><fmt:message key="page.content.accept_button"/></button>
     </form>
 </div>
-<jsp:include page="../part/footer.jsp"/>
+<jsp:include page="part/footer.jsp"/>
 </body>
 </html>

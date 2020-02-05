@@ -9,6 +9,7 @@ import by.beerfest.validator.UserDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_REGISTRATION_JSP;
 
 public class RegistrationCommand implements Command {
@@ -19,15 +20,21 @@ public class RegistrationCommand implements Command {
     public String execute(SessionRequestContent content) {
         RegistrationServiceImpl service = new RegistrationServiceImpl();
         boolean result = false;
-        try {//@TODO название метода
-            result = service.createAndAddUser(content.getRequestParameter(PageParameter.EMAIL), content.getRequestParameter(PageParameter.PHONE_NUMBER), content.getRequestParameter(PageParameter.PASSWORD));
+        boolean isCatch = false;
+        try {
+            String email = content.getRequestParameter(EMAIL)[0];
+            String phoneNumber = content.getRequestParameter(PHONE_NUMBER)[0];
+            String password = content.getRequestParameter(PASSWORD)[0];
+            result = service.createAndAddUser(email, phoneNumber, password);
         } catch (ServiceException e) {
-            logger.error(e);//@TODO Тут ошибка отправляется юзеру не в кетче
+            logger.error(e);
+            isCatch=true;
         }
         if (result) {
-            content.setRequestAttribute(PageParameter.MESSAGE, "page.message.registration_success");
+            content.setRequestAttribute(MESSAGE, "page.message.registration_success");
         } else {
-            content.setRequestAttribute(PageParameter.ERROR_MESSAGE, "page.message.invalid_user_data");
+            String message = isCatch ? "page.message.database_error" : "page.message.invalid_user_data";
+            content.setRequestAttribute(ERROR_MESSAGE, message);
         }
         return JSP_REGISTRATION_JSP;
     }

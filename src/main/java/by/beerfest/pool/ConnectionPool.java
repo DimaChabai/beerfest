@@ -19,10 +19,8 @@ public enum ConnectionPool {
     private Queue<ProxyConnection> usedConnections;
     private final int INITIAL_POOL_SIZE = 10;
 
-
     ConnectionPool() {
         init();
-
     }
 
     private void init() {
@@ -31,7 +29,8 @@ public enum ConnectionPool {
             Driver driver = new com.mysql.jdbc.Driver();
             DriverManager.registerDriver(driver);
         } catch (SQLException e) {
-            logger.error(e); //@TODO надо прокинуть исключение дальше?
+            logger.error(e);
+            throw new ExceptionInInitializerError(e);
         }
         usedConnections = new ArrayDeque<>();
         availableConnections = ConnectionCreater.initializePool(INITIAL_POOL_SIZE);
@@ -39,11 +38,12 @@ public enum ConnectionPool {
 
     public Connection getConnection() {
         ProxyConnection connection = null;
-        try {//@TODO бросать исключение дальше?
+        try {
             connection = availableConnections.take();
             usedConnections.offer(connection);
         } catch (InterruptedException e) {
             logger.error(e);
+            Thread.currentThread().interrupt();
         }
         return connection;
     }
@@ -53,27 +53,30 @@ public enum ConnectionPool {
             availableConnections.offer((ProxyConnection) connection);
             usedConnections.remove(connection);
         } else {
-            throw new IllegalArgumentException("Release Not ProxyConnection");//@TODO бросать исключение дальше?
+           /// logger.error(e);
+            Thread.currentThread().interrupt();
         }
     }
 
     public void shutdown() {
         for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
-            try {//@TODO бросать исключение дальше?
+            try {
                 availableConnections.take().reallyClose();
             } catch (InterruptedException | SQLException e) {
                 logger.error(e);
+                throw new ExceptionInInitializerError(e);
             }
         }
         deregisterDrivers();
     }
 
     private void deregisterDrivers() {
-        DriverManager.getDrivers().asIterator().forEachRemaining(driver1 -> {
-            try {//@TODO бросать исключение дальше?
-                DriverManager.deregisterDriver(driver1);
+        DriverManager.getDrivers().asIterator().forEachRemaining(driver -> {
+            try {
+                DriverManager.deregisterDriver(driver);
             } catch (SQLException e) {
                 logger.error(e);
+                throw new ExceptionInInitializerError(e);
             }
         });
     }

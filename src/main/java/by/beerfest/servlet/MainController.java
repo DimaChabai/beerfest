@@ -14,8 +14,8 @@ import java.io.IOException;
 
 import static by.beerfest.constant.PagePath.ROOT_PAGE;
 
-@WebServlet("/index")//@TODO Заменить на controller
-public class MailController extends HttpServlet {
+@WebServlet("/controller")
+public class MainController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -27,12 +27,9 @@ public class MailController extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SessionRequestContent content = new SessionRequestContent();
-
         content.extractValues(request);
         Command command = ActionFactory.defineCommand(content);
-
         String page = command.execute(content);
-
         content.insertAttributes(request);
         if (page != null) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);

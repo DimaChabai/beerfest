@@ -2,7 +2,7 @@ package by.beerfest.service.impl;
 
 import by.beerfest.entity.Place;
 import by.beerfest.entity.PlaceType;
-import by.beerfest.repository.PlaceRepository;
+import by.beerfest.repository.impl.PlaceRepository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.CreateService;
 import by.beerfest.service.ServiceException;
@@ -20,9 +20,8 @@ public class CreateServiceImpl implements CreateService {
         place.setSeats(Integer.parseInt(seats));
         try {
             repository.add(place);
-            logger.info("Place(" + place + ") created");//@TODO Лог и в команде и в сервисе
+            logger.info("Place(" + place + ") created");
         } catch (RepositoryException e) {
-            logger.error(e);
             throw new ServiceException(e);
         }
     }

@@ -11,17 +11,9 @@
             src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
-<jsp:include page="../part/index_header.jsp"/>
-<c:if test="${not empty message}">
-    <div class="alert alert-primary" role="alert">
-        <fmt:message key="${message}"/>
-    </div>
-</c:if>
-<c:if test="${not empty errorMessage}">
-    <div class="alert alert-danger" role="alert">
-        <fmt:message key="${errorMessage}"/>
-    </div>
-</c:if>
+<jsp:include page="part/index_header.jsp"/>
+<jsp:include page="part/message.jsp"/>
+<jsp:include page="part/error_message.jsp"/>
 <div class="container">
     <form method="post" class="needs-validation" novalidate>
         <input type="text" name="command" value="registration" hidden>
@@ -51,16 +43,13 @@
             <fmt:message key="page.content.register_button"/></button>
     </form>
 </div>
-<jsp:include page="../part/footer.jsp"/>
+<jsp:include page="part/footer.jsp"/>
 </body>
 <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict';
         window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
             var validation = Array.prototype.filter.call(forms, function (form) {
                 form.addEventListener('submit', function (event) {
                     if (form.checkValidity() === false) {

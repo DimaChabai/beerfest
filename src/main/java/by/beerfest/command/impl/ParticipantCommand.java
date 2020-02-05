@@ -9,7 +9,7 @@ import by.beerfest.service.impl.ParticipantServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
+import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 
 public class ParticipantCommand implements Command {
@@ -21,13 +21,18 @@ public class ParticipantCommand implements Command {
         ParticipantServiceImpl service = new ParticipantServiceImpl();
         boolean result = false;
         try {
-            result = service.addParticipant(content.getRequestParameter(PageParameter.NAME), content.getRequestParameter(PageParameter.PLACE), (Long) content.getSessionAttribute(PageParameter.ID));
+            String name = content.getRequestParameter(NAME)[0];
+            String placeName = content.getRequestParameter(PLACE)[0];
+            Long id = (Long) content.getSessionAttribute(ID);
+            String beerType = content.getRequestParameter(BEERTYPE)[0];
+            result = service.addParticipant(name, placeName, id, beerType);
+            content.setRequestAttribute(MESSAGE,"page.message.participant_message");
         } catch (ServiceException e) {
             logger.error(e);
             content.setRequestAttribute(ERROR_MESSAGE, "page.message.participant_error_message");
         }
         if(result){
-            content.setSessionAttribute(PageParameter.ROLE_NAME, UserRole.PARTICIPANT);
+            content.setSessionAttribute(ROLE_NAME, UserRole.PARTICIPANT);
         } else {
             content.setRequestAttribute(ERROR_MESSAGE,"page.message.invalid_participant_data");
         }

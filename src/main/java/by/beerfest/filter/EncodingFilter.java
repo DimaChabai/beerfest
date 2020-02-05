@@ -9,17 +9,16 @@ import java.io.IOException;
         initParams = {
                 @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Parameter")})
 public class EncodingFilter implements Filter {
-    //@TODO
-    String code;
+
+    private String code;
 
     @Override
-    public void init(FilterConfig filterConfig){
+    public void init(FilterConfig filterConfig) {
         code = filterConfig.getInitParameter("encoding");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
         servletRequest.setCharacterEncoding(code);
         servletResponse.setCharacterEncoding(code);
         filterChain.doFilter(servletRequest, servletResponse);

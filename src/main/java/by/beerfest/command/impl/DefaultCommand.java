@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.content.SessionRequestContent;
+import by.beerfest.service.ServiceException;
 
 import static by.beerfest.constant.PagePath.ROOT_PAGE;
 

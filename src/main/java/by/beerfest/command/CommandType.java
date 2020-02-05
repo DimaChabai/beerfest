@@ -5,9 +5,6 @@ import by.beerfest.command.impl.*;
 import static by.beerfest.constant.PagePath.*;
 
 public enum CommandType {
-    INDEX {{
-        command = (v) -> ROOT_PAGE;
-    }},
     MAIN {{
         command = (v) -> JSP_MAIN_JSP;
     }},
