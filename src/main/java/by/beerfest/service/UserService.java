@@ -1,6 +1,6 @@
 package by.beerfest.service;
 
-import by.beerfest.entity.User;
+import by.beerfest.entity.impl.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

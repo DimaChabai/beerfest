@@ -1,7 +1,7 @@
 package by.beerfest.repository.impl;
 
 import by.beerfest.constant.Query;
-import by.beerfest.entity.Guest;
+import by.beerfest.entity.impl.Guest;
 import by.beerfest.entity.TicketType;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;

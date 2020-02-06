@@ -1,6 +1,9 @@
-package by.beerfest.entity;
+package by.beerfest.entity.impl;
 
-public class User {
+import by.beerfest.entity.Entity;
+import by.beerfest.entity.UserRole;
+
+public class User extends Entity {
     private long id;
     private String email;
     private String password;

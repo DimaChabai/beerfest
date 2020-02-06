@@ -1,9 +1,8 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.constant.PageParameter;
 import by.beerfest.content.SessionRequestContent;
-import by.beerfest.entity.Participant;
+import by.beerfest.entity.impl.Participant;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.VerificationServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+import static by.beerfest.constant.PageMessage.PARTICIPANT_LOAD_ERROR_MESSAGE;
 import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
 import static by.beerfest.constant.PageParameter.PARTICIPANTS;
 import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
@@ -25,14 +25,14 @@ public class ToVerificationCommand implements Command {
             fillPage(content);
         } catch (ServiceException e) {
             logger.error(e);
-            content.setRequestAttribute(ERROR_MESSAGE, "page.message.participant_load_error_message");
+            content.setRequestAttribute(ERROR_MESSAGE, PARTICIPANT_LOAD_ERROR_MESSAGE);
         }
         return JSP_VERIFICATION_JSP;
     }
 
     private void fillPage(SessionRequestContent content) throws ServiceException {
         VerificationServiceImpl service = new VerificationServiceImpl();
-        List<Participant> result = service.fillVerificationPage();
+        List<Participant> result = service.getVerificationPageContent();
         content.setRequestAttribute(PARTICIPANTS, result);
     }
 }

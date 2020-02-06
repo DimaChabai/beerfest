@@ -1,16 +1,16 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.Participant;
-import by.beerfest.entity.Place;
+import by.beerfest.entity.impl.Participant;
+import by.beerfest.entity.impl.Place;
 import by.beerfest.repository.impl.BeerRepository;
 import by.beerfest.repository.impl.ParticipantRepository;
 import by.beerfest.repository.impl.PlaceRepository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
-import by.beerfest.service.UserService;
 import by.beerfest.specification.FestSpecification;
 import by.beerfest.specification.impl.FestSpecificationBeerFindAll;
+import by.beerfest.specification.impl.FestSpecificationParticipantFindByConfirmedIsTrue;
 import by.beerfest.specification.impl.FestSpecificationPlaceFindAllFree;
 import by.beerfest.specification.impl.FestSpecificationPlaceFindById;
 import by.beerfest.validator.ParticipantDataValidator;
@@ -81,13 +81,25 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     public List<Place> getPlaces() throws ServiceException {
-        FestSpecification specification = new FestSpecificationPlaceFindAllFree();
         List<Place> resultList = new ArrayList<>();
+        FestSpecification specification = new FestSpecificationPlaceFindAllFree();
         try {
             resultList = placeRepository.query(specification);
         } catch (RepositoryException e) {
             throw new ServiceException(e);
         }
         return resultList;
+    }
+
+    @Override
+    public List<Participant> getParticipantsFromTo(int start,int end) throws ServiceException {
+        List<Participant> participants = new ArrayList<>();
+        FestSpecification specification = new FestSpecificationParticipantFindByConfirmedIsTrue(start, end);
+        try {
+            participants = participantRepository.query(specification);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
+        return participants;
     }
 }

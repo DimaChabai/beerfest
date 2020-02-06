@@ -1,6 +1,6 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.Place;
+import by.beerfest.entity.impl.Place;
 import by.beerfest.entity.PlaceType;
 import by.beerfest.repository.impl.PlaceRepository;
 import by.beerfest.repository.RepositoryException;

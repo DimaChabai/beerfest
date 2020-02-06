@@ -304,3 +304,18 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 15:39:15.657 [http-nio-8089-exec-11] INFO  by.beerfest.service.impl.RegistrationServiceImpl - Account created: User{id=59, email='k@k', password='k', role=null, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'}
 15:39:22.050 [http-nio-8089-exec-12] INFO  by.beerfest.command.impl.LoginCommand - User{id=59, email='k@k', password='k', role=USER, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'} logged in
 15:39:34.124 [http-nio-8089-exec-15] INFO  by.beerfest.service.impl.TicketServiceImpl - User with id( 59) booked tickets: default ticket: 2, medium ticket: 0, large ticket: 0
+00:58:38.070 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='q', role=ADMIN, phoneNumber='+37529 278112131', avatar='67f264c1-a8e4-4ea4-993d-a1fa369627e2.jpg'} logged in
+00:59:47.210 [http-nio-8089-exec-1] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='q', role=ADMIN, phoneNumber='+37529 278112131', avatar='67f264c1-a8e4-4ea4-993d-a1fa369627e2.jpg'} logged in
+01:55:24.766 [http-nio-8089-exec-5] INFO  by.beerfest.service.impl.RegistrationServiceImpl - Account created: User{id=60, email='i@i', password='i', role=null, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'}
+01:55:42.370 [http-nio-8089-exec-8] INFO  by.beerfest.command.impl.LoginCommand - User{id=60, email='i@i', password='i', role=USER, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'} logged in
+02:10:02.251 [http-nio-8089-exec-7] INFO  by.beerfest.command.impl.LoginCommand - User{id=48, email='s@s', password='s', role=GUEST, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'} logged in
+02:13:12.457 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=48, email='s@s', password='s', role=GUEST, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'} logged in
+07:02:43.326 [http-nio-8089-exec-2] INFO  by.beerfest.command.impl.LoginCommand - User{id=60, email='i@i', password='i', role=USER, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'} logged in
+07:03:15.665 [http-nio-8089-exec-4] INFO  by.beerfest.service.impl.ParticipantServiceImpl - Participant registered: User{id=60, email='null', password='null', role=null, phoneNumber='null', avatar='null'}
+07:03:17.292 [http-nio-8089-exec-3] INFO  by.beerfest.command.impl.ExitCommand - User with id(60) logged out
+07:03:23.715 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='q', role=ADMIN, phoneNumber='+37529 278112131', avatar='67f264c1-a8e4-4ea4-993d-a1fa369627e2.jpg'} logged in
+07:22:59.101 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='q', role=ADMIN, phoneNumber='+37529 278112131', avatar='67f264c1-a8e4-4ea4-993d-a1fa369627e2.jpg'} logged in
+07:24:28.321 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.ExitCommand - User with id(7) logged out
+07:24:37.524 [http-nio-8089-exec-7] INFO  by.beerfest.service.impl.RegistrationServiceImpl - Account created: User{id=61, email='as@as', password='as', role=null, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'}
+07:24:41.513 [http-nio-8089-exec-9] INFO  by.beerfest.command.impl.LoginCommand - User{id=61, email='as@as', password='as', role=USER, phoneNumber='+37529 1112233', avatar='undefined_user_avatar.png'} logged in
+07:25:06.747 [http-nio-8089-exec-2] INFO  by.beerfest.service.impl.TicketServiceImpl - User with id( 61) booked tickets: default ticket: 0, medium ticket: 4, large ticket: 0

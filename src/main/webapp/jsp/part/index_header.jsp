@@ -5,7 +5,7 @@
 <header>
     <nav class="navbar navbar-dark bg-dark">
         <fmt:bundle basename="pagecontent">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><fmt:message key="page.content.title"/></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/controller"><fmt:message key="page.content.title"/></a>
             <ul class="navbar-nav flex-row mr-auto mt-3">
                 <li class="nav-item active">
                     <form class="form-inline" method="post" action="controller">

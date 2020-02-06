@@ -7,7 +7,7 @@
 <fmt:setBundle basename="pagecontent"/>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><fmt:message key="page.content.title"/></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/controller"><fmt:message key="page.content.title"/></a>
         <div class="navbar-nav mt-3">
             <ul class="navbar-nav flex-row mr-auto">
                 <c:if test="${role_name == 'USER'}">
@@ -20,13 +20,21 @@
                     </li>
                     <li class="nav-item active">
                         <form class="form-inline" method="post" action="controller">
-                            <input type="text" name="command" value="to_Participant" hidden>
+                            <input type="text" name="command" value="to_become_participant" hidden>
                             <button class="btn btn-outline-success mx-2" type="submit"><fmt:message
                                     key="page.content.participant_button"/>
                             </button>
                         </form>
                     </li>
                 </c:if>
+                <li class="nav-item active">
+                    <form class="form-inline" method="post" action="controller">
+                        <input type="text" name="command" value="to_participant_list" hidden>
+                        <button class="btn btn-outline-success mx-2" type="submit"><fmt:message
+                                key="page.content.participant_list"/>
+                        </button>
+                    </form>
+                </li>
                 <li class="nav-item active">
                     <form class="form-inline" method="post" action="controller">
                         <input type="text" name="command" value="change_Language" hidden>

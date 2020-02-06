@@ -1,8 +1,5 @@
 package by.beerfest.constant;
 
-import static by.beerfest.constant.ColumnName.*;
-
-
 public class Query {
     public static final String FIND_USER_BY_ID = "SELECT id_user, email, password, role_name, phone_number, avatar FROM user " +
             "join role " +
@@ -23,20 +20,20 @@ public class Query {
             "WHERE id_place NOT IN (SELECT id_place from participant)";
     public static final String FIND_ALL_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type, name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "            join place  " +
-            "            on participant.id as id_place = place.id as id_place  " +
+            "            on  participant.id_place = place.id_place " +
             "            join placetype p  " +
             "            on place.id_type = p.id_type " +
             "            join user  " +
-            "            on user.id_user = participant.id_user"+
+            "            on user.id_user = participant.id_user" +
             "            join role" +
             "            on role.id_role = user.id_role" +
             "            join participant_beer" +
-            "            on participant_beer.id_user = participant.id_user"+
+            "            on participant_beer.id_user = participant.id_user" +
             "            join beer" +
-            "            on beer.id_beer" + " = participant_beer.id_beer";
+            "            on beer.id_beer = participant_beer.id_beer";
     public static final String FIND_UNCONFIRMED_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type,name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "            join place " +
-            "            on participant.id_place = place.id_place"+
+            "            on participant.id_place = place.id_place" +
             "            join placetype p " +
             "            on place.id_type = p.id_type" +
             "            join user " +
@@ -44,10 +41,25 @@ public class Query {
             "            join role" +
             "            on role.id_role = user.id_role" +
             "            join participant_beer" +
-            "            on participant_beer.id_user = participant.id_user"+
+            "            on participant_beer.id_user = participant.id_user" +
             "            join beer" +
             "            on beer.id_beer" + " = participant_beer.id_beer" +
             "            WHERE confirmed = false";
+    public static final String FIND_CONFIRMED_PARTICIPANT_FROM_TO = "SELECT participant.id_user, confirmed, beer_type,name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
+            "            join place " +
+            "            on participant.id_place = place.id_place" +
+            "            join placetype p " +
+            "            on place.id_type = p.id_type" +
+            "            join user " +
+            "            on user.id_user = participant.id_user " +
+            "            join role" +
+            "            on role.id_role = user.id_role" +
+            "            join participant_beer" +
+            "            on participant_beer.id_user = participant.id_user" +
+            "            join beer" +
+            "            on beer.id_beer" + " = participant_beer.id_beer" +
+            "            WHERE confirmed = true" +
+            "            limit ?,?";
     public static final String FIND_PARTICIPANT_BY_ID = "SELECT participant.id_user, confirmed, beer_type,name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "            join user " +
             "            on participant.id_user = user.id_user " +
@@ -58,7 +70,7 @@ public class Query {
             "            join role" +
             "            on user.id_role = role.id_role" +
             "            join participant_beer" +
-            "            on participant_beer.id_user = participant.id_user"+
+            "            on participant_beer.id_user = participant.id_user" +
             "            join beer" +
             "            on beer.id_beer" + " = participant_beer.id_beer" +
             "            WHERE participant.id_user = ? ";

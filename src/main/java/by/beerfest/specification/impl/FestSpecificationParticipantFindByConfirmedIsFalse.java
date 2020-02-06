@@ -8,9 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class FestSpecificationParticipantFindByConfirmedIsFalse extends FestSpecification {
-    public FestSpecificationParticipantFindByConfirmedIsFalse() {
-
-    }
 
     @Override
     public PreparedStatement specified(Connection connection) throws SQLException {

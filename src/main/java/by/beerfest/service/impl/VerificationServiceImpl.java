@@ -1,6 +1,6 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.Participant;
+import by.beerfest.entity.impl.Participant;
 import by.beerfest.repository.impl.ParticipantRepository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.ServiceException;
@@ -47,7 +47,7 @@ public class VerificationServiceImpl implements VerificationService {
         }
     }
 
-    public List<Participant> fillVerificationPage() throws ServiceException {
+    public List<Participant> getVerificationPageContent() throws ServiceException {
         FestSpecification specification = new FestSpecificationParticipantFindByConfirmedIsFalse();
         List<Participant> resultList;
         try {

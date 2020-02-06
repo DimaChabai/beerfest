@@ -1,7 +1,6 @@
 package by.beerfest.servlet;
 
-import by.beerfest.constant.PageParameter;
-import by.beerfest.entity.User;
+import by.beerfest.entity.impl.User;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.repository.impl.UserRepository;
 import by.beerfest.specification.FestSpecification;
@@ -18,8 +17,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import static by.beerfest.constant.PageMessage.*;
 import static by.beerfest.constant.PageParameter.*;
-import static by.beerfest.constant.PagePath.BEERFEST_PROFILE;
 import static by.beerfest.constant.PagePath.JSP_PROFILE_JSP;
 
 @WebServlet("/profile")
@@ -28,7 +27,7 @@ import static by.beerfest.constant.PagePath.JSP_PROFILE_JSP;
         , maxRequestSize = 1024 * 1024 * 5 * 5)
 public class UserUpdateController extends HttpServlet {
 
-    private static Logger logger = LogManager.getLogger();
+     private static Logger logger = LogManager.getLogger();
     private static final String EMPTY_STRING = "";
     private static final String DOT = ".";
     private static final String UPLOAD_DIR = "avatars";
@@ -78,13 +77,13 @@ public class UserUpdateController extends HttpServlet {
                 session.setAttribute(ROLE_NAME, user.getRole());
                 session.setAttribute(PHONE_NUMBER, user.getPhoneNumber());
                 session.setAttribute(AVATAR, user.getAvatar());
-                request.setAttribute(MESSAGE,"page.message.user_update_success");
+                request.setAttribute(MESSAGE, USER_UPDATE_SUCCESS);
             } catch (RepositoryException e) {
-                logger.error(e);//@TODO message
-                request.setAttribute(ERROR_MESSAGE, "page.message.user_update_error");
+                logger.error(e);
+                request.setAttribute(ERROR_MESSAGE, USER_UPDATE_ERROR);
             }
         } else {
-            request.setAttribute(ERROR_MESSAGE, "page.message.invalid_user_data");
+            request.setAttribute(ERROR_MESSAGE, INVALID_USER_DATA);
         }
         getServletContext().getRequestDispatcher(JSP_PROFILE_JSP).forward(request,response);
     }

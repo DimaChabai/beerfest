@@ -1,15 +1,11 @@
 package by.beerfest.tag;
 
-import by.beerfest.constant.PageParameter;
-import by.beerfest.entity.Participant;
 import by.beerfest.entity.UserRole;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
-import java.util.List;
 
 import static by.beerfest.constant.PageParameter.ROLE_NAME;
 

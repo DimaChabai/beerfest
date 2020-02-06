@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter( urlPatterns = { "/jsp/*" },
-        initParams = { @WebInitParam(name = "MAIN_PATH", value = "/jsp/main.jsp") })
+        initParams = { @WebInitParam(name = "MAIN_PATH", value = "/index.jsp") })
 public class PageRedirectSecurityFilter implements Filter {
 
     private String indexPath;
@@ -19,7 +19,7 @@ public class PageRedirectSecurityFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-        httpResponse.sendRedirect(httpRequest.getContextPath() + indexPath);
+        httpResponse.sendRedirect(httpRequest.getContextPath() + indexPath);//todo всё равно заходит на страницу
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

@@ -1,7 +1,7 @@
 package by.beerfest.repository.impl;
 
 import by.beerfest.constant.Query;
-import by.beerfest.entity.Place;
+import by.beerfest.entity.impl.Place;
 import by.beerfest.entity.PlaceType;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;

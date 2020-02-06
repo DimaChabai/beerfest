@@ -10,6 +10,7 @@ import by.beerfest.validator.TicketValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static by.beerfest.constant.PageMessage.*;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 import static by.beerfest.constant.PagePath.JSP_TICKET_JSP;
@@ -41,10 +42,10 @@ public class TicketCommand implements Command {
         }
         if (result) {
             content.setSessionAttribute(ROLE_NAME, GUEST);
-            content.setRequestAttribute(MESSAGE,"page.message.ticket_reservation_success");
+            content.setRequestAttribute(MESSAGE, TICKET_RESERVATION_SUCCESS);
             return JSP_MAIN_JSP;
         } else {
-            String message = isCatch ? "page.message.database_error" : "page.message.no_ticket_selected";
+            String message = isCatch ? DATABASE_ERROR : NO_TICKET_SELECTED;
             content.setRequestAttribute(ERROR_MESSAGE, message);
             return JSP_TICKET_JSP;
         }

@@ -9,12 +9,13 @@ import by.beerfest.service.impl.ParticipantServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static by.beerfest.constant.PageMessage.*;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 
 public class ParticipantCommand implements Command {
 
-    private static Logger logger = LogManager.getLogger();
+   private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(SessionRequestContent content) {
@@ -26,15 +27,15 @@ public class ParticipantCommand implements Command {
             Long id = (Long) content.getSessionAttribute(ID);
             String beerType = content.getRequestParameter(BEERTYPE)[0];
             result = service.addParticipant(name, placeName, id, beerType);
-            content.setRequestAttribute(MESSAGE,"page.message.participant_message");
+            content.setRequestAttribute(MESSAGE, PARTICIPANT_MESSAGE);
         } catch (ServiceException e) {
             logger.error(e);
-            content.setRequestAttribute(ERROR_MESSAGE, "page.message.participant_error_message");
+            content.setRequestAttribute(ERROR_MESSAGE, PARTICIPANT_ERROR_MESSAGE);
         }
         if(result){
             content.setSessionAttribute(ROLE_NAME, UserRole.PARTICIPANT);
         } else {
-            content.setRequestAttribute(ERROR_MESSAGE,"page.message.invalid_participant_data");
+            content.setRequestAttribute(ERROR_MESSAGE, INVALID_PARTICIPANT_DATA);
         }
         return JSP_MAIN_JSP;
     }

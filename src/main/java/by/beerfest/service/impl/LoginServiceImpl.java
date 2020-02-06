@@ -1,6 +1,6 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.User;
+import by.beerfest.entity.impl.User;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.repository.impl.UserRepository;
 import by.beerfest.service.LoginService;

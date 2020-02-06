@@ -6,7 +6,7 @@ import static by.beerfest.constant.PagePath.*;
 
 public enum CommandType {
     MAIN {{
-        command = (v) -> JSP_MAIN_JSP;
+        command = (v)->JSP_MAIN_JSP;
     }},
     REGISTRATION {{
         command = new RegistrationCommand();
@@ -35,8 +35,8 @@ public enum CommandType {
     TO_TICKET {{
         command = new ToTicketCommand();
     }},
-    TO_PARTICIPANT {{
-        command = new ToParticipantCommand();
+    TO_BECOME_PARTICIPANT {{
+        command = new ToBecomeParticipantCommand();
     }},
     TO_PROFILE {{
         command = (v) -> JSP_PROFILE_JSP;
@@ -58,6 +58,9 @@ public enum CommandType {
     }},
     CHANGE_LANGUAGE {{
         command = new ChangeLanguageCommand();
+    }},
+    TO_PARTICIPANT_LIST{{
+        command = new ToParticipantListCommand();
     }};
 
 

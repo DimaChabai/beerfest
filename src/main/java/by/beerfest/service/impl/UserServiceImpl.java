@@ -1,6 +1,6 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.User;
+import by.beerfest.entity.impl.User;
 import by.beerfest.entity.UserRole;
 import by.beerfest.service.UserService;
 

@@ -14,9 +14,18 @@ class ConnectionCreater {
     private static final String DB_URL = "db.url";
     private static final String DB_USERNAME = "db.username";
     private static final String DB_PASSWORD = "db.password";
+    private static final String DB_DRIVER = "db.driver";
     private static Logger logger = LogManager.getLogger();
 
     static BlockingQueue<ProxyConnection> initializePool(final int INITIAL_POOL_SIZE) {
+        ResourceBundle resource = ResourceBundle.getBundle("database");
+        String driver = resource.getString(DB_DRIVER);
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            logger.fatal(e);
+            throw new ExceptionInInitializerError(e);
+        }
         BlockingQueue<ProxyConnection> connectionPool = new LinkedBlockingQueue<>(INITIAL_POOL_SIZE);
         for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
             try {

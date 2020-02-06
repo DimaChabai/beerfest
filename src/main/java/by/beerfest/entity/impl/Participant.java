@@ -1,4 +1,4 @@
-package by.beerfest.entity;
+package by.beerfest.entity.impl;
 
 public class Participant extends User {
     private String beerType;

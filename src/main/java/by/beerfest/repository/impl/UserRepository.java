@@ -1,7 +1,7 @@
 package by.beerfest.repository.impl;
 
 import by.beerfest.constant.Query;
-import by.beerfest.entity.User;
+import by.beerfest.entity.impl.User;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.impl.UserServiceImpl;
@@ -68,7 +68,7 @@ public class UserRepository extends Repository {
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }
-        return resultList;
+        return resultList;//@TODO Говорили хранить айди, но с запросов я возвращаю целый объект
     }
 
 }

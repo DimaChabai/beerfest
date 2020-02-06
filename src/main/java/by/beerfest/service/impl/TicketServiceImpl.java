@@ -1,7 +1,7 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.Guest;
-import by.beerfest.entity.Place;
+import by.beerfest.entity.impl.Guest;
+import by.beerfest.entity.impl.Place;
 import by.beerfest.entity.PlaceType;
 import by.beerfest.repository.impl.GuestRepository;
 import by.beerfest.repository.impl.PlaceRepository;

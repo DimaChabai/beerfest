@@ -1,6 +1,9 @@
-package by.beerfest.entity;
+package by.beerfest.entity.impl;
 
-public class Place {
+import by.beerfest.entity.Entity;
+import by.beerfest.entity.PlaceType;
+
+public class Place extends Entity {
 
     private long idPlace;
     private int seats;

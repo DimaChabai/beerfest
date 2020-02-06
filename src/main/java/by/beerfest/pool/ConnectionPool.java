@@ -21,17 +21,10 @@ public enum ConnectionPool {
 
     ConnectionPool() {
         init();
-    }
+    }//@TODO такой конструктор
 
     private void init() {
         logger = LogManager.getLogger();
-        try {
-            Driver driver = new com.mysql.jdbc.Driver();
-            DriverManager.registerDriver(driver);
-        } catch (SQLException e) {
-            logger.error(e);
-            throw new ExceptionInInitializerError(e);
-        }
         usedConnections = new ArrayDeque<>();
         availableConnections = ConnectionCreater.initializePool(INITIAL_POOL_SIZE);
     }
@@ -53,7 +46,7 @@ public enum ConnectionPool {
             availableConnections.offer((ProxyConnection) connection);
             usedConnections.remove(connection);
         } else {
-           /// logger.error(e);
+           /// logger.error(e);todo message?
             Thread.currentThread().interrupt();
         }
     }
