@@ -27,7 +27,7 @@ import static by.beerfest.constant.PagePath.JSP_PROFILE_JSP;
         , maxRequestSize = 1024 * 1024 * 5 * 5)
 public class UserUpdateController extends HttpServlet {
 
-     private static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
     private static final String EMPTY_STRING = "";
     private static final String DOT = ".";
     private static final String UPLOAD_DIR = "avatars";
@@ -37,9 +37,11 @@ public class UserUpdateController extends HttpServlet {
         String phoneNumber = request.getParameter(PHONE_NUMBER);
         String password = request.getParameter(PASSWORD);
         UserDataValidator validator = new UserDataValidator();
-
-        if ((!password.isBlank() && validator.passwordValidate(password))
-                || (!phoneNumber.isBlank() && validator.phoneNumberValidate(phoneNumber))) {
+        Part part = request.getPart(FILE);
+        String path = part.getSubmittedFileName();
+        if (validator.passwordValidate(password)
+                && validator.phoneNumberValidate(phoneNumber)
+                && validator.avatarValidate(path)) {
             HttpSession session = request.getSession();
             String applicationDir = request.getServletContext().getRealPath(EMPTY_STRING);
             String uploadFileDir = applicationDir + UPLOAD_DIR + File.separator;
@@ -47,8 +49,6 @@ public class UserUpdateController extends HttpServlet {
             if (!fileSaveDir.exists()) {
                 fileSaveDir.mkdirs();
             }
-            Part part = request.getPart(FILE);
-            String path = part.getSubmittedFileName();
             String email = (String) session.getAttribute(EMAIL);
             FestSpecification specification = new FestSpecificationUserFindByEmail(email);
             User user = null;
@@ -68,7 +68,6 @@ public class UserUpdateController extends HttpServlet {
                 session.setAttribute(AVATAR, randFilename);
                 user.setAvatar(randFilename);
             }
-
             user.setPhoneNumber(phoneNumber);
             user.setPassword(password);
             try {
@@ -85,9 +84,10 @@ public class UserUpdateController extends HttpServlet {
         } else {
             request.setAttribute(ERROR_MESSAGE, INVALID_USER_DATA);
         }
-        getServletContext().getRequestDispatcher(JSP_PROFILE_JSP).forward(request,response);
+        getServletContext().getRequestDispatcher(JSP_PROFILE_JSP).forward(request, response);
     }
 
+    //todo гет и пост обрабатываются не в одном методе плюс помимо загрузки картинки передаются еще данные
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext().getRequestDispatcher(JSP_PROFILE_JSP).forward(request, response);
     }

@@ -1,7 +1,7 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<fmt:setLocale value="${language}" scope="session"/>
+<fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="phone_number"><fmt:message key="page.content.phone_number_input"/></label>
-            <input class="form-control" id="phone_number" name="phone_number" pattern="\+375\d{2} \d{7}" required>
+            <input class="form-control" id="phone_number" name="phone_number" pattern="\+375((29)|(44)|(33)|(25)) ?\d{7}" required>
             <div class="invalid-feedback">
                 <fmt:message key="page.content.invalid_phone_text"/>
             </div>

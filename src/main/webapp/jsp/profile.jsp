@@ -1,7 +1,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<fmt:setLocale value="${language}" scope="session"/>
+<fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
@@ -22,15 +22,15 @@
             <input class="form-control-file" id="file" type="file" name="file">
         </div>
         <div class="form-group">
-            <label for="phone_number"><fmt:message key="page.content.phone_number_input"/></label>
-            <input class="form-control" id="phone_number" name="phone_number"  pattern="\+375\d{2} \d{7}" value="${phone_number}">
+            <label for="phone_number"><fmt:message key="page.content.new_phone_number_input"/></label>
+            <input class="form-control" id="phone_number" name="phone_number"  pattern="\+375((29)|(44)|(33)|(25)) ?\d{7}" value="${phone_number}">
             <div class="invalid-feedback">
                 <fmt:message key="page.content.invalid_phone_text"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="password"><fmt:message key="page.content.password_label"/></label>
-            <input type="password" class="form-control" id="password" name="password">
+            <label for="password"><fmt:message key="page.content.new_password_label"/></label>
+            <input type="password" class="form-control" id="password" name="password" required>
             <div class="invalid-feedback">
                 <fmt:message key="page.content.invalid_password_text"/>
             </div>

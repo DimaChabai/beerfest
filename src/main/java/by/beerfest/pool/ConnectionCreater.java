@@ -15,34 +15,41 @@ class ConnectionCreater {
     private static final String DB_USERNAME = "db.username";
     private static final String DB_PASSWORD = "db.password";
     private static final String DB_DRIVER = "db.driver";
+    public static final String BUNDLE = "database";
+    public static final String POOL_SIZE = "db.pool_size";
     private static Logger logger = LogManager.getLogger();
 
     static BlockingQueue<ProxyConnection> initializePool(final int INITIAL_POOL_SIZE) {
-        ResourceBundle resource = ResourceBundle.getBundle("database");
+        ResourceBundle resource = ResourceBundle.getBundle(BUNDLE);
         String driver = resource.getString(DB_DRIVER);
+        int poolSize;
+        if(resource.containsKey(POOL_SIZE)) {
+            poolSize = Integer.parseInt(resource.getString(POOL_SIZE));
+        }else {
+            poolSize = INITIAL_POOL_SIZE;
+        }
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException e) {
-            logger.fatal(e);
+            logger.error(e);
             throw new ExceptionInInitializerError(e);
         }
-        BlockingQueue<ProxyConnection> connectionPool = new LinkedBlockingQueue<>(INITIAL_POOL_SIZE);
-        for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
+        BlockingQueue<ProxyConnection> connectionPool = new LinkedBlockingQueue<>(poolSize);
+        for (int i = 0; i < poolSize; i++) {
             try {
                 connectionPool.offer(new ProxyConnection(ConnectionCreater.createConnection()));
             } catch (SQLException e) {
                 logger.error(e);
-                throw new ExceptionInInitializerError(e);
             }
         }
-        if (connectionPool.size() != INITIAL_POOL_SIZE) {
+        if (connectionPool.size() != poolSize) {
             throw new ExceptionInInitializerError();
         }
         return connectionPool;
     }
 
     static Connection createConnection() throws SQLException {
-        ResourceBundle resource = ResourceBundle.getBundle("database");
+        ResourceBundle resource = ResourceBundle.getBundle(BUNDLE);
         String url = resource.getString(DB_URL);
         String username = resource.getString(DB_USERNAME);
         String password = resource.getString(DB_PASSWORD);

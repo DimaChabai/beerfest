@@ -1,8 +1,8 @@
 package by.beerfest.repository.impl;
 
 import by.beerfest.constant.Query;
-import by.beerfest.entity.impl.Place;
 import by.beerfest.entity.PlaceType;
+import by.beerfest.entity.impl.Place;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static by.beerfest.constant.ColumnName.*;
+import static by.beerfest.constant.Query.PLACE_INSERT;
 
 public class PlaceRepository extends Repository {
 
@@ -32,7 +33,7 @@ public class PlaceRepository extends Repository {
 
     public void add(Place place) throws RepositoryException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement  statement = conn.prepareStatement(Query.PLACE_INSERT)) {
+             PreparedStatement statement = conn.prepareStatement(PLACE_INSERT)) {
             statement.setString(1, place.getType().toString());
             statement.setLong(2, place.getSeats());
             statement.executeUpdate();
@@ -42,10 +43,11 @@ public class PlaceRepository extends Repository {
     }
 
     public List<Place> query(FestSpecification specification) throws RepositoryException {
-        ResultSet resultSet = null;
+
         List<Place> resultList = new ArrayList<>();
-        try (Connection connection = connectionPool.getConnection()) {
-            resultSet = specification.specified(connection).executeQuery();
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = specification.specified(connection);
+             ResultSet resultSet = statement.executeQuery()) {
             Place place;
             while (resultSet.next()) {
                 place = new Place();

@@ -20,7 +20,7 @@ public class PageParameter {
     public static final String DEFAULT_TICKET_NUMBER = "defaultTicketNumber";
     public static final String MEDIUM_TICKET_NUMBER = "mediumTicketNumber";
     public static final String LARGE_TICKET_NUMBER = "largeTicketNumber";
-    public static final String LANGUAGE = "language";
+    public static final String LOCALE = "locale";
     public static final String BEERTYPE = "beer_type";
     public static final String PAGE = "page";
 

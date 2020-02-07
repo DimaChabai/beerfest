@@ -6,10 +6,9 @@
     <title>Error Page</title>
 </head>
 <body class="d-flex flex-column h-100">
-<fmt:setLocale value="${language}" scope="session"/>
+<fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <jsp:include page="../part/default_header.jsp"/>
-<%--@TODO названия сообщений--%>
 <fmt:message key="page.error.request_from"/> ${pageContext.errorData.requestURI} <fmt:message key="page.error.is_failed"/>
 <br/>
 <fmt:message key="page.error.servlet_name"/> ${pageContext.errorData.servletName}

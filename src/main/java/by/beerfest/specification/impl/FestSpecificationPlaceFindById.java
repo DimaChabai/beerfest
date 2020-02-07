@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static by.beerfest.constant.Query.FIND_PLACE_BY_ID;
+
 public class FestSpecificationPlaceFindById extends FestSpecification {
     private long id;
 
@@ -16,7 +18,7 @@ public class FestSpecificationPlaceFindById extends FestSpecification {
 
     @Override
     public PreparedStatement specified(Connection connection) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(Query.FIND_PLACE_BY_ID);
+        PreparedStatement statement = connection.prepareStatement(FIND_PLACE_BY_ID);
         statement.setLong(1,id);
         return statement;
     }

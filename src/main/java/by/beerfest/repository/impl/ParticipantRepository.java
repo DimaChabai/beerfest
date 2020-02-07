@@ -41,12 +41,12 @@ public class ParticipantRepository extends Repository {
             statement.setLong(3, participant.getPlace().getIdPlace());
             statement.setBoolean(4, participant.isConfirmed());
             statement.executeUpdate();
-            statement.close();
+
             statement = conn.prepareStatement(INSERT_PARTICIPANT_BEER);
             statement.setLong(1, participant.getId());
             statement.setString(2, participant.getBeerType());
             statement.executeUpdate();
-            statement.close();
+
             statement = conn.prepareStatement(USER_TO_PARTICIPANT_UPDATE);
             statement.setLong(1, participant.getId());
             statement.executeUpdate();

@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayDeque;
@@ -14,19 +13,19 @@ import java.util.concurrent.BlockingQueue;
 public enum ConnectionPool {
     INSTANCE;
 
-    private static Logger logger;
+    private Logger logger;
     private BlockingQueue<ProxyConnection> availableConnections;
     private Queue<ProxyConnection> usedConnections;
-    private final int INITIAL_POOL_SIZE = 10;
+    final int DEFAULT_POOL_SIZE = 10;
 
     ConnectionPool() {
         init();
-    }//@TODO такой конструктор
+    }
 
     private void init() {
         logger = LogManager.getLogger();
         usedConnections = new ArrayDeque<>();
-        availableConnections = ConnectionCreater.initializePool(INITIAL_POOL_SIZE);
+        availableConnections = ConnectionCreater.initializePool(DEFAULT_POOL_SIZE);
     }
 
     public Connection getConnection() {
@@ -46,13 +45,14 @@ public enum ConnectionPool {
             availableConnections.offer((ProxyConnection) connection);
             usedConnections.remove(connection);
         } else {
-           /// logger.error(e);todo message?
             Thread.currentThread().interrupt();
+            logger.error("Release not ProxyConnection");
+            throw new RuntimeException();
         }
     }
 
     public void shutdown() {
-        for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
+        for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
             try {
                 availableConnections.take().reallyClose();
             } catch (InterruptedException | SQLException e) {

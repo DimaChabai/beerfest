@@ -14,8 +14,8 @@ public enum CommandType {
     CREATE {{
         command = new CreateCommand();
     }},
-    PARTICIPANT {{
-        command = new ParticipantCommand();
+    BECOME_PARTICIPANT {{
+        command = new BecomeParticipantCommand();
     }},
     TICKET {{
         command = new TicketCommand();
@@ -56,8 +56,8 @@ public enum CommandType {
     EXIT {{
         command = new ExitCommand();
     }},
-    CHANGE_LANGUAGE {{
-        command = new ChangeLanguageCommand();
+    CHANGE_LOCALE {{
+        command = new ChangeLocaleCommand();
     }},
     TO_PARTICIPANT_LIST{{
         command = new ToParticipantListCommand();

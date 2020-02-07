@@ -43,8 +43,6 @@ public class TicketServiceImpl implements TicketService {
         if (!largeTicketString.isBlank()) {
             largeTicketCount = Integer.parseInt(largeTicketString);
         }
-
-
         if (defaultTicketCount == 0 && mediumTicketCount == 0 && largeTicketCount == 0) {
             return false;
         }

@@ -5,6 +5,7 @@ import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,11 +25,12 @@ public class BeerRepository extends Repository {
     }
 
     public List<String> query(FestSpecification specification) throws RepositoryException {
-        ResultSet resultSet;
-        List<String> beers = new ArrayList<>();;
-        try(Connection connection = connectionPool.getConnection()) {
-            resultSet = specification.specified(connection).executeQuery();
-            while(resultSet.next()){
+        List<String> beers = new ArrayList<>();
+        ;
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = specification.specified(connection);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
                 beers.add(resultSet.getString(COL_BEERTYPE));
             }
         } catch (SQLException e) {

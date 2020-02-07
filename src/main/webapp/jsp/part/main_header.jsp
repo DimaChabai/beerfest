@@ -3,7 +3,7 @@
 <%@ taglib prefix="ctg" uri="customtags" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
-<fmt:setLocale value="${language}" scope="session"/>
+<fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,31 +37,31 @@
                 </li>
                 <li class="nav-item active">
                     <form class="form-inline" method="post" action="controller">
-                        <input type="text" name="command" value="change_Language" hidden>
-                        <input type="text" value="ru_RU" name="language" hidden>
+                        <input type="text" name="command" value="change_Locale" hidden>
+                        <input type="text" value="ru_RU" name="locale" hidden>
                         <input type="text" value="/jsp/main.jsp" name="page" hidden>
                         <button class="btn btn-outline-success mx-2" type="submit">
-                            <fmt:message key="page.parameter.ru_language"/>
+                            <fmt:message key="page.parameter.ru_locale"/>
                         </button>
                     </form>
                 </li>
                 <li class="nav-item active">
                     <form class="form-inline" method="post" action="controller">
-                        <input type="text" name="command" value="change_Language" hidden>
-                        <input type="text" value="be_BY" name="language" hidden>
+                        <input type="text" name="command" value="change_Locale" hidden>
+                        <input type="text" value="be_BY" name="locale" hidden>
                         <input type="text" value="/jsp/main.jsp" name="page" hidden>
                         <button class="btn btn-outline-success mx-2" type="submit">
-                            <fmt:message key="page.parameter.be_language"/>
+                            <fmt:message key="page.parameter.be_locale"/>
                         </button>
                     </form>
                 </li>
                 <li class="nav-item active">
                     <form class="form-inline" method="post" action="controller">
-                        <input type="text" name="command" value="change_Language" hidden>
-                        <input type="text" value="en_EN" name="language" hidden>
+                        <input type="text" name="command" value="change_Locale" hidden>
+                        <input type="text" value="en_EN" name="locale" hidden>
                         <input type="text" value="/jsp/main.jsp" name="page" hidden>
-                        <button class="btn btn-outline-success mx-2" type="submit" name="language">
-                            <fmt:message key="page.parameter.en_language"/>
+                        <button class="btn btn-outline-success mx-2" type="submit" name="locale">
+                            <fmt:message key="page.parameter.en_locale"/>
                         </button>
                     </form>
                 </li>

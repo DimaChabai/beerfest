@@ -11,6 +11,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static by.beerfest.constant.Query.USER_INSERT;
+import static by.beerfest.constant.Query.USER_UPDATE;
+
 public class UserRepository extends Repository {
 
     private static UserRepository instance = new UserRepository();
@@ -24,7 +27,7 @@ public class UserRepository extends Repository {
 
     public int add(User user) throws RepositoryException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement statement = conn.prepareStatement(Query.USER_INSERT, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement statement = conn.prepareStatement(USER_INSERT, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getPhoneNumber());
@@ -40,7 +43,7 @@ public class UserRepository extends Repository {
 
     public void update(User user) throws RepositoryException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement statement = conn.prepareStatement(Query.USER_UPDATE)) {
+             PreparedStatement statement = conn.prepareStatement(USER_UPDATE)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getPhoneNumber());
@@ -54,10 +57,11 @@ public class UserRepository extends Repository {
     }
 
     public List<User> query(FestSpecification specification) throws RepositoryException {
-        ResultSet resultSet = null;
+
         List<User> resultList = new ArrayList<>();
-        try (Connection connection = connectionPool.getConnection()) {
-            resultSet = specification.specified(connection).executeQuery();
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = specification.specified(connection);
+             ResultSet resultSet = statement.executeQuery()) {
             User user;
             while (resultSet.next()) {
                 user = new User();
@@ -68,7 +72,7 @@ public class UserRepository extends Repository {
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }
-        return resultList;//@TODO Говорили хранить айди, но с запросов я возвращаю целый объект
+        return resultList;
     }
 
 }

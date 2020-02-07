@@ -17,7 +17,7 @@ import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
 
 public class ToVerificationCommand implements Command {
 
-    private static Logger logger = LogManager.getLogger();
+    private Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(SessionRequestContent content) {

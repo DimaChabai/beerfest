@@ -4,5 +4,5 @@ import by.beerfest.content.SessionRequestContent;
 import by.beerfest.service.ServiceException;
 
 public interface Command {
-    String execute(SessionRequestContent content);
+     String execute(SessionRequestContent content);
 }

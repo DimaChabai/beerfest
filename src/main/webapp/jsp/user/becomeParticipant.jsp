@@ -1,7 +1,7 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<fmt:setLocale value="${language}" scope="session"/>
+<fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="pagecontent"/>
 <html>
 <head>
@@ -16,7 +16,7 @@
 <jsp:include page="../part/error_message.jsp"/>
 <div class="container">
     <form method="post" class="was-validated" novalidate>
-        <input type="text" name="command" value="participant" hidden>
+        <input type="text" name="command" value="become_participant" hidden>
         <div class="form-group">
             <label for="name"><fmt:message key="page.content.name_label"/></label>
             <input class="form-control" type="text" id="name" name="name" required>
@@ -39,7 +39,7 @@
             <select class="custom-select" name="place" id="place" required>
                 <c:if test="${not empty places}">
                     <c:forEach var="place" items="${places}">
-                        <option>${place}</option>
+                        <option>Территория №${place.idPlace} Мест = ${place.seats}</option>
                     </c:forEach>
                 </c:if>
             </select>

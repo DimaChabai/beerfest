@@ -1,9 +1,7 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.constant.PageParameter;
 import by.beerfest.content.SessionRequestContent;
-import by.beerfest.entity.UserRole;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.TicketServiceImpl;
 import by.beerfest.validator.TicketValidator;
@@ -18,11 +16,11 @@ import static by.beerfest.entity.UserRole.GUEST;
 
 public class TicketCommand implements Command {
 
-    private static Logger logger = LogManager.getLogger();
+    private Logger logger = LogManager.getLogger();
+    private TicketServiceImpl service = new TicketServiceImpl();
 
     @Override
     public String execute(SessionRequestContent content) {
-        TicketServiceImpl service = new TicketServiceImpl();
         boolean result = false;
         boolean isCatch = false;
         try {
@@ -30,9 +28,9 @@ public class TicketCommand implements Command {
             String mediumTicketString = content.getRequestParameter(MEDIUM_TICKET_NUMBER)[0];
             String largeTicketString = content.getRequestParameter(LARGE_TICKET_NUMBER)[0];
             TicketValidator validator = new TicketValidator();
-            if(validator.validate(defaultTicketString)
-                    || validator.validate(mediumTicketString)
-                    || validator.validate(largeTicketString)){
+            if (validator.validate(defaultTicketString)
+                    && validator.validate(mediumTicketString)
+                    && validator.validate(largeTicketString)) {
                 Long id = (Long) content.getSessionAttribute(ID);
                 result = service.addGuest(defaultTicketString, mediumTicketString, largeTicketString, id);
             }

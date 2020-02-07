@@ -16,11 +16,11 @@ import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 
 public class LoginCommand implements Command {
 
-   private static Logger logger = LogManager.getLogger();
+    private Logger logger = LogManager.getLogger();
+    private LoginServiceImpl service = new LoginServiceImpl();
 
     @Override
     public String execute(SessionRequestContent content) {
-        LoginServiceImpl service = new LoginServiceImpl();
         User user = null;
         boolean isCatch = false;
         try {
@@ -32,7 +32,7 @@ public class LoginCommand implements Command {
             isCatch = true;
         }
         if (user != null) {
-            content.setSessionAttribute(ID, user.getId());//@TODO говорили не тянуть айди в браузер, но в сессию норм?
+            content.setSessionAttribute(ID, user.getId());
             content.setSessionAttribute(EMAIL, user.getEmail());
             content.setSessionAttribute(ROLE_NAME, user.getRole());
             content.setSessionAttribute(PHONE_NUMBER, user.getPhoneNumber());

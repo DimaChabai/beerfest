@@ -32,13 +32,11 @@ public class ParticipantServiceImpl implements ParticipantService {
     private static Logger logger = LogManager.getLogger();
 
     public boolean addParticipant(String name, String placeName, Long id,String beerType) throws ServiceException {
-
+        List<String> beers = getBeers();
         ParticipantDataValidator validator = new ParticipantDataValidator();
-
-        if(!validator.nameValidate(name)){
+        if(!validator.nameValidate(name) || !beers.contains(beerType)){
             return false;
         }
-
         Participant participant = new Participant();
         Pattern pattern = Pattern.compile(ID_PLACE_REGEX);
         Matcher matcher = pattern.matcher(placeName);

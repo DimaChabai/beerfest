@@ -7,20 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter( urlPatterns = { "/jsp/*" },
-        initParams = { @WebInitParam(name = "MAIN_PATH", value = "/index.jsp") })
+@WebFilter(urlPatterns = {"/jsp/*"},
+        initParams = {@WebInitParam(name = "INDEX_PATH", value = "/")})
 public class PageRedirectSecurityFilter implements Filter {
 
+    public static final String INDEX_PATH = "INDEX_PATH";
     private String indexPath;
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        indexPath = filterConfig.getInitParameter("MAIN_PATH");
+        indexPath = filterConfig.getInitParameter(INDEX_PATH);
     }
+
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-        httpResponse.sendRedirect(httpRequest.getContextPath() + indexPath);//todo всё равно заходит на страницу
-        filterChain.doFilter(servletRequest, servletResponse);
+        httpResponse.sendRedirect(httpRequest.getContextPath() + indexPath);
     }
 
     public void destroy() {

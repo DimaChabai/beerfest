@@ -1,11 +1,9 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.constant.PageParameter;
 import by.beerfest.content.SessionRequestContent;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.RegistrationServiceImpl;
-import by.beerfest.validator.UserDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,11 +13,11 @@ import static by.beerfest.constant.PagePath.JSP_REGISTRATION_JSP;
 
 public class RegistrationCommand implements Command {
 
-   private static Logger logger = LogManager.getLogger();
+    private Logger logger = LogManager.getLogger();
+    private RegistrationServiceImpl service = new RegistrationServiceImpl();
 
     @Override
     public String execute(SessionRequestContent content) {
-        RegistrationServiceImpl service = new RegistrationServiceImpl();
         boolean result = false;
         boolean isCatch = false;
         try {
@@ -29,7 +27,7 @@ public class RegistrationCommand implements Command {
             result = service.createAndAddUser(email, phoneNumber, password);
         } catch (ServiceException e) {
             logger.error(e);
-            isCatch=true;
+            isCatch = true;
         }
         if (result) {
             content.setRequestAttribute(MESSAGE, REGISTRATION_SUCCESS);

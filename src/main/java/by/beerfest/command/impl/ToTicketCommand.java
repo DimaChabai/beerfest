@@ -16,11 +16,11 @@ import static by.beerfest.constant.PagePath.JSP_TICKET_JSP;
 
 public class ToTicketCommand implements Command {
 
-    private static Logger logger = LogManager.getLogger();
+    private Logger logger = LogManager.getLogger();
+    private TicketServiceImpl service = new TicketServiceImpl();
 
     @Override
     public String execute(SessionRequestContent content) {
-        TicketServiceImpl service = new TicketServiceImpl();
         try {
             Map<String, Integer> ticketNumber = service.calculateTicketNumber();
             ticketNumber.forEach(content::setRequestAttribute);

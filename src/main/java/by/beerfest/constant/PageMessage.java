@@ -1,8 +1,6 @@
 package by.beerfest.constant;
 
 public class PageMessage {
-    private PageMessage() {
-    }
 
     public static final String PARTICIPANT_LOAD_ERROR_MESSAGE = "page.message.participant_load_error_message";
     public static final String DECLINE_VERIFICATION_MESSAGE = "page.message.decline_verification_message";
@@ -25,5 +23,7 @@ public class PageMessage {
     public static final String USER_UPDATE_SUCCESS = "page.message.user_update_success";
     public static final String USER_UPDATE_ERROR = "page.message.user_update_error";
 
+    private PageMessage() {
+    }
 
 }

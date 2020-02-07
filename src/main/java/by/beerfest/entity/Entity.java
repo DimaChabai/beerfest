@@ -1,4 +1,6 @@
 package by.beerfest.entity;
 
-public abstract class Entity {//@TODO правильная иерархия?
+import java.io.Serializable;
+
+public abstract class Entity implements Cloneable, Serializable {//@todo bean
 }

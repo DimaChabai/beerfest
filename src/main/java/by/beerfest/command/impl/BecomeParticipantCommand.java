@@ -1,7 +1,6 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.constant.PageParameter;
 import by.beerfest.content.SessionRequestContent;
 import by.beerfest.entity.UserRole;
 import by.beerfest.service.ServiceException;
@@ -13,13 +12,13 @@ import static by.beerfest.constant.PageMessage.*;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 
-public class ParticipantCommand implements Command {
+public class BecomeParticipantCommand implements Command {
 
-   private static Logger logger = LogManager.getLogger();
+    private Logger logger = LogManager.getLogger();//@TODO логер в командах не статик, тк они синглтон
+    private ParticipantServiceImpl service = new ParticipantServiceImpl();
 
     @Override
     public String execute(SessionRequestContent content) {
-        ParticipantServiceImpl service = new ParticipantServiceImpl();
         boolean result = false;
         try {
             String name = content.getRequestParameter(NAME)[0];
@@ -32,7 +31,7 @@ public class ParticipantCommand implements Command {
             logger.error(e);
             content.setRequestAttribute(ERROR_MESSAGE, PARTICIPANT_ERROR_MESSAGE);
         }
-        if(result){
+        if (result) {
             content.setSessionAttribute(ROLE_NAME, UserRole.PARTICIPANT);
         } else {
             content.setRequestAttribute(ERROR_MESSAGE, INVALID_PARTICIPANT_DATA);

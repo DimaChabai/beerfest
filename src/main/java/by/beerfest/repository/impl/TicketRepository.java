@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -33,8 +34,9 @@ public class TicketRepository extends Repository {
 
     public Map<String, Integer> query(FestSpecification specification) throws RepositoryException {
         Map<String, Integer> resultMap = new HashMap<>();
-        try (Connection connection = connectionPool.getConnection()) {
-            ResultSet resultSet = specification.specified(connection).executeQuery();
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = specification.specified(connection);
+             ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 switch (TicketType.valueOf(resultSet.getString(COL_TICKET_TYPE))) {
                     case DEFAULT:

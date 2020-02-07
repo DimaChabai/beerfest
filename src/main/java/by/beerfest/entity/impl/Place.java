@@ -39,6 +39,6 @@ public class Place extends Entity {
     @Override
     public String toString() {
         return "Территория №" + idPlace + " Места = " + seats +
-                ", размер = " + type.getName();
+                ", тип = " + type.toString();
     }
 }
