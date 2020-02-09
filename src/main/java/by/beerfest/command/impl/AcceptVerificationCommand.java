@@ -15,10 +15,23 @@ import static by.beerfest.constant.PageMessage.VERIFICATION_ERROR_MESSAGE;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
 
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ * Confirms verification {@code Participant}
+ * using {@code VerificationServiceImpl}.
+ */
 public class AcceptVerificationCommand implements Command {
 
-     private static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
+    /**
+     * Call method accept of class {@code VerificationServiceImpl}
+     * and send message according to result of accepting.
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
         VerificationServiceImpl service = new VerificationServiceImpl();
@@ -34,7 +47,13 @@ public class AcceptVerificationCommand implements Command {
         return JSP_VERIFICATION_JSP;
     }
 
-    private void fillPage(SessionRequestContent content) throws ServiceException {
+    /**
+     * Passes an array of participants to the request.
+     *
+     * @param content object which contain request, response and session information
+     * @throws ServiceException {@code Exception} which can be thrown by {@code VerificationServiceImpl}
+     */
+    private void fillPage(SessionRequestContent content) throws ServiceException {//@todo написать еще один класс иерархии и вынести его туда
         VerificationServiceImpl service = new VerificationServiceImpl();
         List<Participant> result = service.getVerificationPageContent();
         content.setRequestAttribute(PARTICIPANTS, result);

@@ -5,16 +5,20 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
+/**
+ * Filter to set encoding.
+ */
 @WebFilter(urlPatterns = {"/*"},
         initParams = {
                 @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Parameter")})
 public class EncodingFilter implements Filter {
 
+    public static final String ENCODING = "encoding";
     private String code;
 
     @Override
     public void init(FilterConfig filterConfig) {
-        code = filterConfig.getInitParameter("encoding");
+        code = filterConfig.getInitParameter(ENCODING);
     }
 
     @Override

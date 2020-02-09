@@ -10,22 +10,25 @@ import java.util.ResourceBundle;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-class ConnectionCreater {
+class ConnectionCreator {
+    public static final String BUNDLE = "database";
+    public static final String POOL_SIZE = "db.pool_size";
     private static final String DB_URL = "db.url";
     private static final String DB_USERNAME = "db.username";
     private static final String DB_PASSWORD = "db.password";
     private static final String DB_DRIVER = "db.driver";
-    public static final String BUNDLE = "database";
-    public static final String POOL_SIZE = "db.pool_size";
     private static Logger logger = LogManager.getLogger();
+
+    private ConnectionCreator() {
+    }//@TODO private конструктор и дефолтный модификатор
 
     static BlockingQueue<ProxyConnection> initializePool(final int INITIAL_POOL_SIZE) {
         ResourceBundle resource = ResourceBundle.getBundle(BUNDLE);
         String driver = resource.getString(DB_DRIVER);
         int poolSize;
-        if(resource.containsKey(POOL_SIZE)) {
+        if (resource.containsKey(POOL_SIZE)) {
             poolSize = Integer.parseInt(resource.getString(POOL_SIZE));
-        }else {
+        } else {
             poolSize = INITIAL_POOL_SIZE;
         }
         try {
@@ -37,7 +40,7 @@ class ConnectionCreater {
         BlockingQueue<ProxyConnection> connectionPool = new LinkedBlockingQueue<>(poolSize);
         for (int i = 0; i < poolSize; i++) {
             try {
-                connectionPool.offer(new ProxyConnection(ConnectionCreater.createConnection()));
+                connectionPool.offer(new ProxyConnection(ConnectionCreator.createConnection()));
             } catch (SQLException e) {
                 logger.error(e);
             }

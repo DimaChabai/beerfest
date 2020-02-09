@@ -8,12 +8,7 @@ import java.sql.SQLException;
 
 import static by.beerfest.constant.Query.FIND_FREE_PLACE;
 
-public class FestSpecificationPlaceFindAllFree extends FestSpecification {
-
-    public FestSpecificationPlaceFindAllFree() {
-
-    }
-
+public class FestSpecificationPlaceFindAllFree implements FestSpecification {
     @Override
     public PreparedStatement specified(Connection connection) throws SQLException {
         return connection.prepareStatement(FIND_FREE_PLACE);

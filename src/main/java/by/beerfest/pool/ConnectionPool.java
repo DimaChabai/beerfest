@@ -13,10 +13,10 @@ import java.util.concurrent.BlockingQueue;
 public enum ConnectionPool {
     INSTANCE;
 
+    private final int DEFAULT_POOL_SIZE = 10;
     private Logger logger;
     private BlockingQueue<ProxyConnection> availableConnections;
     private Queue<ProxyConnection> usedConnections;
-    final int DEFAULT_POOL_SIZE = 10;
 
     ConnectionPool() {
         init();
@@ -25,7 +25,7 @@ public enum ConnectionPool {
     private void init() {
         logger = LogManager.getLogger();
         usedConnections = new ArrayDeque<>();
-        availableConnections = ConnectionCreater.initializePool(DEFAULT_POOL_SIZE);
+        availableConnections = ConnectionCreator.initializePool(DEFAULT_POOL_SIZE);
     }
 
     public Connection getConnection() {
@@ -42,7 +42,7 @@ public enum ConnectionPool {
 
     public void releaseConnection(Connection connection) {
         if (connection instanceof ProxyConnection) {
-            availableConnections.offer((ProxyConnection) connection);
+            availableConnections.offer((ProxyConnection) connection);//todo put
             usedConnections.remove(connection);
         } else {
             Thread.currentThread().interrupt();

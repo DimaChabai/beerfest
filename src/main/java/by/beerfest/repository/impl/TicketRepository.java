@@ -1,12 +1,9 @@
 package by.beerfest.repository.impl;
 
 import by.beerfest.entity.TicketType;
-import by.beerfest.pool.ConnectionPool;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,20 +15,29 @@ import java.util.Map;
 import static by.beerfest.constant.ColumnName.COL_TICKET_TYPE;
 import static by.beerfest.constant.ColumnName.TICKET_SUM;
 import static by.beerfest.constant.PageParameter.*;
-
+/**
+ * Realization of {@code Repository} interface.
+ * It is singleton.
+ * Used to access the table 'guest_ticket'.
+ */
 public class TicketRepository extends Repository {
 
-    public static ConnectionPool connectionPool = ConnectionPool.INSTANCE;
-    private static Logger logger = LogManager.getLogger();
     private static TicketRepository repository = new TicketRepository();
+
+    private TicketRepository() {
+    }
 
     public static TicketRepository getInstance() {
         return repository;
     }
 
-    private TicketRepository() {
-    }
-
+    /**
+     * Executes a query passed in a {@code FestSpecification} object
+     *
+     * @param specification object that contain {@code Statement} fo query
+     * @return {@code Map} with the type of the ticket as the key and the number of tickets as the value.
+     * @throws RepositoryException if a database access error occurs;
+     */
     public Map<String, Integer> query(FestSpecification specification) throws RepositoryException {
         Map<String, Integer> resultMap = new HashMap<>();
         try (Connection connection = connectionPool.getConnection();

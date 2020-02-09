@@ -11,11 +11,24 @@ import static by.beerfest.constant.PageMessage.*;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_REGISTRATION_JSP;
 
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ * Registers {@code User}
+ * using {@code RegistrationServiceImpl}.
+ */
 public class RegistrationCommand implements Command {
 
     private Logger logger = LogManager.getLogger();
     private RegistrationServiceImpl service = new RegistrationServiceImpl();
 
+    /**
+     * Realization of {@code Command} interface.
+     * Gets user parameters from request to pass to the {@code RegistrationServiceImpl}
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
         boolean result = false;

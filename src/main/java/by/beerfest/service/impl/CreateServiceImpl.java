@@ -1,9 +1,9 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.impl.Place;
 import by.beerfest.entity.PlaceType;
-import by.beerfest.repository.impl.PlaceRepository;
+import by.beerfest.entity.impl.Place;
 import by.beerfest.repository.RepositoryException;
+import by.beerfest.repository.impl.PlaceRepository;
 import by.beerfest.service.CreateService;
 import by.beerfest.service.ServiceException;
 import org.apache.logging.log4j.LogManager;

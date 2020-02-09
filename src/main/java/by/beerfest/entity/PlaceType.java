@@ -1,7 +1,7 @@
 package by.beerfest.entity;
 
 public enum PlaceType {
-    SMALL("Маленький"),MEDIUM("Средний"),LARGE("Большой");
+    SMALL("Маленький"), MEDIUM("Средний"), LARGE("Большой");
 
     String name;
 

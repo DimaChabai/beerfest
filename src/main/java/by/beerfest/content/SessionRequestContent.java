@@ -4,8 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * Wraps values from request and session.
+ * After creating the object must call the extractValues method.
+ * Before sending a response must call the insertAttributes method.
+ */
 public class SessionRequestContent {
     private HashMap<String, Object> requestAttributes;
     private HashMap<String, String[]> requestParameters;
@@ -18,6 +22,12 @@ public class SessionRequestContent {
         sessionAttributes = new HashMap<>();
     }
 
+    /**
+     * Fills internal fields with values from the request and session
+     *
+     * @param request todo
+     */
+    //todo пакет
     public void extractValues(HttpServletRequest request) {
         Enumeration<String> enumeration = request.getAttributeNames();
         String key;
@@ -45,6 +55,11 @@ public class SessionRequestContent {
         }
     }
 
+    /**
+     * Fills the request and session with values from internal fields
+     *
+     * @param request todo
+     */
     public void insertAttributes(HttpServletRequest request) {
         requestAttributes.forEach(request::setAttribute);
         HttpSession session = request.getSession();

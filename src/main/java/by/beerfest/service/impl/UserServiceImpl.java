@@ -1,17 +1,16 @@
 package by.beerfest.service.impl;
 
-import by.beerfest.entity.impl.User;
 import by.beerfest.entity.UserRole;
+import by.beerfest.entity.impl.User;
 import by.beerfest.service.UserService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static by.beerfest.constant.ColumnName.*;
-import static by.beerfest.constant.ColumnName.COL_AVATAR;
 
 public class UserServiceImpl implements UserService {
-
+    //todo название
     public void buildUser(ResultSet resultSet, User user) throws SQLException {
         user.setPassword(resultSet.getString(COL_PASSWORD));
         user.setPhoneNumber(resultSet.getString(COL_PHONE_NUMBER));

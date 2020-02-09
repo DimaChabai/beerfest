@@ -1,5 +1,5 @@
 package by.beerfest.entity;
 
 public enum TicketType {
-    DEFAULT,MEDIUM,LARGE;
+    DEFAULT, MEDIUM, LARGE
 }

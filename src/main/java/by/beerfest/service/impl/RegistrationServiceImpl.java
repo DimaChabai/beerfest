@@ -15,17 +15,17 @@ import java.util.List;
 
 public class RegistrationServiceImpl implements RegistrationService {
 
-    private static Logger logger = LogManager.getLogger();
     private static final String DEFAULT_AVATAR = "undefined_user_avatar.png";
+    private static Logger logger = LogManager.getLogger();
     private static UserRepository repository = UserRepository.getInstance();
 
     public boolean createAndAddUser(String email, String phoneNumber, String password) throws ServiceException {
 
         UserDataValidator validator = new UserDataValidator();
 
-        if(!validator.emailValidate(email)
+        if (!validator.emailValidate(email)
                 || !validator.passwordValidate(password)
-                || !validator.phoneNumberValidate(phoneNumber)){
+                || !validator.phoneNumberValidate(phoneNumber)) {
             return false;
         }
         User user = new User();

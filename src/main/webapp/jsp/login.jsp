@@ -15,7 +15,7 @@
 <jsp:include page="part/error_message.jsp"/>
 
 <div class="container">
-    <form method="post" class="needs-validation" novalidate>
+    <form method="post" class="was-validation" novalidate>
         <input type="text" value="login" name="command" hidden>
         <div class="form-group">
             <label for="email">Email</label>
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="password"><fmt:message key="page.content.password_label"/></label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" pattern=".{7,}" required>
             <div class="invalid-feedback">
                 <fmt:message key="page.content.invalid_password_text"/>
             </div>

@@ -17,17 +17,10 @@ public class CustomTag extends TagSupport {
         JspWriter writer = pageContext.getOut();
         try {
             UserRole role = (UserRole) pageContext.getSession().getAttribute(ROLE_NAME);
-            writer.write("<span class=\"navbar-text\">"+role.toString()+" </span>");
+            writer.write("<span class=\"navbar-text\">" + role.toString() + " </span>");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return SKIP_BODY;
     }
-
-    @Override
-    public int doEndTag() throws JspException {
-        return super.doEndTag();
-    }
-
-
 }

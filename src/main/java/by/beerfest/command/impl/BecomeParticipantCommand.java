@@ -12,20 +12,31 @@ import static by.beerfest.constant.PageMessage.*;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ * Uses @{code ParticipantServiceImpl} to create Participant
+ */
 public class BecomeParticipantCommand implements Command {
 
     private Logger logger = LogManager.getLogger();//@TODO логер в командах не статик, тк они синглтон
     private ParticipantServiceImpl service = new ParticipantServiceImpl();
 
+    /**
+     * Gets user parameters from session and request to pass to the {@code ParticipantServiceImpl}
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
         boolean result = false;
         try {
-            String name = content.getRequestParameter(NAME)[0];
+            String companyName = content.getRequestParameter(NAME)[0];
             String placeName = content.getRequestParameter(PLACE)[0];
             Long id = (Long) content.getSessionAttribute(ID);
             String beerType = content.getRequestParameter(BEERTYPE)[0];
-            result = service.addParticipant(name, placeName, id, beerType);
+            result = service.addParticipant(companyName, placeName, id, beerType);
             content.setRequestAttribute(MESSAGE, PARTICIPANT_MESSAGE);
         } catch (ServiceException e) {
             logger.error(e);

@@ -1,5 +1,8 @@
 package by.beerfest.constant;
 
+/**
+ * Contains constants that represent messages in pagecontent bundle todo
+ */
 public class PageMessage {
 
     public static final String PARTICIPANT_LOAD_ERROR_MESSAGE = "page.message.participant_load_error_message";
@@ -14,7 +17,7 @@ public class PageMessage {
     public static final String DATABASE_ERROR = "page.message.database_error";
     public static final String INVALID_USER_DATA = "page.message.invalid_user_data";
     public static final String TICKET_RESERVATION_SUCCESS = "page.message.ticket_reservation_success";
-    public static final String NO_TICKET_SELECTED = "page.message.no_ticket_selected";
+    public static final String TICKET_BOOK_ERROR_MESSAGE = "page.message.invalid_ticket_data";
     public static final String PLACES_LOAD_ERROR_MESSAGE = "page.message.places_load_error_message";
     public static final String TICKET_LOAD_ERROR_MESSAGE = "page.message.ticket_load_error_message";
     public static final String ACCEPT_VERIFICATION_MESSAGE = "page.message.accept_verification_message";

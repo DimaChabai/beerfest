@@ -8,13 +8,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Realisation of repository pattern.
+ * Has {@code Logger} object for logging error.
+ * Has {@code ConnectionPool} object for getting connections.
+ */
 public abstract class Repository {
     protected static final ConnectionPool connectionPool = ConnectionPool.INSTANCE;
     private static Logger logger = LogManager.getLogger();
 
-    public void closeStatement(Statement statement)  {
+    public void closeStatement(Statement statement) {
         if (statement != null) {
-            try {
+            try {//todo Обработка ошибок
                 statement.close();
             } catch (SQLException e) {
                 logger.error(e);
@@ -22,7 +27,7 @@ public abstract class Repository {
         }
     }
 
-    public void commit(Connection connection)  {
+    public void commit(Connection connection) {
         try {
             connection.commit();
         } catch (SQLException e) {

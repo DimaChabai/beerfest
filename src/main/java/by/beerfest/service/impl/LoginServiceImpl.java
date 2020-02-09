@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
 
     public User login(String email, String password) throws ServiceException {
         UserDataValidator validator = new UserDataValidator();
-        if(!validator.emailValidate(email) || !validator.passwordValidate(password)){
+        if (!validator.emailValidate(email) || !validator.passwordValidate(password)) {
             return null;
         }
         FestSpecification specification = new FestSpecificationUserFindByEmail(email);

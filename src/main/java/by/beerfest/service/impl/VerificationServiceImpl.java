@@ -1,8 +1,8 @@
 package by.beerfest.service.impl;
 
 import by.beerfest.entity.impl.Participant;
-import by.beerfest.repository.impl.ParticipantRepository;
 import by.beerfest.repository.RepositoryException;
+import by.beerfest.repository.impl.ParticipantRepository;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.VerificationService;
 import by.beerfest.specification.FestSpecification;

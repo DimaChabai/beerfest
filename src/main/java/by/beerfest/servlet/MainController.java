@@ -1,7 +1,7 @@
 package by.beerfest.servlet;
 
-import by.beerfest.command.ActionFactory;
 import by.beerfest.command.Command;
+import by.beerfest.command.CommandProvider;
 import by.beerfest.content.SessionRequestContent;
 
 import javax.servlet.RequestDispatcher;
@@ -14,13 +14,19 @@ import java.io.IOException;
 
 import static by.beerfest.constant.PagePath.ROOT_PAGE;
 
+/**
+ * The main controller of the application. Defines a command and initializes its execution.
+ * Receive and send data from request and session
+ */
 @WebServlet("/controller")
 public class MainController extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -28,7 +34,7 @@ public class MainController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SessionRequestContent content = new SessionRequestContent();
         content.extractValues(request);
-        Command command = ActionFactory.defineCommand(content);
+        Command command = CommandProvider.defineCommand(content);
         String page = command.execute(content);
         content.insertAttributes(request);
         if (page != null) {

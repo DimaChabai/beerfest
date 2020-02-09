@@ -1,5 +1,8 @@
 package by.beerfest.constant;
 
+/**
+ * Contain constants containing sql requests.
+ */
 public class Query {
     public static final String FIND_USER_BY_ID = "SELECT id_user, email, password, role_name, phone_number, avatar FROM user " +
             "           join role " +
@@ -18,7 +21,7 @@ public class Query {
             "           join placetype " +
             "           on place.id_type = placetype.id_type " +
             "           WHERE id_place NOT IN (SELECT id_place from participant)";
-    public static final String FIND_ALL_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type, name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
+    public static final String FIND_ALL_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type, company_name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "           join place  " +
             "           on  participant.id_place = place.id_place " +
             "           join placetype p  " +
@@ -31,7 +34,7 @@ public class Query {
             "           on participant_beer.id_user = participant.id_user" +
             "           join beer" +
             "           on beer.id_beer = participant_beer.id_beer";
-    public static final String FIND_UNCONFIRMED_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type,name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
+    public static final String FIND_UNCONFIRMED_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type,company_name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "           join place " +
             "           on participant.id_place = place.id_place" +
             "           join placetype p " +
@@ -45,7 +48,7 @@ public class Query {
             "           join beer" +
             "           on beer.id_beer" + " = participant_beer.id_beer" +
             "           WHERE confirmed = false";
-    public static final String FIND_CONFIRMED_PARTICIPANT_FROM_TO = "SELECT participant.id_user, confirmed, beer_type,name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
+    public static final String FIND_CONFIRMED_PARTICIPANT_FROM_TO = "SELECT participant.id_user, confirmed, beer_type,company_name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "           join place " +
             "           on participant.id_place = place.id_place" +
             "           join placetype p " +
@@ -60,7 +63,7 @@ public class Query {
             "           on beer.id_beer" + " = participant_beer.id_beer" +
             "           WHERE confirmed = true" +
             "           limit ?,?";
-    public static final String FIND_PARTICIPANT_BY_ID = "SELECT participant.id_user, confirmed, beer_type,name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
+    public static final String FIND_PARTICIPANT_BY_ID = "SELECT participant.id_user, confirmed, beer_type,company_name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "           join user " +
             "           on participant.id_user = user.id_user " +
             "           join place" +
@@ -74,12 +77,12 @@ public class Query {
             "           join beer" +
             "           on beer.id_beer" + " = participant_beer.id_beer" +
             "           WHERE participant.id_user = ? ";
-    public static final String PARTICIPANT_INSERT = "INSERT INTO PARTICIPANT(id_user,name,id_place, confirmed) VALUES(?, ?, ?, ?);";
+    public static final String PARTICIPANT_INSERT = "INSERT INTO PARTICIPANT(id_user,company_name,id_place, confirmed) VALUES(?, ?, ?, ?);";
     public static final String USER_TO_PARTICIPANT_UPDATE = "UPDATE user SET id_role = (SELECT id_role FROM role where  role_name = 'PARTICIPANT') WHERE id_user = ?;";
     public static final String DELETE_PARTICIPANT_BY_ID = "DELETE FROM PARTICIPANT WHERE id_user = ?";
     public static final String DELETE_PARTICIPANT_BEER_BY_ID = "DELETE FROM PARTICIPANT_BEER WHERE id_user = ?";
     public static final String PARTICIPANT_TO_USER_UPDATE = "UPDATE user SET id_role = (SELECT id_role FROM role where  role_name = 'USER')  WHERE id_user = ?;";
-    public static final String PARTICIPANT_UPDATE = "UPDATE participant SET name = ?, id_place = ?, confirmed = ? WHERE id_user = ?;";
+    public static final String PARTICIPANT_UPDATE = "UPDATE participant SET company_name = ?, id_place = ?, confirmed = ? WHERE id_user = ?;";
     public static final String PARTICIPANT_BEER_UPDATE = "UPDATE participant_beer SET id_beer" + " = (Select id_beer" + " from beer where beer_type = ?) WHERE  id_user  = ?";
     public static final String FIND_RESERVED_PLACE = "SELECT id_place, type, seats  FROM place" +
             "           join placetype " +
@@ -93,7 +96,6 @@ public class Query {
     public static final String FIND_BEER_ALL = "Select beer_type from beer";
     public static final String INSERT_PARTICIPANT_BEER = "INSERT INTO participant_beer (id_user, id_beer" + ") " +
             "           VALUES (?, (Select id_beer from beer where beer_type = ?));";
-
 
     private Query() {
     }

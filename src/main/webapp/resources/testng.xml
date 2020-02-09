@@ -1,0 +1,27 @@
+<suite name="TestSuite">
+    <test name="CommandProviderTest">
+        <classes>
+            <class name="by.beerfest.command.CommandProviderTest"/>
+        </classes>
+    </test>
+    <test name="ConnectionPoolTest">
+        <classes>
+            <class name="by.beerfest.pool.ConnectionPoolTest"/>
+        </classes>
+    </test>
+    <test name="ParticipantDataValidatorTest">
+        <classes>
+            <class name="by.beerfest.validator.ParticipantDataValidatorTest"/>
+        </classes>
+    </test>
+    <test name="TicketValidatorTest">
+        <classes>
+            <class name="by.beerfest.validator.TicketValidatorTest"/>
+        </classes>
+    </test>
+    <test name="UserDataValidatorTest">
+        <classes>
+            <class name="by.beerfest.validator.UserDataValidatorTest"/>
+        </classes>
+    </test>
+</suite>

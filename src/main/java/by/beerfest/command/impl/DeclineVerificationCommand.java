@@ -15,13 +15,26 @@ import static by.beerfest.constant.PageMessage.DECLINE_VERIFICATION_MESSAGE;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
 
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ * Declines verification {@code Participant}
+ * using {@code VerificationServiceImpl}.
+ */
 public class DeclineVerificationCommand implements Command {
 
-   private static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
+    private VerificationServiceImpl service = new VerificationServiceImpl();
 
+    /**
+     * Call method decline of class {@code VerificationServiceImpl}
+     * and send message according to result of declining.
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
-        VerificationServiceImpl service = new VerificationServiceImpl();
         try {
             long id = Long.parseLong(content.getRequestParameter(ID)[0]);
             service.decline(id);
@@ -34,6 +47,12 @@ public class DeclineVerificationCommand implements Command {
         return JSP_VERIFICATION_JSP;
     }
 
+    /**
+     * Passes an array of participants to the request.
+     *
+     * @param content object which contain request, response and session information
+     * @throws ServiceException {@code Exception} which can be thrown by {@code VerificationServiceImpl}
+     */
     private void fillPage(SessionRequestContent content) throws ServiceException {
         VerificationServiceImpl service = new VerificationServiceImpl();
         List<Participant> result = service.getVerificationPageContent();

@@ -1,8 +1,8 @@
 package by.beerfest.repository.impl;
 
+import by.beerfest.entity.PlaceType;
 import by.beerfest.entity.impl.Participant;
 import by.beerfest.entity.impl.Place;
-import by.beerfest.entity.PlaceType;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.impl.UserServiceImpl;
@@ -18,19 +18,32 @@ import java.util.List;
 import static by.beerfest.constant.ColumnName.*;
 import static by.beerfest.constant.Query.*;
 
+/**
+ * Realization of {@code Repository} interface.
+ * It is singleton.
+ * Used to access the table 'participant'.
+ */
 public class ParticipantRepository extends Repository {
 
     private static ParticipantRepository instance = new ParticipantRepository();
+
+    private ParticipantRepository() {
+    }
 
     public static ParticipantRepository getInstance() {
         return instance;
     }
 
-    private ParticipantRepository() {
-    }
-
+    /**
+     * Adds a participant to the table 'participant'.
+     *
+     * @param participant object that contains information about participant
+     * @throws SQLException        if a database access error occurs,
+     *                             setAutoCommit(true) is called while participating in a distributed transaction,
+     *                             or this method is called on a closed connection. Can be thrown from finally block.
+     * @throws RepositoryException wraps SQLException
+     */
     public void add(Participant participant) throws RepositoryException, SQLException {
-
         PreparedStatement statement = null;
         Connection conn = connectionPool.getConnection();
         try {
@@ -60,6 +73,15 @@ public class ParticipantRepository extends Repository {
         }
     }
 
+    /**
+     * Updates information about the participant in the "participant" table.
+     *
+     * @param participant object that contains information about participant
+     * @throws SQLException        if a database access error occurs,
+     *                             setAutoCommit(true) is called while participating in a distributed transaction,
+     *                             or this method is called on a closed connection. Can be thrown from finally block.
+     * @throws RepositoryException wraps SQLException
+     */
     public void update(Participant participant) throws RepositoryException, SQLException {
         Connection conn = connectionPool.getConnection();
         PreparedStatement statement = null;
@@ -86,6 +108,15 @@ public class ParticipantRepository extends Repository {
         }
     }
 
+    /**
+     * Deletes the participant from the "participant" table.
+     *
+     * @param participant object that contains information about participant
+     * @throws SQLException        if a database access error occurs,
+     *                             setAutoCommit(true) is called while participating in a distributed transaction,
+     *                             or this method is called on a closed connection. Can be thrown from finally block.
+     * @throws RepositoryException wraps SQLException
+     */
     public void delete(Participant participant) throws SQLException, RepositoryException {
         PreparedStatement statement = null;
         Connection connection = connectionPool.getConnection();
@@ -112,15 +143,21 @@ public class ParticipantRepository extends Repository {
         }
     }
 
-
+    /**
+     * Executes a query passed in a {@code FestSpecification} object
+     *
+     * @param specification object that contain {@code Statement} for query
+     * @return Participant {@code List}.
+     * @throws RepositoryException if a database access error occurs;
+     */
     public List<Participant> query(FestSpecification specification) throws RepositoryException {
         List<Participant> resultList = new ArrayList<>();
-        try (Connection connection = connectionPool.getConnection()) {
-            Participant participant;
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = specification.specified(connection);
+             ResultSet resultSet = statement.executeQuery()) {
             Place place;
-            ResultSet resultSet = specification.specified(connection).executeQuery();
             while (resultSet.next()) {
-                participant = new Participant();
+                Participant participant = new Participant();
                 UserServiceImpl service = new UserServiceImpl();
                 service.buildUser(resultSet, participant);
                 participant.setName(resultSet.getString(COL_NAME));

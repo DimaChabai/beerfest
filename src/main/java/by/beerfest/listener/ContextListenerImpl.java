@@ -6,6 +6,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+/**
+ * Initializing connection pool
+ */
 @WebListener
 public class ContextListenerImpl implements ServletContextListener {
 

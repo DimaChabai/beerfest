@@ -13,7 +13,7 @@
                 <c:if test="${role_name == 'USER'}">
                     <li class="nav-item active">
                         <form class="form-inline" method="post" action="controller">
-                            <input type="text" name="command" value="to_Ticket" hidden>
+                            <input type="text" name="command" value="to_Ticket_Book" hidden>
                             <button class="btn btn-outline-success mx-2" type="submit"><fmt:message
                                     key="page.content.buy_ticket"/></button>
                         </form>
@@ -78,7 +78,7 @@
             <c:if test="${role_name == 'ADMIN'}">
                 <li class="nav-item">
                     <form class="form-inline col px-1" method="post" action="controller">
-                        <input type="text" name="command" value="to_Create" hidden>
+                        <input type="text" name="command" value="to_Create_Place" hidden>
                         <button class="btn btn-outline-success" type="submit"><fmt:message
                                 key="page.content.create_button"/></button>
                     </form>
@@ -103,7 +103,7 @@
             </li>
             <li class="nav-item">
                 <span class="navbar-text">
-                    ${email}
+                    <c:out value="${email}"/>
                 </span>
                     <img src="${pageContext.request.contextPath}/avatars/${avatar}" width="32" height="32">
             </li>

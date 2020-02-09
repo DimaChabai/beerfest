@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public abstract class FestSpecification {
+/**
+ * Realisation of Specification pattern.
+ */
+public interface FestSpecification {
 
-    public FestSpecification() {
+    PreparedStatement specified(Connection connection) throws SQLException;
 
-    }
-
-    public abstract PreparedStatement specified(Connection connection) throws SQLException;
 }

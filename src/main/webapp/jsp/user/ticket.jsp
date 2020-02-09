@@ -13,7 +13,7 @@
 <jsp:include page="../part/error_message.jsp"/>
 <div class="container">
     <form method="post">
-        <input type="text" name="command" value="ticket" hidden>
+        <input type="text" name="command" value="ticket_book" hidden>
         <div class="form-group">
             <label for="defaultTicketNumber"><fmt:message key="page.content.default_ticket_label"/></label>
             <span class="badge badge-primary badge-pill">${defaultTicketNumber}</span>

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import static by.beerfest.constant.Query.FIND_BEER_ALL;
 
-public class FestSpecificationBeerFindAll extends FestSpecification {
+public class FestSpecificationBeerFindAll implements FestSpecification {
     @Override
     public PreparedStatement specified(Connection connection) throws SQLException {
         return connection.prepareStatement(FIND_BEER_ALL);

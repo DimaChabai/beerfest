@@ -18,8 +18,8 @@
     <form method="post" class="was-validated" novalidate>
         <input type="text" name="command" value="become_participant" hidden>
         <div class="form-group">
-            <label for="name"><fmt:message key="page.content.name_label"/></label>
-            <input class="form-control" type="text" id="name" name="name" required>
+            <label for="company_name"><fmt:message key="page.content.name_label"/></label>
+            <input class="form-control" type="text" id="company_name" name="company_name" pattern=".{10,}" required>
         </div>
         <div class="form-group">
             <label for="beer_type"><fmt:message key="page.content.beer_label"/></label>

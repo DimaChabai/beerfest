@@ -14,11 +14,23 @@ import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 import static by.beerfest.constant.PagePath.JSP_TICKET_JSP;
 import static by.beerfest.entity.UserRole.GUEST;
 
-public class TicketCommand implements Command {
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ * Adds tickets to {@code User}
+ * using {@code TicketServiceImpl}.
+ */
+public class TicketBookCommand implements Command {
 
     private Logger logger = LogManager.getLogger();
     private TicketServiceImpl service = new TicketServiceImpl();
 
+    /**
+     * Gets user parameters from request and validates them using{@code TicketValidator} to pass to the {@code TicketServiceImpl}
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
         boolean result = false;
@@ -28,9 +40,9 @@ public class TicketCommand implements Command {
             String mediumTicketString = content.getRequestParameter(MEDIUM_TICKET_NUMBER)[0];
             String largeTicketString = content.getRequestParameter(LARGE_TICKET_NUMBER)[0];
             TicketValidator validator = new TicketValidator();
-            if (validator.validate(defaultTicketString)
-                    && validator.validate(mediumTicketString)
-                    && validator.validate(largeTicketString)) {
+            if (validator.validateTicketNumber(defaultTicketString)
+                    && validator.validateTicketNumber(mediumTicketString)
+                    && validator.validateTicketNumber(largeTicketString)) {
                 Long id = (Long) content.getSessionAttribute(ID);
                 result = service.addGuest(defaultTicketString, mediumTicketString, largeTicketString, id);
             }
@@ -43,7 +55,7 @@ public class TicketCommand implements Command {
             content.setRequestAttribute(MESSAGE, TICKET_RESERVATION_SUCCESS);
             return JSP_MAIN_JSP;
         } else {
-            String message = isCatch ? DATABASE_ERROR : NO_TICKET_SELECTED;
+            String message = isCatch ? DATABASE_ERROR : TICKET_BOOK_ERROR_MESSAGE;
             content.setRequestAttribute(ERROR_MESSAGE, message);
             return JSP_TICKET_JSP;
         }

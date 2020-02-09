@@ -2,10 +2,10 @@ package by.beerfest.service.impl;
 
 import by.beerfest.entity.impl.Participant;
 import by.beerfest.entity.impl.Place;
+import by.beerfest.repository.RepositoryException;
 import by.beerfest.repository.impl.BeerRepository;
 import by.beerfest.repository.impl.ParticipantRepository;
 import by.beerfest.repository.impl.PlaceRepository;
-import by.beerfest.repository.RepositoryException;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.specification.FestSpecification;
@@ -18,7 +18,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,10 +30,10 @@ public class ParticipantServiceImpl implements ParticipantService {
     private static final String ID_PLACE_REGEX = "№\\d*";
     private static Logger logger = LogManager.getLogger();
 
-    public boolean addParticipant(String name, String placeName, Long id,String beerType) throws ServiceException {
+    public boolean addParticipant(String name, String placeName, Long id, String beerType) throws ServiceException {
         List<String> beers = getBeers();
         ParticipantDataValidator validator = new ParticipantDataValidator();
-        if(!validator.nameValidate(name) || !beers.contains(beerType)){
+        if (!validator.companyNameValidate(name) || !beers.contains(beerType)) {
             return false;
         }
         Participant participant = new Participant();
@@ -60,7 +59,7 @@ public class ParticipantServiceImpl implements ParticipantService {
         participant.setBeerType(beerType);
         try {
             participantRepository.add(participant);
-            logger.info("Participant registered: " + participant);
+            logger.info(String.format("Participant registered: %s", participant));
         } catch (RepositoryException | SQLException e) {
             throw new ServiceException(e);
         }
@@ -69,7 +68,7 @@ public class ParticipantServiceImpl implements ParticipantService {
 
     public List<String> getBeers() throws ServiceException {
         FestSpecification specification = new FestSpecificationBeerFindAll();
-        List<String> beers = new ArrayList<>();
+        List<String> beers;
         try {
             beers = beerRepository.query(specification);
         } catch (RepositoryException e) {
@@ -79,7 +78,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     public List<Place> getPlaces() throws ServiceException {
-        List<Place> resultList = new ArrayList<>();
+        List<Place> resultList;
         FestSpecification specification = new FestSpecificationPlaceFindAllFree();
         try {
             resultList = placeRepository.query(specification);
@@ -90,8 +89,8 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
-    public List<Participant> getParticipantsFromTo(int start,int end) throws ServiceException {
-        List<Participant> participants = new ArrayList<>();
+    public List<Participant> getParticipantsFromTo(int start, int end) throws ServiceException {
+        List<Participant> participants;
         FestSpecification specification = new FestSpecificationParticipantFindByConfirmedIsTrue(start, end);
         try {
             participants = participantRepository.query(specification);

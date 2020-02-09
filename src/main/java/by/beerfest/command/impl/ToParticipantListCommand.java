@@ -15,12 +15,23 @@ import static by.beerfest.constant.PageMessage.PARTICIPANT_LOAD_ERROR_MESSAGE;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_PARTICIPANT_LIST_JSP;
 
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ */
 public class ToParticipantListCommand implements Command {
 
     public static final int cardPerPage = 6;
     private Logger logger = LogManager.getLogger();
     private ParticipantService service = new ParticipantServiceImpl();
 
+    /**
+     * Passes an array of confirmed participants to the request.
+     * Implements page pagination.
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
         try {
@@ -32,7 +43,7 @@ public class ToParticipantListCommand implements Command {
                     page = 1;
                 }
             }
-            content.setRequestAttribute(PAGE, page);//@TODO
+            content.setRequestAttribute(PAGE, page);
             List<Participant> participants = service.getParticipantsFromTo((page - 1) * cardPerPage, page * cardPerPage);
             content.setRequestAttribute(PARTICIPANTS, participants);
         } catch (ServiceException e) {

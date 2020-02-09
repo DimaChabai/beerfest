@@ -21,37 +21,32 @@ import static by.beerfest.constant.PageMessage.*;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_PROFILE_JSP;
 
+/**
+ * Controller for changing avatar and phone number.
+ * Marked by annotation {@code @MultipartConfig}.
+ */
 @WebServlet("/profile")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024
-        , maxFileSize = 1024 * 1024 * 5
-        , maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(fileSizeThreshold = 1000 * 1000
+        , maxFileSize = 1000 * 1000)
 public class UserUpdateController extends HttpServlet {
 
-    private static Logger logger = LogManager.getLogger();
     private static final String EMPTY_STRING = "";
     private static final String DOT = ".";
     private static final String UPLOAD_DIR = "avatars";
     private static final UserRepository repository = UserRepository.getInstance();
+    private static Logger logger = LogManager.getLogger();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String phoneNumber = request.getParameter(PHONE_NUMBER);
-        String password = request.getParameter(PASSWORD);
         UserDataValidator validator = new UserDataValidator();
         Part part = request.getPart(FILE);
         String path = part.getSubmittedFileName();
-        if (validator.passwordValidate(password)
-                && validator.phoneNumberValidate(phoneNumber)
-                && validator.avatarValidate(path)) {
+        if (validator.phoneNumberValidate(phoneNumber)
+                && validator.avatarValidate(path)) {//@TODO Отдельно валидировать каждое
             HttpSession session = request.getSession();
-            String applicationDir = request.getServletContext().getRealPath(EMPTY_STRING);
-            String uploadFileDir = applicationDir + UPLOAD_DIR + File.separator;
-            File fileSaveDir = new File(uploadFileDir);
-            if (!fileSaveDir.exists()) {
-                fileSaveDir.mkdirs();
-            }
             String email = (String) session.getAttribute(EMAIL);
             FestSpecification specification = new FestSpecificationUserFindByEmail(email);
-            User user = null;
+            User user;
             try {
                 user = repository.query(specification).get(0);
             } catch (RepositoryException e) {
@@ -59,21 +54,22 @@ public class UserUpdateController extends HttpServlet {
                 response.sendError(500);
                 return;
             }
-            if (!path.isBlank()) {
-                String randFilename;
-                String fileName;
-                randFilename = UUID.randomUUID() + path.substring(path.lastIndexOf(DOT));
-                fileName = uploadFileDir + randFilename;
-                part.write(fileName);
-                session.setAttribute(AVATAR, randFilename);
-                user.setAvatar(randFilename);
-            }
             user.setPhoneNumber(phoneNumber);
-            user.setPassword(password);
+            String applicationDir = request.getServletContext().getRealPath(EMPTY_STRING);
+            String uploadFileDir = applicationDir + UPLOAD_DIR + File.separator;
+            File fileSaveDir = new File(uploadFileDir);
+            if (!fileSaveDir.exists()) {
+                fileSaveDir.mkdirs();
+            }
+            String randFilename;
+            String fileName;
+            randFilename = UUID.randomUUID() + path.substring(path.lastIndexOf(DOT));
+            fileName = uploadFileDir + randFilename;
+            part.write(fileName);
+            session.setAttribute(AVATAR, randFilename);
+            user.setAvatar(randFilename);
             try {
                 repository.update(user);
-                session.setAttribute(EMAIL, user.getEmail());
-                session.setAttribute(ROLE_NAME, user.getRole());
                 session.setAttribute(PHONE_NUMBER, user.getPhoneNumber());
                 session.setAttribute(AVATAR, user.getAvatar());
                 request.setAttribute(MESSAGE, USER_UPDATE_SUCCESS);

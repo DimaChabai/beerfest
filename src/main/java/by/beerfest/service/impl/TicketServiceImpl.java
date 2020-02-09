@@ -1,11 +1,11 @@
 package by.beerfest.service.impl;
 
+import by.beerfest.entity.PlaceType;
 import by.beerfest.entity.impl.Guest;
 import by.beerfest.entity.impl.Place;
-import by.beerfest.entity.PlaceType;
+import by.beerfest.repository.RepositoryException;
 import by.beerfest.repository.impl.GuestRepository;
 import by.beerfest.repository.impl.PlaceRepository;
-import by.beerfest.repository.RepositoryException;
 import by.beerfest.repository.impl.TicketRepository;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.TicketService;
@@ -43,7 +43,11 @@ public class TicketServiceImpl implements TicketService {
         if (!largeTicketString.isBlank()) {
             largeTicketCount = Integer.parseInt(largeTicketString);
         }
-        if (defaultTicketCount == 0 && mediumTicketCount == 0 && largeTicketCount == 0) {
+        Map<String, Integer> ticketNumber = calculateTicketNumber();
+        if ((defaultTicketCount == 0 && mediumTicketCount == 0 && largeTicketCount == 0)
+                || ticketNumber.get(DEFAULT_TICKET_NUMBER) < defaultTicketCount
+                || ticketNumber.get(MEDIUM_TICKET_NUMBER) < mediumTicketCount
+                || ticketNumber.get(LARGE_TICKET_NUMBER) < largeTicketCount) {
             return false;
         }
         Guest guest = new Guest();
@@ -77,13 +81,13 @@ public class TicketServiceImpl implements TicketService {
         } catch (RepositoryException e) {
             throw new ServiceException(e);
         }
-        int defaultTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.SMALL)).reduce(0,
+        int defaultTicketCount = reservedPlace.stream().filter(v -> v.getType().equals(PlaceType.SMALL)).reduce(0,
                 (v, p) -> v + p.getSeats(),
                 Integer::sum);
-        int mediumTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.MEDIUM)).reduce(0,
+        int mediumTicketCount = reservedPlace.stream().filter(v -> v.getType().equals(PlaceType.MEDIUM)).reduce(0,
                 (v, p) -> v + p.getSeats(),
                 Integer::sum);
-        int largeTicketCount = reservedPlace.stream().filter((v) -> v.getType().equals(PlaceType.LARGE)).reduce(0,
+        int largeTicketCount = reservedPlace.stream().filter(v -> v.getType().equals(PlaceType.LARGE)).reduce(0,
                 (v, p) -> v + p.getSeats(),
                 Integer::sum);
 

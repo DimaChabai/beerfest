@@ -13,12 +13,21 @@ import static by.beerfest.constant.PageMessage.TICKET_LOAD_ERROR_MESSAGE;
 import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
 import static by.beerfest.constant.PagePath.JSP_TICKET_JSP;
 
-
-public class ToTicketCommand implements Command {
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ */
+public class ToTicketBookCommand implements Command {
 
     private Logger logger = LogManager.getLogger();
     private TicketServiceImpl service = new TicketServiceImpl();
 
+    /**
+     * Passes an array of tickets to the request.
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
         try {

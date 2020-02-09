@@ -1,6 +1,5 @@
 package by.beerfest.command.impl;
 
-import by.beerfest.constant.PageParameter;
 import by.beerfest.command.Command;
 import by.beerfest.content.SessionRequestContent;
 import by.beerfest.service.ServiceException;
@@ -12,13 +11,24 @@ import static by.beerfest.constant.PageMessage.CREATE_PLACE_ERROR_MESSAGE;
 import static by.beerfest.constant.PageParameter.*;
 import static by.beerfest.constant.PagePath.JSP_CREATE_JSP;
 
-public class CreateCommand implements Command {
+/**
+ * Realization of {@code Command} interface.
+ * Has {@code Logger} object for logging error.
+ * Uses @{code CreateServiceImpl} to create Place
+ */
+public class CreatePlaceCommand implements Command {
 
-     private static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
+    private CreateServiceImpl service = new CreateServiceImpl();
 
+    /**
+     * Gets place parameters from session to pass to the {@code CreateServiceImpl}
+     *
+     * @param content object that contain request, response and session information.
+     * @return forward page
+     */
     @Override
     public String execute(SessionRequestContent content) {
-        CreateServiceImpl service = new CreateServiceImpl();
         try {
             String placeType = content.getRequestParameter(PLACE_TYPE)[0];
             String seats = content.getRequestParameter(SEATS)[0];

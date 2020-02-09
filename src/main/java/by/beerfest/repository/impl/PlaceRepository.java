@@ -1,13 +1,10 @@
 package by.beerfest.repository.impl;
 
-import by.beerfest.constant.Query;
 import by.beerfest.entity.PlaceType;
 import by.beerfest.entity.impl.Place;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,19 +15,28 @@ import java.util.List;
 
 import static by.beerfest.constant.ColumnName.*;
 import static by.beerfest.constant.Query.PLACE_INSERT;
-
+/**
+ * Realization of {@code Repository} interface.
+ * It is singleton.
+ * Used to access the table 'place'.
+ */
 public class PlaceRepository extends Repository {
 
-    private static Logger logger = LogManager.getLogger();
     private static PlaceRepository instance = new PlaceRepository();
+
+    private PlaceRepository() {
+    }
 
     public static PlaceRepository getInstance() {
         return instance;
     }
 
-    private PlaceRepository() {
-    }
-
+    /**
+     * Add a place to the table 'place'.
+     *
+     * @param place object that contains information about participant
+     * @throws RepositoryException wraps SQLException
+     */
     public void add(Place place) throws RepositoryException {
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement statement = conn.prepareStatement(PLACE_INSERT)) {
@@ -42,6 +48,13 @@ public class PlaceRepository extends Repository {
         }
     }
 
+    /**
+     * Executes a query passed in a {@code FestSpecification} object
+     *
+     * @param specification object that contain {@code Statement} fo query
+     * @return Place {@code List}.
+     * @throws RepositoryException if a database access error occurs;
+     */
     public List<Place> query(FestSpecification specification) throws RepositoryException {
 
         List<Place> resultList = new ArrayList<>();

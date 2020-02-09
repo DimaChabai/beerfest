@@ -1,6 +1,5 @@
 package by.beerfest.repository.impl;
 
-import by.beerfest.constant.Query;
 import by.beerfest.entity.impl.User;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
@@ -14,17 +13,28 @@ import java.util.List;
 import static by.beerfest.constant.Query.USER_INSERT;
 import static by.beerfest.constant.Query.USER_UPDATE;
 
+/**
+ * Realization of {@code Repository} interface.
+ * It is singleton.
+ * Used to access the table 'user'.
+ */
 public class UserRepository extends Repository {
 
     private static UserRepository instance = new UserRepository();
+
+    private UserRepository() {
+    }
 
     public static UserRepository getInstance() {
         return instance;
     }
 
-    private UserRepository() {
-    }
-
+    /**
+     * Adds a user to the table 'user'.
+     *
+     * @param user object that contains information about user
+     * @throws RepositoryException wraps SQLException
+     */
     public int add(User user) throws RepositoryException {
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement statement = conn.prepareStatement(USER_INSERT, Statement.RETURN_GENERATED_KEYS)) {
@@ -33,14 +43,23 @@ public class UserRepository extends Repository {
             statement.setString(3, user.getPhoneNumber());
             statement.setString(4, user.getAvatar());
             statement.executeUpdate();
-            ResultSet resultSet = statement.getGeneratedKeys();
-            resultSet.next();
-            return resultSet.getInt(1);
+            int id;
+            try (ResultSet resultSet = statement.getGeneratedKeys()) {
+                resultSet.next();
+                id = resultSet.getInt(1);
+            }//todo
+            return id;
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }
     }
 
+    /**
+     * Updates information about the user in the "user" table.
+     *
+     * @param user object that contains information about user
+     * @throws RepositoryException wraps SQLException
+     */
     public void update(User user) throws RepositoryException {
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement statement = conn.prepareStatement(USER_UPDATE)) {
@@ -56,6 +75,13 @@ public class UserRepository extends Repository {
         }
     }
 
+    /**
+     * Executes a query passed in a {@code FestSpecification} object
+     *
+     * @param specification object that contain {@code Statement} fo query
+     * @return User {@code List}.
+     * @throws RepositoryException if a database access error occurs;
+     */
     public List<User> query(FestSpecification specification) throws RepositoryException {
 
         List<User> resultList = new ArrayList<>();

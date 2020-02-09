@@ -1,5 +1,8 @@
 package by.beerfest.repository;
 
+/**
+ * Used to wrapping exceptions that appear in repository
+ */
 public class RepositoryException extends Exception {
     public RepositoryException() {
         super();
