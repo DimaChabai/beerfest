@@ -1,6 +1,7 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
+import by.beerfest.service.PlaceService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.PlaceServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
@@ -19,7 +20,7 @@ import static by.beerfest.constant.PagePath.JSP_CREATE_JSP;
 public class CreatePlaceCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
-    private PlaceServiceImpl service = new PlaceServiceImpl();
+    private PlaceService service = new PlaceServiceImpl();
 
     /**
      * Gets place parameters from session to pass to the {@code CreateServiceImpl}

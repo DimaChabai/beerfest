@@ -1,5 +1,6 @@
 package by.beerfest.command.impl;
 
+import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
@@ -20,7 +21,7 @@ import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
 public class AcceptVerificationCommand extends VerificationCommand {
 
     private static Logger logger = LogManager.getLogger();
-    private ParticipantServiceImpl service = new ParticipantServiceImpl();
+    private ParticipantService service = new ParticipantServiceImpl();
 
     /**
      * Call method accept of class {@code VerificationServiceImpl}

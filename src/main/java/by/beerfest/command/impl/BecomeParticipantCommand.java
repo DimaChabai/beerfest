@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.entity.UserRole;
+import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
@@ -20,7 +21,7 @@ import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 public class BecomeParticipantCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
-    private ParticipantServiceImpl service = new ParticipantServiceImpl();
+    private ParticipantService service = new ParticipantServiceImpl();
 
     /**
      * Gets user parameters from session and request to pass to the {@code ParticipantServiceImpl}

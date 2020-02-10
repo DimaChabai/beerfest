@@ -9,13 +9,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf317d27-4f4f-4023-9d29-a16a2cc1d30a" name="Default Changelist" comment="Refactoring">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/logs.log" afterDir="false" />
+    <list default="true" id="bf317d27-4f4f-4023-9d29-a16a2cc1d30a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/AcceptVerificationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/AcceptVerificationCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/BecomeParticipantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/BecomeParticipantCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/CreatePlaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/CreatePlaceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/DeclineVerificationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/DeclineVerificationCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/TicketBookCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/TicketBookCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToBecomeParticipantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToBecomeParticipantCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToVerificationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToVerificationCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/VerificationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/VerificationCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/ParticipantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/ParticipantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/PlaceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/TicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +89,6 @@
   </component>
   <component name="FindBugs-IDEA-Workspace">
     <toolWindowEditorPreview>false</toolWindowEditorPreview>
-    <analyzeBeforeCheckIn>true</analyzeBeforeCheckIn>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,7 +129,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -142,9 +146,6 @@
     <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
-    <key name="IntroduceConstantDialog.RECENTS_KEY">
-      <recent name="by.beerfest.constant.Query" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="by.beerfest.pool" />
       <recent name="by.beerfest.command.impl" />
@@ -157,9 +158,12 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="by.beerfest.validator" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="by.beerfest.specification.impl" />
-      <recent name="by.chabai.command.impl" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\Java\beerfest\src\main\webapp" />
+      <recent name="D:\Projects\Java\beerfest\src\test\java.by.beerfest\validator" />
+      <recent name="D:\Projects\Java\beerfest\src\main\webapp\jsp" />
+      <recent name="D:\Projects\Java\beerfest\src\main\webapp\jsp\user" />
+      <recent name="D:\Projects\Java\beerfest\src\main\webapp\part" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\Java\beerfest\src\main\webapp\resources" />
@@ -168,12 +172,12 @@
       <recent name="D:\Projects\Java\beerfest\src\main\webapp" />
       <recent name="D:\Projects\Java\beerfest\target\beerfest\avatars" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projects\Java\beerfest\src\main\webapp" />
-      <recent name="D:\Projects\Java\beerfest\src\test\java.by.beerfest\validator" />
-      <recent name="D:\Projects\Java\beerfest\src\main\webapp\jsp" />
-      <recent name="D:\Projects\Java\beerfest\src\main\webapp\jsp\user" />
-      <recent name="D:\Projects\Java\beerfest\src\main\webapp\part" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="by.beerfest.specification.impl" />
+      <recent name="by.chabai.command.impl" />
+    </key>
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="by.beerfest.constant.Query" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.501">
@@ -542,7 +546,7 @@
       <workItem from="1581320199439" duration="158000" />
       <workItem from="1581326557100" duration="3517000" />
       <workItem from="1581330969082" duration="162000" />
-      <workItem from="1581359034479" duration="797000" />
+      <workItem from="1581359034479" duration="1606000" />
     </task>
     <task id="LOCAL-00001" summary="i18n">
       <created>1579149393477</created>
@@ -614,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581330265431</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Refactoring">
+      <created>1581359877454</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1581359877455</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,10 +703,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="480" y="159" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1579875458333" />
-    <state x="596" y="316" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1581203433561">
+    <state x="596" y="316" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1581360498176">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="596" y="316" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581203433561" />
+    <state x="596" y="316" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581360498176" />
     <state x="596" y="316" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1600.860@0.0.1600.860" timestamp="1579506888706" />
     <state x="477" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581329320052">
       <screen x="0" y="0" width="1600" height="860" />
@@ -715,10 +726,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="538" y="163" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581110087509" />
-    <state x="425" y="25" key="CommitChangelistDialog2" timestamp="1581330262727">
+    <state x="425" y="25" key="CommitChangelistDialog2" timestamp="1581359873633">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="425" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581330262727" />
+    <state x="425" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581359873633" />
     <state x="1940" y="29" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@1600.0.1280.984" timestamp="1581284290781" />
     <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1581110086440">
       <screen x="0" y="0" width="1600" height="860" />

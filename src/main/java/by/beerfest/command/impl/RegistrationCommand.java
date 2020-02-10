@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.service.ServiceException;
+import by.beerfest.service.UserService;
 import by.beerfest.service.impl.UserServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +21,7 @@ import static by.beerfest.constant.PagePath.JSP_REGISTRATION_JSP;
 public class RegistrationCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
-    private UserServiceImpl service = new UserServiceImpl();
+    private UserService service = new UserServiceImpl();
 
     /**
      * Realization of {@code Command} interface.

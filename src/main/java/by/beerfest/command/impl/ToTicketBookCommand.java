@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.service.ServiceException;
+import by.beerfest.service.TicketService;
 import by.beerfest.service.impl.TicketServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +21,7 @@ import static by.beerfest.constant.PagePath.JSP_TICKET_JSP;
 public class ToTicketBookCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
-    private TicketServiceImpl service = new TicketServiceImpl();
+    private TicketService service = new TicketServiceImpl();
 
     /**
      * Passes an array of tickets to the request.

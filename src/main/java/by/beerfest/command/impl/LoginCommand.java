@@ -3,6 +3,7 @@ package by.beerfest.command.impl;
 import by.beerfest.command.Command;
 import by.beerfest.entity.impl.User;
 import by.beerfest.service.ServiceException;
+import by.beerfest.service.UserService;
 import by.beerfest.service.impl.UserServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +24,7 @@ import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
 public class LoginCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
-    private UserServiceImpl service = new UserServiceImpl();
+    private UserService service = new UserServiceImpl();
 
     /**
      * Gets user parameters from request to pass to the {@code LoginServiceImpl}

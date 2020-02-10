@@ -5,6 +5,7 @@ import by.beerfest.entity.impl.Participant;
 import by.beerfest.entity.impl.Place;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
+import by.beerfest.service.UserService;
 import by.beerfest.service.impl.UserServiceImpl;
 import by.beerfest.specification.FestSpecification;
 
@@ -26,7 +27,7 @@ import static by.beerfest.constant.Query.*;
 public class ParticipantRepository extends Repository {
 
     private static ParticipantRepository instance = new ParticipantRepository();
-    private UserServiceImpl userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
 
     private ParticipantRepository() {
     }

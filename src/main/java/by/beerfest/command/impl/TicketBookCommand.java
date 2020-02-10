@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.service.ServiceException;
+import by.beerfest.service.TicketService;
 import by.beerfest.service.impl.TicketServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
 import by.beerfest.validator.TicketValidator;
@@ -23,7 +24,7 @@ import static by.beerfest.entity.UserRole.GUEST;
 public class TicketBookCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
-    private TicketServiceImpl service = new TicketServiceImpl();
+    private TicketService service = new TicketServiceImpl();
 
     /**
      * Gets user parameters from request and validates them using{@code TicketValidator} to pass to the {@code TicketServiceImpl}

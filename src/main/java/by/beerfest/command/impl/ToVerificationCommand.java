@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.entity.impl.Participant;
+import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
@@ -22,7 +23,7 @@ import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
 public class ToVerificationCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
-    private ParticipantServiceImpl service = new ParticipantServiceImpl();
+    private ParticipantService service = new ParticipantServiceImpl();
 
     /**
      * Passes an array of unconfirmed participants to the request.

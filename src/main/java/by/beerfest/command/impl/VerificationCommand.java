@@ -2,6 +2,7 @@ package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
 import by.beerfest.entity.impl.Participant;
+import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
 import by.beerfest.servlet.SessionRequestContent;
@@ -12,7 +13,7 @@ import static by.beerfest.constant.PageParameter.PARTICIPANTS;
 
 public abstract class VerificationCommand implements Command {
 
-    private ParticipantServiceImpl service = new ParticipantServiceImpl();
+    private ParticipantService service = new ParticipantServiceImpl();
 
     /**
      * Passes an array of participants to the request.

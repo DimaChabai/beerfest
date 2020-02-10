@@ -3,6 +3,7 @@ package by.beerfest.repository.impl;
 import by.beerfest.entity.impl.User;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
+import by.beerfest.service.UserService;
 import by.beerfest.service.impl.UserServiceImpl;
 import by.beerfest.specification.FestSpecification;
 
@@ -21,7 +22,7 @@ import static by.beerfest.constant.Query.USER_UPDATE;
 public class UserRepository extends Repository {
 
     private static UserRepository instance = new UserRepository();
-    private UserServiceImpl service = new UserServiceImpl();
+    private UserService service = new UserServiceImpl();
 
     private UserRepository() {
     }
