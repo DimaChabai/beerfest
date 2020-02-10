@@ -43,10 +43,12 @@
                             <div class="card-body">
                                 <h5 class="card-title"><c:out value="${participant.name}"/></h5>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Территория №${participant.place.idPlace} Мест = ${participant.place.seats}</li>
+                                    <li class="list-group-item"><fmt:message key="page.content.territory"/>${participant.place.idPlace}
+                                        <fmt:message key="page.content.places"/>${participant.place.seats}</li>
                                 </ul>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">${participant.beerType}</li>
+                                    <li class="list-group-item"><fmt:message
+                                            key="page.content.${participant.beerType}"/></li>
                                 </ul>
                             </div>
                         </div>

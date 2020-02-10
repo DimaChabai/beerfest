@@ -10,6 +10,9 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ *
+ */
 public enum ConnectionPool {
     INSTANCE;
 
@@ -52,7 +55,7 @@ public enum ConnectionPool {
     }
 
     public void shutdown() {
-        for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
+        for (int i = 0; !availableConnections.isEmpty(); i++) {
             try {
                 availableConnections.take().reallyClose();
             } catch (InterruptedException | SQLException e) {

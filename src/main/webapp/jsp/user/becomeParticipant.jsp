@@ -39,7 +39,8 @@
             <select class="custom-select" name="place" id="place" required>
                 <c:if test="${not empty places}">
                     <c:forEach var="place" items="${places}">
-                        <option>Территория №${place.idPlace} Мест = ${place.seats}</option>
+                        <option><fmt:message key="page.content.territory"/>${place.idPlace} <fmt:message
+                                key="page.content.places"/>${place.seats}</option>
                     </c:forEach>
                 </c:if>
             </select>

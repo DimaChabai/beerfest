@@ -32,7 +32,7 @@ public enum CommandType {
     ACCEPT_VERIFICATION(new AcceptVerificationCommand(), ADMIN),
     EXIT(new ExitCommand(), UserRole.values()),
     CHANGE_LOCALE(new ChangeLocaleCommand(), UserRole.values()),
-    TO_PARTICIPANT_LIST(new ToParticipantListCommand(), UserRole.values());
+    TO_PARTICIPANT_LIST(new ToParticipantListCommand(), ADMIN, USER, PARTICIPANT, GUEST);
 
     Set<UserRole> allowedRole = new HashSet<>();
 
