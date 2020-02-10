@@ -2,7 +2,6 @@ package by.beerfest.servlet;
 
 import by.beerfest.command.Command;
 import by.beerfest.command.CommandProvider;
-import by.beerfest.content.SessionRequestContent;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

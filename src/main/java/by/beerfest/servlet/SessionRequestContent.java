@@ -1,5 +1,4 @@
-package by.beerfest.content;
-
+package by.beerfest.servlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
@@ -25,9 +24,9 @@ public class SessionRequestContent {
     /**
      * Fills internal fields with values from the request and session
      *
-     * @param request todo
+     * @param request
      */
-    //todo пакет
+
     public void extractValues(HttpServletRequest request) {
         Enumeration<String> enumeration = request.getAttributeNames();
         String key;
@@ -58,7 +57,7 @@ public class SessionRequestContent {
     /**
      * Fills the request and session with values from internal fields
      *
-     * @param request todo
+     * @param request
      */
     public void insertAttributes(HttpServletRequest request) {
         requestAttributes.forEach(request::setAttribute);

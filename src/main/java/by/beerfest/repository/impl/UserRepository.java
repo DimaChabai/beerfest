@@ -47,7 +47,7 @@ public class UserRepository extends Repository {
             try (ResultSet resultSet = statement.getGeneratedKeys()) {
                 resultSet.next();
                 id = resultSet.getInt(1);
-            }//todo
+            }
             return id;
         } catch (SQLException e) {
             throw new RepositoryException(e);

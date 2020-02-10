@@ -15,12 +15,14 @@ public class CustomTag extends TagSupport {
     @Override
     public int doStartTag() throws JspException {
         JspWriter writer = pageContext.getOut();
-        try {
+
             UserRole role = (UserRole) pageContext.getSession().getAttribute(ROLE_NAME);
+        try {
             writer.write("<span class=\"navbar-text\">" + role.toString() + " </span>");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new JspException(e);
         }
+
         return SKIP_BODY;
     }
 }

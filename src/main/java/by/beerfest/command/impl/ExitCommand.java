@@ -1,7 +1,7 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.content.SessionRequestContent;
+import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +14,7 @@ import static by.beerfest.constant.PagePath.ROOT_PAGE;
  */
 public class ExitCommand implements Command {
 
-    private Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     /**
      * Disable session.

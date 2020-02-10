@@ -4,12 +4,12 @@ import by.beerfest.entity.PlaceType;
 import by.beerfest.entity.impl.Place;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.repository.impl.PlaceRepository;
-import by.beerfest.service.CreateService;
+import by.beerfest.service.PlaceService;
 import by.beerfest.service.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CreateServiceImpl implements CreateService {
+public class PlaceServiceImpl implements PlaceService {
 
     private static Logger logger = LogManager.getLogger();
     private static PlaceRepository repository = PlaceRepository.getInstance();

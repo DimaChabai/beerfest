@@ -1,7 +1,7 @@
 package by.beerfest.constant;
 
 /**
- * Contains constants that represent messages in pagecontent bundle todo
+ * Contains constants that represent messages in pagecontent bundle
  */
 public class PageMessage {
 

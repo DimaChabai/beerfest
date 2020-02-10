@@ -21,7 +21,7 @@ import static by.beerfest.entity.UserRole.UNAUTHORIZED;
 @WebFilter(urlPatterns = "/controller",
         initParams = {@WebInitParam(name = "INDEX_PATH", value = "/")})
 public class PermissionFilter implements Filter {
-    public static final String INDEX_PATH = "INDEX_PATH";
+    private static final String INDEX_PATH = "INDEX_PATH";
     private String indexPath;
 
     @Override

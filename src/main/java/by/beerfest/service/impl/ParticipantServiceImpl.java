@@ -9,10 +9,7 @@ import by.beerfest.repository.impl.PlaceRepository;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.specification.FestSpecification;
-import by.beerfest.specification.impl.FestSpecificationBeerFindAll;
-import by.beerfest.specification.impl.FestSpecificationParticipantFindByConfirmedIsTrue;
-import by.beerfest.specification.impl.FestSpecificationPlaceFindAllFree;
-import by.beerfest.specification.impl.FestSpecificationPlaceFindById;
+import by.beerfest.specification.impl.*;
 import by.beerfest.validator.ParticipantDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -98,5 +95,47 @@ public class ParticipantServiceImpl implements ParticipantService {
             throw new ServiceException(e);
         }
         return participants;
+    }
+
+    public void accept(long id) throws ServiceException {
+        FestSpecification specification = new FestSpecificationParticipantFindById(id);
+        Participant participant;
+        try {
+            participant = participantRepository.query(specification).get(0);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
+        participant.setConfirmed(true);
+        try {
+            participantRepository.update(participant);
+        } catch (RepositoryException | SQLException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void decline(long id) throws ServiceException {
+        FestSpecification specification = new FestSpecificationParticipantFindById(id);
+        Participant participant;
+        try {
+            participant = participantRepository.query(specification).get(0);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
+        try {
+            participantRepository.delete(participant);
+        } catch (RepositoryException | SQLException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<Participant> getVerificationPageContent() throws ServiceException {
+        FestSpecification specification = new FestSpecificationParticipantFindByConfirmedIsFalse();
+        List<Participant> resultList;
+        try {
+            resultList = participantRepository.query(specification);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
+        return resultList;
     }
 }

@@ -1,10 +1,10 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.content.SessionRequestContent;
 import by.beerfest.entity.impl.Participant;
 import by.beerfest.service.ServiceException;
-import by.beerfest.service.impl.VerificationServiceImpl;
+import by.beerfest.service.impl.ParticipantServiceImpl;
+import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,8 +21,8 @@ import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
  */
 public class ToVerificationCommand implements Command {
 
-    private Logger logger = LogManager.getLogger();
-
+    private static Logger logger = LogManager.getLogger();
+    private ParticipantServiceImpl service = new ParticipantServiceImpl();
 
     /**
      * Passes an array of unconfirmed participants to the request.
@@ -33,7 +33,6 @@ public class ToVerificationCommand implements Command {
     @Override
     public String execute(SessionRequestContent content) {
         try {
-            VerificationServiceImpl service = new VerificationServiceImpl();
             List<Participant> result = service.getVerificationPageContent();
             content.setRequestAttribute(PARTICIPANTS, result);
         } catch (ServiceException e) {
@@ -42,5 +41,4 @@ public class ToVerificationCommand implements Command {
         }
         return JSP_VERIFICATION_JSP;
     }
-
 }

@@ -6,7 +6,7 @@ package by.beerfest.validator;
 public class UserDataValidator {
 
     private static final String EMAIL_REGEX = "[^@]+@[^@]+";
-    public static final String AVATAR_REGEX = ".+\\.(jpg|png)";
+    private static final String AVATAR_REGEX = ".+\\.(jpg|png)";
     private static final String PHONE_NUMBER_REGEX = "\\+375((29)|(44)|(33)|(25)) ?\\d{7}";
     private static final String PASSWORD_REGEX = ".{7,}";
 
@@ -15,7 +15,7 @@ public class UserDataValidator {
     }
 
     public boolean passwordValidate(String password) {
-        return password.matches(PASSWORD_REGEX);//@FIXME
+        return password.matches(PASSWORD_REGEX);
     }
 
     public boolean phoneNumberValidate(String phoneNumber) {

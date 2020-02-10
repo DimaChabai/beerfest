@@ -1,6 +1,6 @@
 package by.beerfest.command;
 
-import by.beerfest.content.SessionRequestContent;
+import by.beerfest.servlet.SessionRequestContent;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;

@@ -7,9 +7,18 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ParticipantService {
+
     boolean addParticipant(String name, String placeName, Long id, String beerType) throws SQLException, ServiceException;
 
     List<Place> getPlaces() throws ServiceException;
 
+    List<String> getBeers() throws ServiceException;
+
     List<Participant> getParticipantsFromTo(int start, int end) throws ServiceException;
+
+    void accept(long id) throws ServiceException;
+
+    void decline(long id) throws ServiceException;
+
+    List<Participant> getVerificationPageContent() throws ServiceException;
 }

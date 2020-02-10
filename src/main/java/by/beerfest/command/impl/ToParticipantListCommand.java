@@ -1,11 +1,11 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.content.SessionRequestContent;
 import by.beerfest.entity.impl.Participant;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
+import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,8 +21,8 @@ import static by.beerfest.constant.PagePath.JSP_PARTICIPANT_LIST_JSP;
  */
 public class ToParticipantListCommand implements Command {
 
-    public static final int cardPerPage = 6;
-    private Logger logger = LogManager.getLogger();
+    private static final int cardPerPage = 6;
+    private static Logger logger = LogManager.getLogger();
     private ParticipantService service = new ParticipantServiceImpl();
 
     /**

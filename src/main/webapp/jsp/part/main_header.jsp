@@ -7,7 +7,8 @@
 <fmt:setBundle basename="pagecontent"/>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/controller"><fmt:message key="page.content.title"/></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/controller"><fmt:message
+                key="page.content.title"/></a>
         <div class="navbar-nav mt-3">
             <ul class="navbar-nav flex-row mr-auto">
                 <c:if test="${role_name == 'USER'}">
@@ -105,7 +106,7 @@
                 <span class="navbar-text">
                     <c:out value="${email}"/>
                 </span>
-                    <img src="${pageContext.request.contextPath}/avatars/${avatar}" width="32" height="32">
+                <img src="${pageContext.request.contextPath}/avatars/${avatar}" width="32" height="32">
             </li>
         </ul>
     </nav>

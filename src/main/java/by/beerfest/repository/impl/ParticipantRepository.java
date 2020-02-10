@@ -26,6 +26,7 @@ import static by.beerfest.constant.Query.*;
 public class ParticipantRepository extends Repository {
 
     private static ParticipantRepository instance = new ParticipantRepository();
+    private UserServiceImpl userService = new UserServiceImpl();
 
     private ParticipantRepository() {
     }
@@ -158,8 +159,7 @@ public class ParticipantRepository extends Repository {
             Place place;
             while (resultSet.next()) {
                 Participant participant = new Participant();
-                UserServiceImpl service = new UserServiceImpl();
-                service.buildUser(resultSet, participant);
+                userService.buildUser(resultSet, participant);
                 participant.setName(resultSet.getString(COL_NAME));
                 participant.setConfirmed(resultSet.getBoolean(COL_CONFIRMED));
                 place = new Place();

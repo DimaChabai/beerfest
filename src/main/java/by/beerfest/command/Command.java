@@ -1,6 +1,6 @@
 package by.beerfest.command;
 
-import by.beerfest.content.SessionRequestContent;
+import by.beerfest.servlet.SessionRequestContent;
 
 /**
  * Realisation of Command pattern.

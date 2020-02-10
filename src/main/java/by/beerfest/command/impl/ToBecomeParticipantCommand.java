@@ -1,10 +1,10 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.content.SessionRequestContent;
 import by.beerfest.entity.impl.Place;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
+import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +20,7 @@ import static by.beerfest.constant.PagePath.JSP_BECOME_PARTICIPANT_JSP;
  */
 public class ToBecomeParticipantCommand implements Command {
 
-    private Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
     private ParticipantServiceImpl service = new ParticipantServiceImpl();
 
     /**

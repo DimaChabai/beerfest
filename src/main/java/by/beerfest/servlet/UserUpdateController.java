@@ -42,7 +42,7 @@ public class UserUpdateController extends HttpServlet {
         Part part = request.getPart(FILE);
         String path = part.getSubmittedFileName();
         if (validator.phoneNumberValidate(phoneNumber)
-                && validator.avatarValidate(path)) {//@TODO Отдельно валидировать каждое
+                && validator.avatarValidate(path)) {//@FIXME Отдельно валидировать каждое
             HttpSession session = request.getSession();
             String email = (String) session.getAttribute(EMAIL);
             FestSpecification specification = new FestSpecificationUserFindByEmail(email);
@@ -83,7 +83,6 @@ public class UserUpdateController extends HttpServlet {
         getServletContext().getRequestDispatcher(JSP_PROFILE_JSP).forward(request, response);
     }
 
-    //todo гет и пост обрабатываются не в одном методе плюс помимо загрузки картинки передаются еще данные
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext().getRequestDispatcher(JSP_PROFILE_JSP).forward(request, response);
     }

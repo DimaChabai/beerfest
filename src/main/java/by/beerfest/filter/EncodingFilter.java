@@ -13,7 +13,7 @@ import java.io.IOException;
                 @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Parameter")})
 public class EncodingFilter implements Filter {
 
-    public static final String ENCODING = "encoding";
+    private static final String ENCODING = "encoding";
     private String code;
 
     @Override

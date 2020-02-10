@@ -11,8 +11,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 class ConnectionCreator {
-    public static final String BUNDLE = "database";
-    public static final String POOL_SIZE = "db.pool_size";
+    private static final String BUNDLE = "database";
+    private static final String POOL_SIZE = "db.pool_size";
     private static final String DB_URL = "db.url";
     private static final String DB_USERNAME = "db.username";
     private static final String DB_PASSWORD = "db.password";
@@ -20,7 +20,7 @@ class ConnectionCreator {
     private static Logger logger = LogManager.getLogger();
 
     private ConnectionCreator() {
-    }//@TODO private конструктор и дефолтный модификатор
+    }
 
     static BlockingQueue<ProxyConnection> initializePool(final int INITIAL_POOL_SIZE) {
         ResourceBundle resource = ResourceBundle.getBundle(BUNDLE);

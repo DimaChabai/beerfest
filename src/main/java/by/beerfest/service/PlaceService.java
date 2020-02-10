@@ -1,5 +1,5 @@
 package by.beerfest.service;
 
-public interface CreateService {
+public interface PlaceService {
     void createPlace(String placeType, String seats) throws ServiceException;
 }

@@ -14,10 +14,12 @@ import java.io.IOException;
         initParams = {@WebInitParam(name = "INDEX_PATH", value = "/")})
 public class PageRedirectSecurityFilter implements Filter {
 
-    public static final String INDEX_PATH = "INDEX_PATH";
+    private static final String INDEX_PATH = "INDEX_PATH";
     private String indexPath;
 
-    public void init(FilterConfig filterConfig) throws ServletException {//todo super?
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
         indexPath = filterConfig.getInitParameter(INDEX_PATH);
     }
 

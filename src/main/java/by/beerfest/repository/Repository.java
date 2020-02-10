@@ -19,7 +19,7 @@ public abstract class Repository {
 
     public void closeStatement(Statement statement) {
         if (statement != null) {
-            try {//todo Обработка ошибок
+            try {
                 statement.close();
             } catch (SQLException e) {
                 logger.error(e);

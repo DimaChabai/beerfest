@@ -1,9 +1,9 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.content.SessionRequestContent;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.TicketServiceImpl;
+import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,7 +19,7 @@ import static by.beerfest.constant.PagePath.JSP_TICKET_JSP;
  */
 public class ToTicketBookCommand implements Command {
 
-    private Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
     private TicketServiceImpl service = new TicketServiceImpl();
 
     /**

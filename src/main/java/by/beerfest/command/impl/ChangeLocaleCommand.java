@@ -1,7 +1,7 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.content.SessionRequestContent;
+import by.beerfest.servlet.SessionRequestContent;
 
 import static by.beerfest.constant.PageParameter.LOCALE;
 

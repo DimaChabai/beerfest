@@ -14,7 +14,7 @@ public enum ConnectionPool {
     INSTANCE;
 
     private final int DEFAULT_POOL_SIZE = 10;
-    private Logger logger;
+    private static Logger logger;
     private BlockingQueue<ProxyConnection> availableConnections;
     private Queue<ProxyConnection> usedConnections;
 
@@ -42,7 +42,7 @@ public enum ConnectionPool {
 
     public void releaseConnection(Connection connection) {
         if (connection instanceof ProxyConnection) {
-            availableConnections.offer((ProxyConnection) connection);//todo put
+            availableConnections.offer((ProxyConnection) connection);
             usedConnections.remove(connection);
         } else {
             Thread.currentThread().interrupt();

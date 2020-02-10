@@ -1,6 +1,6 @@
 package by.beerfest.command;
 
-import by.beerfest.content.SessionRequestContent;
+import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +14,7 @@ import static by.beerfest.constant.PageParameter.COMMAND;
 public class CommandProvider {
 
     private CommandProvider() {
-    }//@TODO прайват конструктор, что бы нельзя было создать объект
+    }
 
     private static Logger logger = LogManager.getLogger();
 
