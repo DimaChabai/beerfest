@@ -6,6 +6,10 @@ import by.beerfest.entity.impl.Place;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * The interface for working with the 'participant' table and its associated ones.
+ * Provides a methods for accepting or declining participant.
+ */
 public interface ParticipantService {
 
     boolean addParticipant(String name, String placeName, Long id, String beerType) throws SQLException, ServiceException;

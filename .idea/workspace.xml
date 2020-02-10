@@ -12,7 +12,10 @@
     <list default="true" id="bf317d27-4f4f-4023-9d29-a16a2cc1d30a" name="Default Changelist" comment="Refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/ParticipantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/ParticipantService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/PlaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -537,7 +540,9 @@
       <workItem from="1581281373728" duration="3132000" />
       <workItem from="1581316979832" duration="512000" />
       <workItem from="1581320199439" duration="158000" />
-      <workItem from="1581326557100" duration="3366000" />
+      <workItem from="1581326557100" duration="3517000" />
+      <workItem from="1581330969082" duration="162000" />
+      <workItem from="1581359034479" duration="797000" />
     </task>
     <task id="LOCAL-00001" summary="i18n">
       <created>1579149393477</created>
@@ -602,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581329667222</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Refactoring">
+      <created>1581330265431</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1581330265431</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -703,10 +715,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="538" y="163" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581110087509" />
-    <state x="425" y="25" key="CommitChangelistDialog2" timestamp="1581329715154">
+    <state x="425" y="25" key="CommitChangelistDialog2" timestamp="1581330262727">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="425" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581329715154" />
+    <state x="425" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581330262727" />
     <state x="1940" y="29" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@1600.0.1280.984" timestamp="1581284290781" />
     <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1581110086440">
       <screen x="0" y="0" width="1600" height="860" />
@@ -960,10 +972,10 @@
     </state>
     <state x="530" y="186" key="extract.method.dialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1580465885383" />
     <state x="530" y="186" key="extract.method.dialog/0.0.1600.860@0.0.1600.860" timestamp="1579763104523" />
-    <state x="728" y="56" width="737" height="804" key="find.popup" timestamp="1581329834374">
+    <state x="519" y="56" width="737" height="804" key="find.popup" timestamp="1581359164007">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="728" y="56" width="737" height="804" key="find.popup/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581329834374" />
+    <state x="519" y="56" width="737" height="804" key="find.popup/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581359164007" />
     <state x="2182" y="64" width="607" height="920" key="find.popup/0.0.1600.860/1600.0.1280.984@1600.0.1280.984" timestamp="1581317166174" />
     <state x="443" y="36" width="607" height="804" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1580992707134" />
     <state x="456" y="195" key="run.anything.popup" timestamp="1580992007334">

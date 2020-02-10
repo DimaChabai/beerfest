@@ -5,6 +5,10 @@ import by.beerfest.entity.impl.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Interface for working with 'user' table.
+ * Provides a methods for creating and authentication a user.
+ */
 public interface UserService {
 
     void buildUser(ResultSet resultSet, User user) throws SQLException;

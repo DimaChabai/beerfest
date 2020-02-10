@@ -81,3 +81,5 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 16:58:17.673 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+00:56:11.274 [http-nio-8089-exec-9] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='qwe@qwe', role=ADMIN, phoneNumber='+37529 278112131', avatar='67f264c1-a8e4-4ea4-993d-a1fa369627e2.jpg'} logged in
+00:59:04.509 [http-nio-8089-exec-7] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='qwe@qwe', role=ADMIN, phoneNumber='+37529 278112131', avatar='67f264c1-a8e4-4ea4-993d-a1fa369627e2.jpg'} logged in
