@@ -9,57 +9,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf317d27-4f4f-4023-9d29-a16a2cc1d30a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/VerificationCommand.java" afterDir="false" />
+    <list default="true" id="bf317d27-4f4f-4023-9d29-a16a2cc1d30a" name="Default Changelist" comment="Refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/CommandProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/CommandProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/AcceptVerificationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/AcceptVerificationCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/BecomeParticipantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/BecomeParticipantCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ChangeLocaleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ChangeLocaleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/CreatePlaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/CreatePlaceCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/DeclineVerificationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/DeclineVerificationCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ExitCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/LoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/RegistrationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/RegistrationCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/TicketBookCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/TicketBookCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToBecomeParticipantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToBecomeParticipantCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToParticipantListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToParticipantListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToTicketBookCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToTicketBookCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToVerificationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/command/impl/ToVerificationCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/constant/PageMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/constant/PageMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/content/SessionRequestContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/servlet/SessionRequestContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/filter/EncodingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/filter/EncodingFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/filter/PageRedirectSecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/filter/PageRedirectSecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/filter/PermissionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/filter/PermissionFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/pool/ConnectionCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/pool/ConnectionCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/pool/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/pool/ConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/ParticipantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/ParticipantRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/CreateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/PlaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/LoginService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/ParticipantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/ParticipantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/RegistrationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/VerificationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/CreateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/PlaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/LoginServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/ParticipantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/ParticipantServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/RegistrationServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/VerificationServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/servlet/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/servlet/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/servlet/UserUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/servlet/UserUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/tag/CustomTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/tag/CustomTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/validator/UserDataValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/validator/UserDataValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/create.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/part/main_header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/part/main_header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/by/beerfest/command/CommandProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/by/beerfest/command/CommandProviderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/resources/pagecontent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/resources/pagecontent.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pagecontent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pagecontent.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -584,7 +537,7 @@
       <workItem from="1581281373728" duration="3132000" />
       <workItem from="1581316979832" duration="512000" />
       <workItem from="1581320199439" duration="158000" />
-      <workItem from="1581326557100" duration="2769000" />
+      <workItem from="1581326557100" duration="3366000" />
     </task>
     <task id="LOCAL-00001" summary="i18n">
       <created>1579149393477</created>
@@ -642,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581284308671</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Refactoring">
+      <created>1581329667222</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1581329667222</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,9 +630,9 @@
     <MESSAGE value="Validate" />
     <MESSAGE value="refactoring and tag" />
     <MESSAGE value="Pagination" />
-    <MESSAGE value="Refactoring" />
     <MESSAGE value="Add tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tests" />
+    <MESSAGE value="Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -743,10 +703,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="538" y="163" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581110087509" />
-    <state x="1940" y="29" key="CommitChangelistDialog2" timestamp="1581284290781">
-      <screen x="1600" y="0" width="1280" height="984" />
+    <state x="425" y="25" key="CommitChangelistDialog2" timestamp="1581329715154">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="425" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581068011589" />
+    <state x="425" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581329715154" />
     <state x="1940" y="29" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@1600.0.1280.984" timestamp="1581284290781" />
     <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1581110086440">
       <screen x="0" y="0" width="1600" height="860" />
@@ -1000,10 +960,10 @@
     </state>
     <state x="530" y="186" key="extract.method.dialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1580465885383" />
     <state x="530" y="186" key="extract.method.dialog/0.0.1600.860@0.0.1600.860" timestamp="1579763104523" />
-    <state x="728" y="56" width="737" height="804" key="find.popup" timestamp="1581328476680">
+    <state x="728" y="56" width="737" height="804" key="find.popup" timestamp="1581329834374">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="728" y="56" width="737" height="804" key="find.popup/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581328476680" />
+    <state x="728" y="56" width="737" height="804" key="find.popup/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1581329834374" />
     <state x="2182" y="64" width="607" height="920" key="find.popup/0.0.1600.860/1600.0.1280.984@1600.0.1280.984" timestamp="1581317166174" />
     <state x="443" y="36" width="607" height="804" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1580992707134" />
     <state x="456" y="195" key="run.anything.popup" timestamp="1580992007334">

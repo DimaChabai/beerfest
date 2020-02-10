@@ -21,6 +21,7 @@ import static by.beerfest.constant.Query.USER_UPDATE;
 public class UserRepository extends Repository {
 
     private static UserRepository instance = new UserRepository();
+    private UserServiceImpl service = new UserServiceImpl();
 
     private UserRepository() {
     }
@@ -91,7 +92,6 @@ public class UserRepository extends Repository {
             User user;
             while (resultSet.next()) {
                 user = new User();
-                UserServiceImpl service = new UserServiceImpl();
                 service.buildUser(resultSet, user);
                 resultList.add(user);
             }
