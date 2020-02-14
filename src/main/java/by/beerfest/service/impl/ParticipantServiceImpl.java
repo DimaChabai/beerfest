@@ -56,7 +56,7 @@ public class ParticipantServiceImpl implements ParticipantService {
         participant.setBeerType(beerType);
         try {
             participantRepository.add(participant);
-            logger.info(String.format("Participant registered: %s", participant));
+            logger.info("Participant registered: " + participant);
         } catch (RepositoryException | SQLException e) {
             throw new ServiceException(e);
         }
@@ -108,6 +108,7 @@ public class ParticipantServiceImpl implements ParticipantService {
         participant.setConfirmed(true);
         try {
             participantRepository.update(participant);
+            logger.info("Participant: " + participant + " accepted");
         } catch (RepositoryException | SQLException e) {
             throw new ServiceException(e);
         }
@@ -123,6 +124,7 @@ public class ParticipantServiceImpl implements ParticipantService {
         }
         try {
             participantRepository.delete(participant);
+            logger.info("Participant: " + participant + " declined");
         } catch (RepositoryException | SQLException e) {
             throw new ServiceException(e);
         }

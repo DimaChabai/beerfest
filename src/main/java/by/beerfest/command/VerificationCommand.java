@@ -1,6 +1,5 @@
-package by.beerfest.command.impl;
+package by.beerfest.command;
 
-import by.beerfest.command.Command;
 import by.beerfest.entity.impl.Participant;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;

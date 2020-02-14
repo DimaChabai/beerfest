@@ -1,5 +1,6 @@
 package by.beerfest.command.impl;
 
+import by.beerfest.command.VerificationCommand;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
