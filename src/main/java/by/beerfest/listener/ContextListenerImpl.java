@@ -14,7 +14,7 @@ public class ContextListenerImpl implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ConnectionPool connectionPool = ConnectionPool.INSTANCE;
+        ConnectionPool connectionPool = ConnectionPool.INSTANCE;//pool initialize
     }
 
     @Override

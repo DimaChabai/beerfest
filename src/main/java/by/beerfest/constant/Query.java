@@ -4,10 +4,6 @@ package by.beerfest.constant;
  * Contain constants containing sql requests.
  */
 public class Query {
-    public static final String FIND_USER_BY_ID = "SELECT id_user, email, password, role_name, phone_number, avatar FROM user " +
-            "           join role " +
-            "           on role.id_role = user.id_role " +
-            "           WHERE id_user= ?";
     public static final String FIND_USER_BY_EMAIL = "SELECT id_user, email, password, role_name, phone_number, avatar FROM user " +
             "           join role " +
             "           on role.id_role = user.id_role " +

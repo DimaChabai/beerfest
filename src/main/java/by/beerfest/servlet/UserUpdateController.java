@@ -42,7 +42,7 @@ public class UserUpdateController extends HttpServlet {
         Part part = request.getPart(FILE);
         String path = part.getSubmittedFileName();
         if (validator.phoneNumberValidate(phoneNumber)
-                && validator.avatarValidate(path)) {//@FIXME Отдельно валидировать каждое
+                && validator.avatarValidate(path)) {
             HttpSession session = request.getSession();
             String email = (String) session.getAttribute(EMAIL);
             FestSpecification specification = new FestSpecificationUserFindByEmail(email);

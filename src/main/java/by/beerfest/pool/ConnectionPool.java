@@ -55,7 +55,7 @@ public enum ConnectionPool {
     }
 
     public void shutdown() {
-        for (int i = 0; !availableConnections.isEmpty(); i++) {
+        while (!availableConnections.isEmpty()) {
             try {
                 availableConnections.take().reallyClose();
             } catch (InterruptedException | SQLException e) {
@@ -75,9 +75,5 @@ public enum ConnectionPool {
                 throw new ExceptionInInitializerError(e);
             }
         });
-    }
-
-    public int getSize() {
-        return availableConnections.size() + usedConnections.size();
     }
 }
