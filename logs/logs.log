@@ -162,3 +162,4 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 13:55:56.217 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 13:55:56.259 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 13:58:43.300 [http-nio-8089-exec-9] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='qwe@qwe', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+19:05:48.165 [http-nio-8089-exec-10] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='qwe@qwe', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in

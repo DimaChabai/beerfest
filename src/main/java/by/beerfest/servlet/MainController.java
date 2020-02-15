@@ -41,7 +41,7 @@ public class MainController extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             page = ROOT_PAGE;
-            response.sendRedirect(request.getContextPath() + page);
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + page));
         }
     }
 }
