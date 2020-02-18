@@ -9,30 +9,6 @@
     <list default="true" id="bf317d27-4f4f-4023-9d29-a16a2cc1d30a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/entity/PlaceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/entity/PlaceType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/pool/ProxyConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/pool/ProxyConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/ColumnName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/ColumnName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/repository/impl/TicketRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/ParticipantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/ParticipantServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/TicketServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/service/impl/TicketServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/beerfest/specification/impl/FestSpecificationParticipantFindByConfirmedIsTrue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/beerfest/specification/impl/FestSpecificationParticipantFindByConfirmedIsTrueFromTo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/participantList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/participantList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/ticketBook.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/ticketBook.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/pagecontent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/pagecontent.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/pagecontent_be.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/pagecontent_be.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/pagecontent_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/pagecontent_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent_be.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent_be.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/WEB-INF/classes/pagecontent_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/jsp/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/resources/pagecontent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/resources/pagecontent.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/resources/pagecontent_be.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/resources/pagecontent_be.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/beerfest/resources/pagecontent_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/beerfest/resources/pagecontent_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pagecontent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pagecontent.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pagecontent_be.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pagecontent_be.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pagecontent_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pagecontent_en.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -586,7 +562,7 @@
       <workItem from="1581962139265" duration="1584000" />
       <workItem from="1582023120876" duration="1413000" />
       <workItem from="1582030184523" duration="4755000" />
-      <workItem from="1582050287697" duration="9676000" />
+      <workItem from="1582050287697" duration="9960000" />
     </task>
     <task id="LOCAL-00001" summary="i18n">
       <created>1579149393477</created>
@@ -707,7 +683,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582051333368</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactoring">
+      <created>1582061114064</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1582061114064</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -821,10 +804,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="538" y="163" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1582053647954" />
-    <state x="370" y="25" key="CommitChangelistDialog2" timestamp="1582051323826">
+    <state x="370" y="25" key="CommitChangelistDialog2" timestamp="1582061101499">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="370" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1582051323826" />
+    <state x="370" y="25" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1582061101499" />
     <state x="1940" y="29" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@1600.0.1280.984" timestamp="1581284290781" />
     <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1581110086440">
       <screen x="0" y="0" width="1600" height="860" />
