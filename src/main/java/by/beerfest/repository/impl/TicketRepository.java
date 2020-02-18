@@ -1,5 +1,6 @@
 package by.beerfest.repository.impl;
 
+import by.beerfest.entity.TicketType;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
@@ -8,10 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import static by.beerfest.command.PageParameter.*;
+import static by.beerfest.entity.TicketType.*;
 
 /**
  * Realization of {@code Repository} interface.
@@ -36,15 +38,15 @@ public class TicketRepository extends Repository {
      * @return {@code Map} with the type of the ticket as the key and the number of tickets as the value.
      * @throws RepositoryException if a database access error occurs;
      */
-    public Map<String, Integer> query(FestSpecification specification) throws RepositoryException {
-        Map<String, Integer> resultMap = new HashMap<>();
+    public Map<TicketType, Integer> query(FestSpecification specification) throws RepositoryException {
+        Map<TicketType, Integer> resultMap = new EnumMap<>(TicketType.class);
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = specification.specified(connection);
              ResultSet resultSet = statement.executeQuery()) {
             resultSet.next();
-            resultMap.put(BOOKED_DEFAULT_TICKET, resultSet.getInt(BOOKED_DEFAULT_TICKET));
-            resultMap.put(BOOKED_MEDIUM_TICKET, resultSet.getInt(BOOKED_MEDIUM_TICKET));
-            resultMap.put(BOOKED_LARGE_TICKET, resultSet.getInt(BOOKED_LARGE_TICKET));
+            resultMap.put(DEFAULT, resultSet.getInt(BOOKED_DEFAULT_TICKET));
+            resultMap.put(MEDIUM, resultSet.getInt(BOOKED_MEDIUM_TICKET));
+            resultMap.put(LARGE, resultSet.getInt(BOOKED_LARGE_TICKET));
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }

@@ -8,11 +8,11 @@ import java.sql.SQLException;
 
 import static by.beerfest.specification.Query.FIND_CONFIRMED_PARTICIPANT_FROM_TO;
 
-public class FestSpecificationParticipantFindByConfirmedIsTrue implements FestSpecification {
+public class FestSpecificationParticipantFindByConfirmedIsTrueFromTo implements FestSpecification {
     private int start;
     private int end;
 
-    public FestSpecificationParticipantFindByConfirmedIsTrue(int start, int end) {
+    public FestSpecificationParticipantFindByConfirmedIsTrueFromTo(int start, int end) {
         this.start = start;
         this.end = end;
     }

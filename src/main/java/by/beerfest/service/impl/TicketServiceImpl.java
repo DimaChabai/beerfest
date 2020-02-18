@@ -1,6 +1,7 @@
 package by.beerfest.service.impl;
 
 import by.beerfest.entity.PlaceType;
+import by.beerfest.entity.TicketType;
 import by.beerfest.entity.impl.Guest;
 import by.beerfest.entity.impl.Place;
 import by.beerfest.repository.RepositoryException;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static by.beerfest.command.PageParameter.*;
+import static by.beerfest.entity.TicketType.*;
 
 public class TicketServiceImpl implements TicketService {
 
@@ -75,7 +77,7 @@ public class TicketServiceImpl implements TicketService {
             throw new ServiceException(e);
         }
         specification = new FestSpecificationTicketFindAllGroupByType();
-        Map<String, Integer> bookedTicket;
+        Map<TicketType, Integer> bookedTicket;
         try {
             bookedTicket = ticketRepository.query(specification);
         } catch (RepositoryException e) {
@@ -92,9 +94,9 @@ public class TicketServiceImpl implements TicketService {
                 Integer::sum);
 
         if (!bookedTicket.isEmpty()) {
-            defaultTicketCount -= bookedTicket.get(BOOKED_DEFAULT_TICKET);
-            mediumTicketCount -= bookedTicket.get(BOOKED_MEDIUM_TICKET);
-            largeTicketCount -= bookedTicket.get(BOOKED_LARGE_TICKET);
+            defaultTicketCount -= bookedTicket.get(DEFAULT);
+            mediumTicketCount -= bookedTicket.get(MEDIUM);
+            largeTicketCount -= bookedTicket.get(LARGE);
         }
         Map<String, Integer> result = new HashMap<>();
         result.put(DEFAULT_TICKET_NUMBER, defaultTicketCount);

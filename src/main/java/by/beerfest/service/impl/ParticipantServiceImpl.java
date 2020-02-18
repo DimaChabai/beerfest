@@ -88,7 +88,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     @Override
     public List<Participant> getParticipantsFromTo(int start, int end) throws ServiceException {
         List<Participant> participants;
-        FestSpecification specification = new FestSpecificationParticipantFindByConfirmedIsTrue(start, end);
+        FestSpecification specification = new FestSpecificationParticipantFindByConfirmedIsTrueFromTo(start, end);
         try {
             participants = participantRepository.query(specification);
         } catch (RepositoryException e) {

@@ -15,13 +15,15 @@
 <jsp:include page="part/error_message.jsp"/>
 <nav>
     <ul class="pagination">
-        <li>
-            <form method="post">
-                <input type="text" value="to_participant_list" name="command" hidden>
-                <input type="number" name="page" value="${page-1}" hidden>
-                <button type="submit"><fmt:message key="page.content.previous"/></button>
-            </form>
-        </li>
+        <c:if test="${page!=1}">
+            <li>
+                <form method="post">
+                    <input type="text" value="to_participant_list" name="command" hidden>
+                    <input type="number" name="page" value="${page-1}" hidden>
+                    <button type="submit"><fmt:message key="page.content.previous"/></button>
+                </form>
+            </li>
+        </c:if>
         <c:if test="${participants.size()==6}">
             <li>
                 <form method="post">

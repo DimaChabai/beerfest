@@ -19,6 +19,11 @@
 </c:choose>
 <jsp:include page="part/message.jsp"/>
 <jsp:include page="part/error_message.jsp"/>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="display-4"><fmt:message key="page.main"/></h1>
+    </div>
+</div>
 <jsp:include page="part/footer.jsp"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
