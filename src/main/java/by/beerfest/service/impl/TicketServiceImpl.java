@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static by.beerfest.constant.PageParameter.*;
+import static by.beerfest.command.PageParameter.*;
 
 public class TicketServiceImpl implements TicketService {
 

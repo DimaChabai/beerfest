@@ -1,4 +1,4 @@
-package by.beerfest.filter;
+package by.beerfest.controller.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 @WebFilter(urlPatterns = {"/*"},
         initParams = {
-                @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Parameter")})
+                @WebInitParam(name = "encoding", value = "UTF-8")})
 public class EncodingFilter implements Filter {
 
     private static final String ENCODING = "encoding";

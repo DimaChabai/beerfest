@@ -7,7 +7,7 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
-import static by.beerfest.constant.PageParameter.ROLE_NAME;
+import static by.beerfest.command.PageParameter.ROLE_NAME;
 
 @SuppressWarnings("serial")
 public class CustomTag extends TagSupport {

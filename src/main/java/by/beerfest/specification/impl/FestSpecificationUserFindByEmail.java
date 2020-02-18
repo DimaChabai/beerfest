@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static by.beerfest.constant.Query.FIND_USER_BY_EMAIL;
+import static by.beerfest.specification.Query.FIND_USER_BY_EMAIL;
 
 public class FestSpecificationUserFindByEmail implements FestSpecification {
 

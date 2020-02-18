@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static by.beerfest.constant.Query.FIND_PLACE_BY_ID;
+import static by.beerfest.specification.Query.FIND_PLACE_BY_ID;
 
 public class FestSpecificationPlaceFindById implements FestSpecification {
     private long id;

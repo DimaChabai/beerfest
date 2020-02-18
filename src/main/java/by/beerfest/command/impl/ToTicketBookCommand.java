@@ -1,18 +1,18 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
+import by.beerfest.controller.SessionRequestContent;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.TicketService;
 import by.beerfest.service.impl.TicketServiceImpl;
-import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-import static by.beerfest.constant.PageMessage.TICKET_LOAD_ERROR_MESSAGE;
-import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
-import static by.beerfest.constant.PagePath.JSP_TICKET_JSP;
+import static by.beerfest.command.PageMessage.TICKET_LOAD_ERROR_MESSAGE;
+import static by.beerfest.command.PageParameter.ERROR_MESSAGE;
+import static by.beerfest.command.PagePath.JSP_TICKET_JSP;
 
 /**
  * Realization of {@code Command} interface.

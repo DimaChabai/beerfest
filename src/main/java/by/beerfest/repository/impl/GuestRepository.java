@@ -1,6 +1,5 @@
 package by.beerfest.repository.impl;
 
-import by.beerfest.entity.TicketType;
 import by.beerfest.entity.impl.Guest;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
@@ -9,7 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static by.beerfest.constant.Query.*;
+import static by.beerfest.specification.Query.GUEST_INSERT;
+import static by.beerfest.specification.Query.USER_TO_GUEST_UPDATE;
 
 /**
  * Realization of {@code Repository} interface.
@@ -51,31 +51,14 @@ public class GuestRepository extends Repository {
             statement = conn.prepareStatement(USER_TO_GUEST_UPDATE);
             statement.setLong(1, guest.getId());
             statement.executeUpdate();
-
-            statement = conn.prepareStatement(ADD_TICKET);
-            statement.setLong(1, guest.getId());
-            statement.setInt(2, guest.getDefaultTicketNumber());
-            statement.setString(3, TicketType.DEFAULT.toString());
-            statement.execute();
-
-            statement = conn.prepareStatement(ADD_TICKET);
-            statement.setLong(1, guest.getId());
-            statement.setInt(2, guest.getLargeTicketNumber());
-            statement.setString(3, TicketType.LARGE.toString());
-            statement.execute();
-
-            statement = conn.prepareStatement(ADD_TICKET);
-            statement.setLong(1, guest.getId());
-            statement.setInt(2, guest.getMediumTicketNumber());
-            statement.setString(3, TicketType.MEDIUM.toString());
-            statement.execute();
         } catch (SQLException e) {
             conn.rollback();
             throw new RepositoryException(e);
         } finally {
             this.commit(conn);
-            conn.setAutoCommit(true);
             this.closeStatement(statement);
+            conn.setAutoCommit(true);
+            conn.close();
         }
     }
 }

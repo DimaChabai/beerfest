@@ -1,16 +1,18 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
+import by.beerfest.controller.SessionRequestContent;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.UserService;
 import by.beerfest.service.impl.UserServiceImpl;
-import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static by.beerfest.constant.PageMessage.*;
-import static by.beerfest.constant.PageParameter.*;
-import static by.beerfest.constant.PagePath.JSP_REGISTRATION_JSP;
+import java.util.Base64;
+
+import static by.beerfest.command.PageMessage.*;
+import static by.beerfest.command.PageParameter.*;
+import static by.beerfest.command.PagePath.JSP_REGISTRATION_JSP;
 
 /**
  * Realization of {@code Command} interface.
@@ -22,6 +24,7 @@ public class RegistrationCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
     private UserService service = new UserServiceImpl();
+    private Base64.Encoder encoder = Base64.getEncoder();
 
     /**
      * Realization of {@code Command} interface.
@@ -38,7 +41,8 @@ public class RegistrationCommand implements Command {
             String email = content.getRequestParameter(EMAIL)[0];
             String phoneNumber = content.getRequestParameter(PHONE_NUMBER)[0];
             String password = content.getRequestParameter(PASSWORD)[0];
-            result = service.createAndAddUser(email, phoneNumber, password);
+            String hash = encoder.encodeToString(password.getBytes());
+            result = service.createAndAddUser(email, phoneNumber, hash);
         } catch (ServiceException e) {
             logger.error(e);
             isCatch = true;

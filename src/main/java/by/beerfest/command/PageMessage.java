@@ -1,4 +1,4 @@
-package by.beerfest.constant;
+package by.beerfest.command;
 
 /**
  * Contains constants that represent messages in pagecontent bundle

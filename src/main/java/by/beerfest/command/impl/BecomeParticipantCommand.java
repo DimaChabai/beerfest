@@ -1,17 +1,17 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
+import by.beerfest.controller.SessionRequestContent;
 import by.beerfest.entity.UserRole;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
-import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static by.beerfest.constant.PageMessage.*;
-import static by.beerfest.constant.PageParameter.*;
-import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
+import static by.beerfest.command.PageMessage.*;
+import static by.beerfest.command.PageParameter.*;
+import static by.beerfest.command.PagePath.JSP_MAIN_JSP;
 
 /**
  * Realization of {@code Command} interface.

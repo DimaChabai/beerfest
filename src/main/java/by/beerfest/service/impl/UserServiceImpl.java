@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import static by.beerfest.constant.ColumnName.*;
+import static by.beerfest.repository.ColumnName.*;
 
 public class UserServiceImpl implements UserService {
 

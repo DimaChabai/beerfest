@@ -1,4 +1,4 @@
-package by.beerfest.servlet;
+package by.beerfest.controller;
 
 import by.beerfest.entity.impl.User;
 import by.beerfest.repository.RepositoryException;
@@ -17,9 +17,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-import static by.beerfest.constant.PageMessage.*;
-import static by.beerfest.constant.PageParameter.*;
-import static by.beerfest.constant.PagePath.JSP_PROFILE_JSP;
+import static by.beerfest.command.PageMessage.*;
+import static by.beerfest.command.PageParameter.*;
+import static by.beerfest.command.PagePath.JSP_PROFILE_JSP;
 
 /**
  * Controller for changing avatar and phone number.
@@ -41,8 +41,9 @@ public class UserUpdateController extends HttpServlet {
         UserDataValidator validator = new UserDataValidator();
         Part part = request.getPart(FILE);
         String path = part.getSubmittedFileName();
-        if (validator.phoneNumberValidate(phoneNumber)
-                && validator.avatarValidate(path)) {
+        boolean phoneNumberValidated = validator.phoneNumberValidate(phoneNumber);
+        boolean avatarValidated = validator.avatarValidate(path);
+        if (phoneNumberValidated || avatarValidated) {
             HttpSession session = request.getSession();
             String email = (String) session.getAttribute(EMAIL);
             FestSpecification specification = new FestSpecificationUserFindByEmail(email);
@@ -54,20 +55,24 @@ public class UserUpdateController extends HttpServlet {
                 response.sendError(500);
                 return;
             }
-            user.setPhoneNumber(phoneNumber);
-            String applicationDir = request.getServletContext().getRealPath(EMPTY_STRING);
-            String uploadFileDir = applicationDir + UPLOAD_DIR + File.separator;
-            File fileSaveDir = new File(uploadFileDir);
-            if (!fileSaveDir.exists()) {
-                fileSaveDir.mkdirs();
+            if (phoneNumberValidated) {
+                user.setPhoneNumber(phoneNumber);
             }
-            String randFilename;
-            String fileName;
-            randFilename = UUID.randomUUID() + path.substring(path.lastIndexOf(DOT));
-            fileName = uploadFileDir + randFilename;
-            part.write(fileName);
-            session.setAttribute(AVATAR, randFilename);
-            user.setAvatar(randFilename);
+            if (avatarValidated) {
+                String applicationDir = request.getServletContext().getRealPath(EMPTY_STRING);
+                String uploadFileDir = applicationDir + UPLOAD_DIR + File.separator;
+                File fileSaveDir = new File(uploadFileDir);
+                if (!fileSaveDir.exists()) {
+                    fileSaveDir.mkdirs();
+                }
+                String randFilename;
+                String fileName;
+                randFilename = UUID.randomUUID() + path.substring(path.lastIndexOf(DOT));
+                fileName = uploadFileDir + randFilename;
+                part.write(fileName);
+                session.setAttribute(AVATAR, randFilename);
+                user.setAvatar(randFilename);
+            }
             try {
                 repository.update(user);
                 session.setAttribute(PHONE_NUMBER, user.getPhoneNumber());

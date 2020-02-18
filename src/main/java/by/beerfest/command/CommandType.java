@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static by.beerfest.constant.PagePath.*;
+import static by.beerfest.command.PagePath.*;
 import static by.beerfest.entity.UserRole.*;
 
 /**

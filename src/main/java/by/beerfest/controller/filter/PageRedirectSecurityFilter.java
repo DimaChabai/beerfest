@@ -1,4 +1,4 @@
-package by.beerfest.filter;
+package by.beerfest.controller.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

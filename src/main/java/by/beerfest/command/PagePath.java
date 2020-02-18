@@ -1,8 +1,9 @@
-package by.beerfest.constant;
+package by.beerfest.command;
 
 /**
  * Contains constants containing jsp page path.
  */
+
 public class PagePath {
     public static final String ROOT_PAGE = "/";
     public static final String JSP_PROFILE_JSP = "/jsp/profile.jsp";

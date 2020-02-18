@@ -12,7 +12,7 @@
 <jsp:include page="../part/main_header.jsp"/>
 <jsp:include page="../part/error_message.jsp"/>
 <div class="container">
-    <form method="post">
+    <form class="was-validated" method="post">
         <input type="text" name="command" value="ticket_book" hidden>
         <div class="form-group">
             <label for="defaultTicketNumber"><fmt:message key="page.content.default_ticket_label"/></label>
@@ -32,10 +32,20 @@
             <input class="form-control" type="number" min="0" max="${largeTicketNumber}" id="largeTicketNumber"
                    name="largeTicketNumber">
         </div>
-        <button type="submit" class="btn btn-primary"><fmt:message key="page.content.book_button"/></button>
+        <button type="submit" id="ticketSubmit" class="btn btn-primary"><fmt:message
+                key="page.content.book_button"/></button>
     </form>
 </div>
 <jsp:include page="../part/footer.jsp"/>
+<script>
+    (function () {
+        if (${mediumTicketNumber} == 0 && ${defaultTicketNumber} == 0 && ${largeTicketNumber} == 0;
+    )
+        {
+            document.getElementById("ticketSubmit").disabled = true;
+        }
+    })();
+</script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

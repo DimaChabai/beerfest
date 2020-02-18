@@ -11,8 +11,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.beerfest.constant.Query.USER_INSERT;
-import static by.beerfest.constant.Query.USER_UPDATE;
+import static by.beerfest.specification.Query.USER_INSERT;
+import static by.beerfest.specification.Query.USER_UPDATE;
 
 /**
  * Realization of {@code Repository} interface.
@@ -90,6 +90,7 @@ public class UserRepository extends Repository {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = specification.specified(connection);
              ResultSet resultSet = statement.executeQuery()) {
+
             User user;
             while (resultSet.next()) {
                 user = new User();

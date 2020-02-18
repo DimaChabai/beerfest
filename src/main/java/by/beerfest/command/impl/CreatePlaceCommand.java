@@ -1,16 +1,16 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
+import by.beerfest.controller.SessionRequestContent;
 import by.beerfest.service.PlaceService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.PlaceServiceImpl;
-import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static by.beerfest.constant.PageMessage.CREATE_PLACE_ERROR_MESSAGE;
-import static by.beerfest.constant.PageParameter.*;
-import static by.beerfest.constant.PagePath.JSP_CREATE_JSP;
+import static by.beerfest.command.PageMessage.CREATE_PLACE_ERROR_MESSAGE;
+import static by.beerfest.command.PageParameter.*;
+import static by.beerfest.command.PagePath.JSP_CREATE_JSP;
 
 /**
  * Realization of {@code Command} interface.

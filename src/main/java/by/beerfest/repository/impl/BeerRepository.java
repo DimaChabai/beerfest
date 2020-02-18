@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.beerfest.constant.ColumnName.COL_BEERTYPE;
+import static by.beerfest.repository.ColumnName.COL_BEERTYPE;
 
 /**
  * Realization of {@code Repository} interface.

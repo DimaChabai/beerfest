@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static by.beerfest.constant.Query.FIND_FREE_PLACE;
+import static by.beerfest.specification.Query.FIND_FREE_PLACE;
 
 public class FestSpecificationPlaceFindAllFree implements FestSpecification {
     @Override

@@ -1,19 +1,21 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
+import by.beerfest.controller.SessionRequestContent;
 import by.beerfest.entity.impl.User;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.UserService;
 import by.beerfest.service.impl.UserServiceImpl;
-import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static by.beerfest.constant.PageMessage.INCORRECT_LOGIN_OR_PASSWORD;
-import static by.beerfest.constant.PageMessage.MESSAGE_DATABASE_ERROR;
-import static by.beerfest.constant.PageParameter.*;
-import static by.beerfest.constant.PagePath.JSP_LOGIN_JSP;
-import static by.beerfest.constant.PagePath.JSP_MAIN_JSP;
+import java.util.Base64;
+
+import static by.beerfest.command.PageMessage.INCORRECT_LOGIN_OR_PASSWORD;
+import static by.beerfest.command.PageMessage.MESSAGE_DATABASE_ERROR;
+import static by.beerfest.command.PageParameter.*;
+import static by.beerfest.command.PagePath.JSP_LOGIN_JSP;
+import static by.beerfest.command.PagePath.JSP_MAIN_JSP;
 
 /**
  * Realization of {@code Command} interface.
@@ -25,7 +27,7 @@ public class LoginCommand implements Command {
 
     private static Logger logger = LogManager.getLogger();
     private UserService service = new UserServiceImpl();
-
+    private Base64.Encoder encoder = Base64.getEncoder();
     /**
      * Gets user parameters from request to pass to the {@code LoginServiceImpl}
      *
@@ -39,7 +41,8 @@ public class LoginCommand implements Command {
         try {
             String email = content.getRequestParameter(EMAIL)[0];
             String password = content.getRequestParameter(PASSWORD)[0];
-            user = service.authenticate(email, password);
+            String hash = encoder.encodeToString(password.getBytes());
+            user = service.authenticate(email, hash);
         } catch (ServiceException e) {
             logger.error(e);
             isCatch = true;

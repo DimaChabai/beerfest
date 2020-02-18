@@ -1,6 +1,5 @@
 package by.beerfest.repository.impl;
 
-import by.beerfest.entity.TicketType;
 import by.beerfest.repository.Repository;
 import by.beerfest.repository.RepositoryException;
 import by.beerfest.specification.FestSpecification;
@@ -12,9 +11,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static by.beerfest.constant.ColumnName.COL_TICKET_TYPE;
-import static by.beerfest.constant.ColumnName.TICKET_SUM;
-import static by.beerfest.constant.PageParameter.*;
+import static by.beerfest.command.PageParameter.*;
+
 /**
  * Realization of {@code Repository} interface.
  * It is singleton.
@@ -43,19 +41,10 @@ public class TicketRepository extends Repository {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = specification.specified(connection);
              ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
-                switch (TicketType.valueOf(resultSet.getString(COL_TICKET_TYPE))) {
-                    case DEFAULT:
-                        resultMap.put(BOOKED_DEFAULT_TICKET, resultSet.getInt(TICKET_SUM));
-                        break;
-                    case MEDIUM:
-                        resultMap.put(BOOKED_MEDIUM_TICKET, resultSet.getInt(TICKET_SUM));
-                        break;
-                    case LARGE:
-                        resultMap.put(BOOKED_LARGE_TICKET, resultSet.getInt(TICKET_SUM));
-                        break;
-                }
-            }
+            resultSet.next();
+            resultMap.put(BOOKED_DEFAULT_TICKET, resultSet.getInt(BOOKED_DEFAULT_TICKET));
+            resultMap.put(BOOKED_MEDIUM_TICKET, resultSet.getInt(BOOKED_MEDIUM_TICKET));
+            resultMap.put(BOOKED_LARGE_TICKET, resultSet.getInt(BOOKED_LARGE_TICKET));
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }

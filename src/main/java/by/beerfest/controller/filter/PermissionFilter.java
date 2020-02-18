@@ -1,4 +1,4 @@
-package by.beerfest.filter;
+package by.beerfest.controller.filter;
 
 import by.beerfest.command.CommandType;
 import by.beerfest.entity.UserRole;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static by.beerfest.command.CommandType.MAIN;
-import static by.beerfest.constant.PageParameter.COMMAND;
-import static by.beerfest.constant.PageParameter.ROLE_NAME;
+import static by.beerfest.command.PageParameter.COMMAND;
+import static by.beerfest.command.PageParameter.ROLE_NAME;
 import static by.beerfest.entity.UserRole.UNAUTHORIZED;
 
 /**

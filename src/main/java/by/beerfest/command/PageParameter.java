@@ -1,4 +1,4 @@
-package by.beerfest.constant;
+package by.beerfest.command;
 
 /**
  * Contains constants that are used to send data to a page and just helper constants

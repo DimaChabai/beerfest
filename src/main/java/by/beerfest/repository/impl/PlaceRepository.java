@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.beerfest.constant.ColumnName.*;
-import static by.beerfest.constant.Query.PLACE_INSERT;
+import static by.beerfest.repository.ColumnName.*;
+import static by.beerfest.specification.Query.PLACE_INSERT;
 /**
  * Realization of {@code Repository} interface.
  * It is singleton.

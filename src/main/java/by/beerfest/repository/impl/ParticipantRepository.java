@@ -16,8 +16,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.beerfest.constant.ColumnName.*;
-import static by.beerfest.constant.Query.*;
+import static by.beerfest.repository.ColumnName.*;
+import static by.beerfest.specification.Query.*;
 
 /**
  * Realization of {@code Repository} interface.
@@ -65,13 +65,14 @@ public class ParticipantRepository extends Repository {
             statement = conn.prepareStatement(USER_TO_PARTICIPANT_UPDATE);
             statement.setLong(1, participant.getId());
             statement.executeUpdate();
-            this.commit(conn);
         } catch (SQLException e) {
             conn.rollback();
             throw new RepositoryException(e);
         } finally {
-            conn.setAutoCommit(true);
+            this.commit(conn);
             this.closeStatement(statement);
+            conn.setAutoCommit(true);
+            conn.close();
         }
     }
 
@@ -105,8 +106,10 @@ public class ParticipantRepository extends Repository {
             conn.rollback();
             throw new RepositoryException(e);
         } finally {
-            conn.setAutoCommit(true);
+            this.commit(conn);
             this.closeStatement(statement);
+            conn.setAutoCommit(true);
+            conn.close();
         }
     }
 
@@ -121,27 +124,28 @@ public class ParticipantRepository extends Repository {
      */
     public void delete(Participant participant) throws SQLException, RepositoryException {
         PreparedStatement statement = null;
-        Connection connection = connectionPool.getConnection();
+        Connection conn = connectionPool.getConnection();
         try {
-            connection.setAutoCommit(false);
-            statement = connection.prepareStatement(DELETE_PARTICIPANT_BY_ID);
+            conn.setAutoCommit(false);
+            statement = conn.prepareStatement(DELETE_PARTICIPANT_BY_ID);
             statement.setLong(1, participant.getId());
             statement.executeUpdate();
             statement.close();
-            statement = connection.prepareStatement(DELETE_PARTICIPANT_BEER_BY_ID);
+            statement = conn.prepareStatement(DELETE_PARTICIPANT_BEER_BY_ID);
             statement.setLong(1, participant.getId());
             statement.executeUpdate();
             statement.close();
-            statement = connection.prepareStatement(PARTICIPANT_TO_USER_UPDATE);
+            statement = conn.prepareStatement(PARTICIPANT_TO_USER_UPDATE);
             statement.setLong(1, participant.getId());
             statement.executeUpdate();
-            connection.commit();
         } catch (SQLException e) {
-            connection.rollback();
+            conn.rollback();
             throw new RepositoryException(e);
         } finally {
-            connection.setAutoCommit(true);
+            this.commit(conn);
             this.closeStatement(statement);
+            conn.setAutoCommit(true);
+            conn.close();
         }
     }
 

@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static by.beerfest.constant.Query.FIND_CONFIRMED_PARTICIPANT_FROM_TO;
+import static by.beerfest.specification.Query.FIND_CONFIRMED_PARTICIPANT_FROM_TO;
 
 public class FestSpecificationParticipantFindByConfirmedIsTrue implements FestSpecification {
     private int start;

@@ -1,9 +1,9 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.servlet.SessionRequestContent;
+import by.beerfest.controller.SessionRequestContent;
 
-import static by.beerfest.constant.PageParameter.LOCALE;
+import static by.beerfest.command.PageParameter.LOCALE;
 
 /**
  * Realization of {@code Command} interface.

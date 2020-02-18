@@ -1,9 +1,10 @@
-package by.beerfest.constant;
+package by.beerfest.specification;
 
 /**
  * Contain constants containing sql requests.
  */
 public class Query {
+
     public static final String FIND_USER_BY_EMAIL = "SELECT id_user, email, password, role_name, phone_number, avatar FROM user " +
             "           join role " +
             "           on role.id_role = user.id_role " +
@@ -17,19 +18,6 @@ public class Query {
             "           join placetype " +
             "           on place.id_type = placetype.id_type " +
             "           WHERE id_place NOT IN (SELECT id_place from participant)";
-    public static final String FIND_ALL_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type, company_name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
-            "           join place  " +
-            "           on  participant.id_place = place.id_place " +
-            "           join placetype p  " +
-            "           on place.id_type = p.id_type " +
-            "           join user  " +
-            "           on user.id_user = participant.id_user" +
-            "           join role" +
-            "           on role.id_role = user.id_role" +
-            "           join participant_beer" +
-            "           on participant_beer.id_user = participant.id_user" +
-            "           join beer" +
-            "           on beer.id_beer = participant_beer.id_beer";
     public static final String FIND_UNCONFIRMED_PARTICIPANT = "SELECT participant.id_user, confirmed, beer_type,company_name, email, password, phone_number, avatar, role_name,participant.id_place, seats,type FROM participant " +
             "           join place " +
             "           on participant.id_place = place.id_place" +
@@ -86,9 +74,7 @@ public class Query {
             "           WHERE place.id_place IN (SELECT participant.id_place FROM participant WHERE confirmed = true)";
     public static final String GUEST_INSERT = "INSERT INTO GUEST(id_user,default_ticket_number, medium_ticket_number, large_ticket_number) VALUES(?,?,?,?);";
     public static final String USER_TO_GUEST_UPDATE = "UPDATE user SET id_role = (SELECT id_role FROM role where  role_name = 'GUEST')  WHERE id_user = ?;";
-    public static final String ADD_TICKET = "INSERT INTO guest_ticket(id_user,ticket_number, ticket_type) VALUES(?,?,?);";
-    public static final String FIND_TICKET_GROUP_BY_TYPE = "SELECT SUM(ticket_number) as ticket_sum, ticket_type from guest_ticket " +
-            "           GROUP BY  ticket_type";
+    public static final String FIND_TICKET_GROUP_BY_TYPE = "SELECT SUM(default_ticket_number) as bookedDefaultTicket, SUM(medium_ticket_number) as bookedMediumTicket, SUM(large_ticket_number) as bookedLargeTicket FROM GUEST";
     public static final String FIND_BEER_ALL = "Select beer_type from beer";
     public static final String INSERT_PARTICIPANT_BEER = "INSERT INTO participant_beer (id_user, id_beer" + ") " +
             "           VALUES (?, (Select id_beer from beer where beer_type = ?));";

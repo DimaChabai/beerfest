@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static by.beerfest.constant.Query.FIND_BEER_ALL;
+import static by.beerfest.specification.Query.FIND_BEER_ALL;
 
 public class FestSpecificationBeerFindAll implements FestSpecification {
     @Override

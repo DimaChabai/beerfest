@@ -1,12 +1,12 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
-import by.beerfest.servlet.SessionRequestContent;
+import by.beerfest.controller.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static by.beerfest.constant.PageParameter.ID;
-import static by.beerfest.constant.PagePath.ROOT_PAGE;
+import static by.beerfest.command.PageParameter.ID;
+import static by.beerfest.command.PagePath.ROOT_PAGE;
 
 /**
  * Realization of {@code Command} interface.

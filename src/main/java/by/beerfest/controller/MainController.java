@@ -1,4 +1,4 @@
-package by.beerfest.servlet;
+package by.beerfest.controller;
 
 import by.beerfest.command.Command;
 import by.beerfest.command.CommandProvider;
@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import static by.beerfest.constant.PagePath.ROOT_PAGE;
 
 /**
  * The main controller of the application. Defines a command and initializes its execution.
@@ -36,12 +34,7 @@ public class MainController extends HttpServlet {
         Command command = CommandProvider.defineCommand(content);
         String page = command.execute(content);
         content.insertAttributes(request);
-        if (page != null) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-            dispatcher.forward(request, response);
-        } else {
-            page = ROOT_PAGE;
-            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + page));
-        }
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+        dispatcher.forward(request, response);
     }
 }

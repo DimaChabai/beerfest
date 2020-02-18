@@ -1,7 +1,7 @@
 package by.beerfest.specification.impl;
 
-import by.beerfest.constant.Query;
 import by.beerfest.specification.FestSpecification;
+import by.beerfest.specification.Query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

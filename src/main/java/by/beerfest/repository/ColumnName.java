@@ -1,8 +1,9 @@
-package by.beerfest.constant;
+package by.beerfest.repository;
 
 /**
  * Contains constants for getting information from sql request.
  */
+
 public class ColumnName {
     public static final String COL_PASSWORD = "password";
     public static final String COL_PHONE_NUMBER = "phone_number";

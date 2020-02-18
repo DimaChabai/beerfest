@@ -1,14 +1,14 @@
 package by.beerfest.command;
 
+import by.beerfest.controller.SessionRequestContent;
 import by.beerfest.entity.impl.Participant;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
-import by.beerfest.servlet.SessionRequestContent;
 
 import java.util.List;
 
-import static by.beerfest.constant.PageParameter.PARTICIPANTS;
+import static by.beerfest.command.PageParameter.PARTICIPANTS;
 
 public abstract class VerificationCommand implements Command {
 

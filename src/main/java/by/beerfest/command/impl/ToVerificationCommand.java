@@ -1,20 +1,20 @@
 package by.beerfest.command.impl;
 
 import by.beerfest.command.Command;
+import by.beerfest.controller.SessionRequestContent;
 import by.beerfest.entity.impl.Participant;
 import by.beerfest.service.ParticipantService;
 import by.beerfest.service.ServiceException;
 import by.beerfest.service.impl.ParticipantServiceImpl;
-import by.beerfest.servlet.SessionRequestContent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-import static by.beerfest.constant.PageMessage.PARTICIPANT_LOAD_ERROR_MESSAGE;
-import static by.beerfest.constant.PageParameter.ERROR_MESSAGE;
-import static by.beerfest.constant.PageParameter.PARTICIPANTS;
-import static by.beerfest.constant.PagePath.JSP_VERIFICATION_JSP;
+import static by.beerfest.command.PageMessage.PARTICIPANT_LOAD_ERROR_MESSAGE;
+import static by.beerfest.command.PageParameter.ERROR_MESSAGE;
+import static by.beerfest.command.PageParameter.PARTICIPANTS;
+import static by.beerfest.command.PagePath.JSP_VERIFICATION_JSP;
 
 /**
  * Realization of {@code Command} interface.
