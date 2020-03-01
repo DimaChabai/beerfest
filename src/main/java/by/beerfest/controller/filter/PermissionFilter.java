@@ -18,7 +18,7 @@ import static by.beerfest.entity.UserRole.UNAUTHORIZED;
 /**
  * Filter that checks the user role
  */
-@WebFilter(urlPatterns = "/controller",
+@WebFilter(urlPatterns = "/",
         initParams = {@WebInitParam(name = "INDEX_PATH", value = "/")})
 public class PermissionFilter implements Filter {
     private static final String INDEX_PATH = "INDEX_PATH";

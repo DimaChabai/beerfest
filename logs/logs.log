@@ -253,3 +253,56 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 23:37:58.502 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
 00:11:45.923 [http-nio-8089-exec-12] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
 00:19:48.389 [http-nio-8089-exec-20] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+17:26:59.004 [http-nio-8089-exec-10] WARN  by.beerfest.controller.XMLController - javax.xml.bind.JAXBException: Implementation of JAXB-API has not been found on module path or classpath.
+ - with linked exception:
+[java.lang.ClassNotFoundException: com.sun.xml.internal.bind.v2.ContextFactory]
+17:27:47.858 [http-nio-8089-exec-3] WARN  by.beerfest.controller.XMLController - javax.xml.bind.JAXBException: Implementation of JAXB-API has not been found on module path or classpath.
+ - with linked exception:
+[java.lang.ClassNotFoundException: com.sun.xml.internal.bind.v2.ContextFactory]
+17:28:02.662 [http-nio-8089-exec-1] WARN  by.beerfest.controller.XMLController - javax.xml.bind.JAXBException: Implementation of JAXB-API has not been found on module path or classpath.
+ - with linked exception:
+[java.lang.ClassNotFoundException: com.sun.xml.internal.bind.v2.ContextFactory]
+17:37:57.338 [http-nio-8089-exec-5] WARN  by.beerfest.controller.XMLController - javax.xml.bind.JAXBException: class java.util.ArrayList nor any of its super class is known to this context.
+17:44:43.332 [http-nio-8089-exec-7] WARN  by.beerfest.controller.XMLController - javax.xml.bind.JAXBException: class by.beerfest.entity.dto.Users nor any of its super class is known to this context.
+17:48:27.483 [http-nio-8089-exec-5] WARN  by.beerfest.controller.XMLController - javax.xml.bind.JAXBException: class by.beerfest.entity.dto.Users nor any of its super class is known to this context.
+17:49:32.142 [http-nio-8089-exec-6] WARN  by.beerfest.controller.XMLController - com.sun.xml.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions
+by.beerfest.entity.dto.Users does not have a no-arg default constructor.
+	this problem is related to the following location:
+		at by.beerfest.entity.dto.Users
+
+17:50:09.306 [http-nio-8089-exec-8] WARN  by.beerfest.controller.XMLController - com.sun.xml.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions
+by.beerfest.entity.dto.Users does not have a no-arg default constructor.
+	this problem is related to the following location:
+		at by.beerfest.entity.dto.Users
+
+17:55:25.896 [http-nio-8089-exec-7] WARN  by.beerfest.controller.XMLController - com.sun.xml.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions
+Property avatar is present but not specified in @XmlType.propOrder
+	this problem is related to the following location:
+		at private java.lang.String by.beerfest.entity.impl.User.avatar
+		at by.beerfest.entity.impl.User
+		at private java.util.List by.beerfest.entity.dto.Users.users
+		at by.beerfest.entity.dto.Users
+
+17:55:38.307 [http-nio-8089-exec-8] WARN  by.beerfest.controller.XMLController - com.sun.xml.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions
+Property avatar is present but not specified in @XmlType.propOrder
+	this problem is related to the following location:
+		at private java.lang.String by.beerfest.entity.impl.User.avatar
+		at by.beerfest.entity.impl.User
+		at private java.util.List by.beerfest.entity.dto.Users.users
+		at by.beerfest.entity.dto.Users
+
+17:56:32.974 [http-nio-8089-exec-5] WARN  by.beerfest.controller.XMLController - com.sun.xml.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions
+Property avatar is present but not specified in @XmlType.propOrder
+	this problem is related to the following location:
+		at private java.lang.String by.beerfest.entity.impl.User.avatar
+		at by.beerfest.entity.impl.User
+		at private java.util.List by.beerfest.entity.dto.Users.users
+		at by.beerfest.entity.dto.Users
+
+18:11:10.621 [http-nio-8089-exec-7] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+22:23:53.964 [http-nio-8089-exec-10] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+22:30:05.243 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+23:34:59.221 [http-nio-8089-exec-7] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+00:17:52.028 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+00:25:12.797 [http-nio-8089-exec-4] WARN  by.beerfest.controller.XMLController - by.beerfest.repository.RepositoryException: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'qwe@qwe' for key 'email_UNIQUE'
+00:26:42.398 [http-nio-8089-exec-4] WARN  by.beerfest.controller.XMLController - by.beerfest.repository.RepositoryException: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'qwe@qwe' for key 'email_UNIQUE'

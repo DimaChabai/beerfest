@@ -3,12 +3,30 @@ package by.beerfest.entity.impl;
 import by.beerfest.entity.Entity;
 import by.beerfest.entity.UserRole;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "User", propOrder = {
+        "id",
+        "email",
+        "password",
+        "role",
+        "phoneNumber",
+        "avatar"
+})
 public class User extends Entity {
+    @XmlElement
     private long id;
+    @XmlElement
     private String email;
+    @XmlElement
     private String password;
+    @XmlElement
     private UserRole role;
+    @XmlElement
     private String phoneNumber;
+    @XmlElement
     private String avatar;
 
     public User() {

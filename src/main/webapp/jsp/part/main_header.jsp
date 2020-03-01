@@ -71,17 +71,27 @@
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex mt-3">
             <li class="nav-item">
                 <form class="form-inline col px-1" method="post" action="controller">
-                    <input type="text" name="command" value="to_Profile" hidden>
-                    <button class="btn btn-outline-success " type="submit"><fmt:message
-                            key="page.content.profile_button"/></button>
+                    <input type="text" name="command" value="to_profile" hidden>
+                    <button class="btn btn-outline-success " type="submit">
+                        <fmt:message key="page.content.profile_button"/>
+                    </button>
                 </form>
             </li>
             <c:if test="${role_name == 'ADMIN'}">
                 <li class="nav-item">
                     <form class="form-inline col px-1" method="post" action="controller">
+                        <input type="text" name="command" value="to_user_list" hidden>
+                        <button class="btn btn-outline-success" type="submit">
+                            Пользователи
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline col px-1" method="post" action="controller">
                         <input type="text" name="command" value="to_Create_Place" hidden>
-                        <button class="btn btn-outline-success" type="submit"><fmt:message
-                                key="page.content.create_button"/></button>
+                        <button class="btn btn-outline-success" type="submit">
+                            <fmt:message key="page.content.create_button"/>
+                        </button>
                     </form>
                 </li>
                 <li class="nav-item">

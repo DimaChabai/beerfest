@@ -56,6 +56,12 @@ public class UserRepository extends Repository {
         }
     }
 
+    public void add(List<User> users) throws RepositoryException {
+        for (User user : users) {
+            add(user);
+        }
+    }
+
     /**
      * Updates information about the user in the "user" table.
      *

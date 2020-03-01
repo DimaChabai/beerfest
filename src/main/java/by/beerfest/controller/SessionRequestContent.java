@@ -1,4 +1,5 @@
 package by.beerfest.controller;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
@@ -67,6 +68,7 @@ public class SessionRequestContent {
             session.invalidate();
         }
     }
+
 
     public String[] getRequestParameter(String key) {
         return requestParameters.get(key);

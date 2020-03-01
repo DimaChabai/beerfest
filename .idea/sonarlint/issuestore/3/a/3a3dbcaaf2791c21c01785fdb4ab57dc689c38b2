@@ -1,0 +1,7 @@
+
+jsquid:S001125"FDefine and throw a dedicated exception instead of using a generic one.(¯åÕøÿÿÿÿ8Ñ¬×Î‚.
+isquid:S2142="FEither re-interrupt this method or rethrow the "InterruptedException".(Öââşÿÿÿÿ8Ñ¬×Î‚.
+Tsquid:S2696"6Make the enclosing method "static" or remove this set.(øÇ…›8ÚÑÃ¿….
+€squid:S00116"\Rename this field "DEFAULT_POOL_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò³æÿÿÿÿÿ8˜¹İÉ.
+\
+squid:S8990":Do something with the "boolean" value returned by "offer".(ŠŠÁşúÿÿÿÿ8Ñ¬×Î‚.

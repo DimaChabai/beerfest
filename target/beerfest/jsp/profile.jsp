@@ -29,7 +29,8 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block"><fmt:message
-                key="page.content.change_button"/></button>
+                key="page.content.change_button"/>
+        </button>
     </form>
 </div>
 <jsp:include page="part/footer.jsp"/>

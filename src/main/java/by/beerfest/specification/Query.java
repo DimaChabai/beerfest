@@ -9,6 +9,9 @@ public class Query {
             "           join role " +
             "           on role.id_role = user.id_role " +
             "           WHERE  email= ?";
+    public static final String FIND_USER_ALL = "SELECT id_user, email, password, role_name, phone_number, avatar FROM user " +
+            "           join role " +
+            "           on role.id_role = user.id_role ";
     public static final String FIND_PLACE_BY_ID = "SELECT id_place, type,  seats FROM place join placetype on place.id_type = placetype.id_type WHERE place.id_place = ?";
     public static final String USER_INSERT = "INSERT INTO user( email, password,id_role, phone_number, avatar) VALUES(?, ?, (SELECT id_role from role WHERE  role_name = 'USER'), ?,?)";
     public static final String USER_UPDATE = "UPDATE user SET  email = ?,  password = ?,  phone_number = ?, id_role = (SELECT id_role FROM role WHERE  role_name = ?),  avatar = ? " +

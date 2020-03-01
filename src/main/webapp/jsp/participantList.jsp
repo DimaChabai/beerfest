@@ -13,28 +13,48 @@
 <jsp:include page="part/main_header.jsp"/>
 <jsp:include page="part/message.jsp"/>
 <jsp:include page="part/error_message.jsp"/>
-<nav>
-    <ul class="pagination">
-        <c:if test="${page!=1}">
-            <li>
-                <form method="post">
-                    <input type="text" value="to_participant_list" name="command" hidden>
-                    <input type="number" name="page" value="${page-1}" hidden>
-                    <button type="submit"><fmt:message key="page.content.previous"/></button>
-                </form>
-            </li>
-        </c:if>
-        <c:if test="${participants.size()==6}">
-            <li>
-                <form method="post">
-                    <input type="text" value="to_participant_list" name="command" hidden>
-                    <input type="number" name="page" value="${page+1}" hidden>
-                    <button type="submit"><fmt:message key="page.content.next"/></button>
-                </form>
-            </li>
-        </c:if>
-    </ul>
-</nav>
+<div class="container ml-1">
+    <div class="row">
+        <a class="col-2" href="${pageContext.request.contextPath}/info">
+            <button type="submit" class="btn btn-primary">Экспорт xml</button>
+        </a>
+    </div>
+    <div class="row">
+        <form class="col-4" action="${pageContext.request.contextPath}/info" type="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">XML</label>
+                <input class="form-control-file" id="file" type="file" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+                Импортировать
+            </button>
+        </form>
+    </div>
+    <div class="row">
+        <nav>
+            <ul class="pagination">
+                <c:if test="${page!=1}">
+                    <li class="page-item col-2">
+                        <form method="post" class="page-link">
+                            <input type="text" value="to_participant_list" name="command" hidden>
+                            <input type="number" name="page" value="${page-1}" hidden>
+                            <button type="submit"><fmt:message key="page.content.previous"/></button>
+                        </form>
+                    </li>
+                </c:if>
+                <c:if test="${participants.size()==6}">
+                    <li class="page-item col-2">
+                        <form method="post">
+                            <input type="text" value="to_participant_list" name="command" hidden>
+                            <input type="number" name="page" value="${page+1}" hidden>
+                            <button type="submit"><fmt:message key="page.content.next"/></button>
+                        </form>
+                    </li>
+                </c:if>
+            </ul>
+        </nav>
+    </div>
+</div>
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">

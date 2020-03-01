@@ -15,6 +15,7 @@ public class PagePath {
     public static final String JSP_MAIN_JSP = "/jsp/main.jsp";
     public static final String JSP_PARTICIPANT_LIST_JSP = "/jsp/participantList.jsp";
     public static final String JSP_VERIFICATION_JSP = "/jsp/admin/verification.jsp";
+    public static final String JSP_USERS_JSP = "/jsp/admin/users.jsp";
 
     private PagePath() {
     }

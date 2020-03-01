@@ -32,7 +32,8 @@ public enum CommandType {
     ACCEPT_VERIFICATION(new AcceptVerificationCommand(), ADMIN),
     EXIT(new ExitCommand(), UserRole.values()),
     CHANGE_LOCALE(new ChangeLocaleCommand(), UserRole.values()),
-    TO_PARTICIPANT_LIST(new ToParticipantListCommand(), ADMIN, USER, PARTICIPANT, GUEST);
+    TO_PARTICIPANT_LIST(new ToParticipantListCommand(), ADMIN, USER, PARTICIPANT, GUEST),
+    TO_USER_LIST(v -> JSP_USERS_JSP, ADMIN);
 
     Set<UserRole> allowedRole = new HashSet<>();
 

@@ -23,13 +23,15 @@
         </div>
         <div class="form-group">
             <label for="phone_number"><fmt:message key="page.content.new_phone_number_input"/></label>
-            <input class="form-control" id="phone_number" name="phone_number"  pattern="\+375((29)|(44)|(33)|(25)) ?\d{7}" value="${phone_number}">
+            <input class="form-control" id="phone_number" name="phone_number"
+                   pattern="\+375((29)|(44)|(33)|(25)) ?\d{7}" value="${phone_number}">
             <div class="invalid-feedback">
                 <fmt:message key="page.content.invalid_phone_text"/>
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block"><fmt:message
-                key="page.content.change_button"/></button>
+                key="page.content.change_button"/>
+        </button>
     </form>
 </div>
 <jsp:include page="part/footer.jsp"/>
