@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.UUID;
 
 import static by.beerfest.command.PageMessage.*;
@@ -35,15 +36,18 @@ public class UserUpdateController extends HttpServlet {
     private static final String UPLOAD_DIR = "avatars";
     private static final UserRepository repository = UserRepository.getInstance();
     private static Logger logger = LogManager.getLogger();
+    private static Base64.Encoder encoder = Base64.getEncoder();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String phoneNumber = request.getParameter(PHONE_NUMBER);
         UserDataValidator validator = new UserDataValidator();
+        String password = request.getParameter(PASSWORD);
         Part part = request.getPart(FILE);
         String path = part.getSubmittedFileName();
+        boolean passValidated = validator.passwordValidate(password);
         boolean phoneNumberValidated = validator.phoneNumberValidate(phoneNumber);
         boolean avatarValidated = validator.avatarValidate(path);
-        if (phoneNumberValidated || avatarValidated) {
+        if (phoneNumberValidated || avatarValidated || passValidated) {
             HttpSession session = request.getSession();
             String email = (String) session.getAttribute(EMAIL);
             FestSpecification specification = new FestSpecificationUserFindByEmail(email);
@@ -72,6 +76,10 @@ public class UserUpdateController extends HttpServlet {
                 part.write(fileName);
                 session.setAttribute(AVATAR, randFilename);
                 user.setAvatar(randFilename);
+            }
+            if (passValidated) {
+                String hash = encoder.encodeToString(password.getBytes());
+                user.setPassword(hash);
             }
             try {
                 repository.update(user);

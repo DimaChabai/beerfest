@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Base64;
+import java.util.Optional;
 
 import static by.beerfest.command.PageMessage.INCORRECT_LOGIN_OR_PASSWORD;
 import static by.beerfest.command.PageMessage.MESSAGE_DATABASE_ERROR;
@@ -36,18 +37,19 @@ public class LoginCommand implements Command {
      */
     @Override
     public String execute(SessionRequestContent content) {
-        User user = null;
+        Optional<User> optionalUser = Optional.empty();
         boolean isCatch = false;
         try {
             String email = content.getRequestParameter(EMAIL)[0];
             String password = content.getRequestParameter(PASSWORD)[0];
             String hash = encoder.encodeToString(password.getBytes());
-            user = service.authenticate(email, hash);
+            optionalUser = service.authenticate(email, hash);
         } catch (ServiceException e) {
             logger.error(e);
             isCatch = true;
         }
-        if (user != null) {
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
             content.setSessionAttribute(ID, user.getId());
             content.setSessionAttribute(EMAIL, user.getEmail());
             content.setSessionAttribute(ROLE_NAME, user.getRole());

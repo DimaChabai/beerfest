@@ -27,7 +27,7 @@ public class CommandProvider {
      */
     public static Command defineCommand(SessionRequestContent content) {
         Command current;
-        String action = (String) content.getRequestAttribute(COMMAND);
+        String action = content.getRequestParameter(COMMAND)[0];
         try {
             CommandType currentEnum = CommandType.valueOf(action.toUpperCase());
             current = currentEnum.getCurrentCommand();

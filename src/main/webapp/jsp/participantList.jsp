@@ -15,22 +15,6 @@
 <jsp:include page="part/error_message.jsp"/>
 <div class="container ml-1">
     <div class="row">
-        <a class="col-2" href="${pageContext.request.contextPath}/info">
-            <button type="submit" class="btn btn-primary">Экспорт xml</button>
-        </a>
-    </div>
-    <div class="row">
-        <form class="col-4" action="${pageContext.request.contextPath}/info" type="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="file">XML</label>
-                <input class="form-control-file" id="file" type="file" name="file">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">
-                Импортировать
-            </button>
-        </form>
-    </div>
-    <div class="row">
         <nav>
             <ul class="pagination">
                 <c:if test="${page!=1}">

@@ -33,7 +33,9 @@ public enum CommandType {
     EXIT(new ExitCommand(), UserRole.values()),
     CHANGE_LOCALE(new ChangeLocaleCommand(), UserRole.values()),
     TO_PARTICIPANT_LIST(new ToParticipantListCommand(), ADMIN, USER, PARTICIPANT, GUEST),
-    TO_USER_LIST(v -> JSP_USERS_JSP, ADMIN);
+    TO_USER_LIST(v -> JSP_USERS_JSP, ADMIN),
+    TO_PASSWORD_RECOVERY(v -> JSP_PASSWORD_RECOVERY, UNAUTHORIZED),
+    PASSWORD_RECOVERY(new PasswordRecoveryCommand(), UNAUTHORIZED);
 
     Set<UserRole> allowedRole = new HashSet<>();
 

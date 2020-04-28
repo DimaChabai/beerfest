@@ -34,6 +34,11 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block"><fmt:message key="page.content.accept_button"/></button>
     </form>
+    <form method="post">
+        <input type="text" name="command" value="to_password_recovery" hidden>
+        <button type="submit" class="btn btn-primary btn-block">Восстановить пароль</button>
+    </form>
+
 </div>
 <jsp:include page="part/footer.jsp"/>
 </body>

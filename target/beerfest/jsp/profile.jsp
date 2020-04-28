@@ -23,9 +23,17 @@
         </div>
         <div class="form-group">
             <label for="phone_number"><fmt:message key="page.content.new_phone_number_input"/></label>
-            <input class="form-control" id="phone_number" name="phone_number"  pattern="\+375((29)|(44)|(33)|(25)) ?\d{7}" value="${phone_number}">
+            <input class="form-control" id="phone_number" name="phone_number"
+                   pattern="\+375((29)|(44)|(33)|(25)) ?\d{7}" value="${phone_number}">
             <div class="invalid-feedback">
                 <fmt:message key="page.content.invalid_phone_text"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password"><fmt:message key="page.content.password_label"/></label>
+            <input type="password" class="form-control" id="password" name="password" pattern=".{7,}">
+            <div class="invalid-feedback">
+                <fmt:message key="page.content.invalid_password_text"/>
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block"><fmt:message

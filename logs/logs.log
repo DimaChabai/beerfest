@@ -306,3 +306,73 @@ Property avatar is present but not specified in @XmlType.propOrder
 00:17:52.028 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
 00:25:12.797 [http-nio-8089-exec-4] WARN  by.beerfest.controller.XMLController - by.beerfest.repository.RepositoryException: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'qwe@qwe' for key 'email_UNIQUE'
 00:26:42.398 [http-nio-8089-exec-4] WARN  by.beerfest.controller.XMLController - by.beerfest.repository.RepositoryException: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'qwe@qwe' for key 'email_UNIQUE'
+12:55:14.903 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+12:57:44.348 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+12:59:39.033 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+13:01:47.523 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+16:50:13.685 [http-nio-8089-exec-10] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+16:51:29.532 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+17:06:13.404 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+17:09:42.023 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+17:16:16.127 [http-nio-8089-exec-6] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+17:25:23.802 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+17:27:29.598 [http-nio-8089-exec-7] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+01:02:09.334 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.503 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.524 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.555 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.561 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.565 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.570 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.577 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.581 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.586 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.590 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.596 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.602 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.606 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:02:09.611 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:50.882 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:50.918 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.030 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.034 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.039 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.043 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.046 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.062 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.066 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.072 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.076 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.141 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.149 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.156 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+01:08:51.188 [RMI TCP Connection(6)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:10.705 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:10.761 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:10.858 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:10.930 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:10.938 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:10.941 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:10.945 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.020 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.025 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.028 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.034 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.037 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.042 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.046 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+13:53:11.050 [RMI TCP Connection(3)-127.0.0.1] ERROR by.beerfest.pool.ConnectionCreator - java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+15:06:08.703 [http-nio-8089-exec-10] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781121', avatar='aa6b8cf1-eda7-4c0e-9c01-ef6a3f383440.jpg'} logged in
+15:21:39.174 [http-nio-8089-exec-3] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+37529 2781133', avatar='b173babc-b10c-4989-9dd6-cef9c867ded8.jpg'} logged in
+15:23:40.661 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='cXdlQHF3ZQ==', avatar='b173babc-b10c-4989-9dd6-cef9c867ded8.jpg'} logged in
+15:24:24.261 [http-nio-8089-exec-10] INFO  by.beerfest.command.impl.ExitCommand - User with id(7) logged out
+13:09:56.103 [http-nio-8089-exec-9] INFO  by.beerfest.service.impl.UserServiceImpl - Account created: User{id=86, email='fuuuuuck8@gmail.com', password='MTIzNDU2Nw==', role=null, phoneNumber='+375291298567', avatar='undefined_user_avatar.png'}
+13:10:18.956 [http-nio-8089-exec-2] INFO  by.beerfest.command.impl.LoginCommand - User{id=86, email='fuuuuuck8@gmail.com', password='MTIzNDU2Nw==', role=USER, phoneNumber='+375291298567', avatar='undefined_user_avatar.png'} logged in
+13:10:26.651 [http-nio-8089-exec-1] INFO  by.beerfest.command.impl.ExitCommand - User with id(86) logged out
+13:10:45.224 [http-nio-8089-exec-6] ERROR by.beerfest.command.impl.PasswordRecoveryCommand - by.beerfest.service.ServiceException: javax.mail.MessagingException: Unknown SMTP host: smtp.gmail.com";
+  nested exception is:
+	java.net.UnknownHostException: smtp.gmail.com"
+13:16:45.756 [http-nio-8089-exec-8] ERROR by.beerfest.command.impl.PasswordRecoveryCommand - by.beerfest.service.ServiceException: javax.mail.MessagingException: Unknown SMTP host: smtp.gmail.com";
+  nested exception is:
+	java.net.UnknownHostException: smtp.gmail.com"
+13:33:12.035 [http-nio-8089-exec-5] INFO  by.beerfest.command.impl.LoginCommand - User{id=7, email='qwe@qwe', password='cXdlQHF3ZQ==', role=ADMIN, phoneNumber='+375292783525', avatar='b173babc-b10c-4989-9dd6-cef9c867ded8.jpg'} logged in

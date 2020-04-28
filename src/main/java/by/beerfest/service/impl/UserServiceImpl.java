@@ -12,16 +12,29 @@ import by.beerfest.validator.UserDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 import static by.beerfest.repository.ColumnName.*;
 
 public class UserServiceImpl implements UserService {
 
     private static final UserRepository repository = UserRepository.getInstance();
+    public static final String MAIL = "mail";
     private static final String DEFAULT_AVATAR = "undefined_user_avatar.png";
+    public static final String FROM = "from";
+    private static final MailService mailService = new MailService();
+    private static final Base64.Decoder decoder = Base64.getDecoder();
     private static Logger logger = LogManager.getLogger();
 
     public void buildUser(ResultSet resultSet, User user) throws SQLException {
@@ -33,10 +46,10 @@ public class UserServiceImpl implements UserService {
         user.setAvatar(resultSet.getString(COL_AVATAR));
     }
 
-    public User authenticate(String email, String password) throws ServiceException {
+    public Optional<User> authenticate(String email, String password) throws ServiceException {
         UserDataValidator validator = new UserDataValidator();
         if (!validator.emailValidate(email) || !validator.passwordValidate(password)) {
-            return null;
+            return Optional.empty();
         }
         FestSpecification specification = new FestSpecificationUserFindByEmail(email);
         List<User> result;
@@ -48,12 +61,12 @@ public class UserServiceImpl implements UserService {
         if (result.size() == 1) {
             User user = result.get(0);
             if (password.equals(user.getPassword())) {
-                return user;
+                return Optional.of(user);
             } else {
-                return null;
+                return Optional.empty();
             }
         } else {
-            return null;
+            return Optional.empty();
         }
     }
 
@@ -87,6 +100,27 @@ public class UserServiceImpl implements UserService {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void sendMessageOnEmail(String email, String messageKey) throws ServiceException {
+        FestSpecification specification = new FestSpecificationUserFindByEmail(email);
+        try {
+            User user = repository.query(specification).get(0);
+            String hash = user.getPassword();
+            String pass = new String(decoder.decode(hash.getBytes()));
+            ResourceBundle mail = ResourceBundle.getBundle(MAIL);
+            String from = mail.getString(FROM);
+            Session session = mailService.getSession();
+
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+            message.setText(mail.getString(messageKey) + " " + pass);
+            Transport.send(message);
+            logger.info("Passwod send on " + email);
+        } catch (MessagingException | RepositoryException e) {
+            throw new ServiceException(e);
         }
     }
 }

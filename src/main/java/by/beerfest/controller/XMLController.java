@@ -29,8 +29,8 @@ import java.util.List;
 public class XMLController extends HttpServlet {
 
     private static final String EMPTY_STRING = "";
-    private static final String UNLOAD_DIR = "data/out";
-    private static final String UPLOAD_DIR = "data/in";
+    private static final String UNLOAD_DIR = "resources\\data\\out";
+    private static final String UPLOAD_DIR = "resources\\data\\in";
     private static final UserRepository userRepository = UserRepository.getInstance();
     private static Logger logger = LogManager.getLogger();
     private static UserRepository repository = UserRepository.getInstance();
@@ -39,9 +39,13 @@ public class XMLController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         FestSpecification specification = new FestSpecificationUserFindAll();
         String applicationDir = req.getServletContext().getRealPath(EMPTY_STRING);
-        String uploadFileDir = applicationDir + UNLOAD_DIR + File.separator;
-        String fileName = uploadFileDir + "users.xml";
-
+        String unloadFileDir = applicationDir + UNLOAD_DIR + File.separator;
+        File fileSaveDir = new File(unloadFileDir);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdirs();
+        }
+        String fileName = unloadFileDir + "users.xml";
+        new File(fileName).createNewFile();
         try (OutputStream outputStream = resp.getOutputStream();
              FileInputStream fileInputStream = new FileInputStream(fileName);
              InputStream inputStream = new BufferedInputStream(fileInputStream)) {
@@ -49,10 +53,6 @@ public class XMLController extends HttpServlet {
             JAXBContext context = JAXBContext.newInstance(Users.class);
             Marshaller m = context.createMarshaller();
 
-            File fileSaveDir = new File(uploadFileDir);
-            if (!fileSaveDir.exists()) {
-                fileSaveDir.mkdirs();
-            }
             Users users = new Users(query);
             m.marshal(users, new FileOutputStream(fileName));
 
@@ -65,6 +65,7 @@ public class XMLController extends HttpServlet {
         } catch (RepositoryException | JAXBException e) {
             logger.warn(e);
         }
+        resp.sendRedirect("/");
     }
 
     @Override
